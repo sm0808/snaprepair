@@ -1,0 +1,35 @@
+Application introduction:
+
+There will be two ends of application, One for normal user and one for admin. Application should allow work requests from specific zip-codes.
+
+
+User End:
+
+User shall be able to perform following actions on his end.
+
+1. Signup (Can take the cc details at this step or latter on...whereever you think is approperiate)
+2. Login
+3. Send work request to admin
+4. Approve/Disapprove admin quote
+5. Mark project complete and release funds
+
+Admin End:
+
+1. Login
+2. See Requests
+3. Send Quotes against requests
+4. Send updated quote if needed
+5. Manage zip codes
+6. Change order status as we discussed.
+
+
+
+Notes:
+
+1. User shall accept terms and conditions while accepting quote.
+2. Work request form fields shall be (Name, Location, Zipcode, Pictures, description, Phone, Work category)
+
+
+
+
+

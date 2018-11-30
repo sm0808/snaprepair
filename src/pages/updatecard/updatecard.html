@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2>
+            <div class="logoHeader"></div>
+          </ion-col>
+          <ion-col col-4>
+            <strong>Update Card</strong>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-title>
+    <!--<ion-buttons end>
+      <button ion-button tappable (click)="presentNotifications($event)">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+      <button ion-button tappable (click)="goToAccount()">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="animated fadeIn common-bg">
+  <ion-row>
+    <ion-col>
+      <ion-item no-padding>
+        <ion-input placeholder="Card Number" type="text" [(ngModel)]="number" size="20"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+ 
+  <ion-row>
+    <ion-col col-4>
+      <ion-item no-padding>
+        <ion-select placeholder="MM" [(ngModel)]="card_Month" class="max-width full-width">
+          <ion-option value="01">01</ion-option>
+          <ion-option value="02">02</ion-option>
+          <ion-option value="03">03</ion-option>
+          <ion-option value="04">04</ion-option>
+          <ion-option value="05">05</ion-option>
+          <ion-option value="06">06</ion-option>
+          <ion-option value="07">07</ion-option>
+          <ion-option value="08">08</ion-option>
+          <ion-option value="09">09</ion-option>
+          <ion-option value="10">10</ion-option>
+          <ion-option value="11">11</ion-option>
+          <ion-option value="12">12</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col col-4>
+      <ion-item no-padding>
+        <ion-select placeholder="YY" [(ngModel)]="card_Year" class="max-width full-width">
+          <ion-option value="18">18</ion-option>
+          <ion-option value="19">19</ion-option>
+          <ion-option value="20">20</ion-option>
+          <ion-option value="21">21</ion-option>
+          <ion-option value="22">22</ion-option>
+          <ion-option value="23">23</ion-option>
+          <ion-option value="24">24</ion-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col col-4>
+      <ion-item no-padding>
+        <ion-input placeholder="CVV" type="number" [(ngModel)]="cvv" size="4"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+ 
+
+  <button ion-button class="round" color="primary" margin-top full tappable (click)="UpdateCard()">Update Card</button>
+
+</ion-content>

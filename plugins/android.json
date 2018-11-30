@@ -1,0 +1,56 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "call-number": {
+      "PACKAGE_NAME": "com.snaprepair1.app"
+    },
+    "cordova-plugin-accountkit": {
+      "APP_ID": "767580770058358",
+      "APP_NAME": "YUR Rider",
+      "CLIENT_TOKEN": "6d97e93101b1681dfcb868539f6161ea",
+      "API_VERSION": "v1.2.0",
+      "PACKAGE_NAME": "com.snaprepair1.app"
+    },
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "com.snaprepair1.app"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.snaprepair1.app"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.snaprepair1.app"
+    },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "com.snaprepair1.app"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.snaprepair1.app"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.snaprepair1.app"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "PACKAGE_NAME": "com.snaprepair1.app"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "com.snaprepair1.app"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.snaprepair1.app"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-badge": {
+      "PACKAGE_NAME": "com.snaprepair1.app"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.snaprepair1.app"
+    }
+  }
+}

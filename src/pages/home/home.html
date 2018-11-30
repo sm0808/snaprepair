@@ -1,0 +1,70 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+
+        <ion-title>
+            <ion-grid>
+                <ion-row class="header-class">
+                    <ion-col col-2>
+                        <!-- <div class="logoHeader"></div> -->
+                    </ion-col>
+                    <ion-col col-6>
+                        <strong>Requests</strong>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <!-- <strong>Requests</strong> -->
+        </ion-title>
+
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="cards-bg social-cards">
+
+    <ion-card *ngFor="let i = index; let request of requests" id="card-{{request.requestId}}">
+
+        <ion-item>
+            <ion-avatar item-start>
+                <img src="assets/img/avatar/marty-avatar.png">
+            </ion-avatar>
+            <h2>{{ request.name }}</h2>
+            <ion-note>{{ request.email }}</ion-note>
+        </ion-item>
+
+        <img *ngIf="!imgloaded[i]" src="{{ loadingAnimation }}" />
+        <img [hidden]="!imgloaded[i]" (load)="imgloaded[i] = true" src="{{ request.img }}" />
+        <!-- <img src="{{ request.img || loadingAnimation }}"> -->
+
+        <ion-card-content>
+            <p><strong>Category:</strong> {{ request.cat_name }}</p>
+            <p><strong>Description:</strong> {{ request.description }}</p>
+            <ion-note>
+                Expected Completion Time: {{ request.ect }}
+            </ion-note>
+        </ion-card-content>
+
+        <ion-row>
+            <ion-col text-center>
+                <button ion-button color="danger" clear small icon-start (click)="viewDetails(request.requestId)">
+                  <ion-icon name='ios-bookmark'></ion-icon>
+                  View Details
+                </button>
+            </ion-col>
+            <ion-col text-center>
+                <button ion-button color="instagram" clear small icon-start (click)="showNotePopup(request.requestId)">
+                  <ion-icon name='ios-pricetag'></ion-icon>
+                  Make Offer
+                </button>
+            </ion-col>
+            <!-- <ion-col align-self-center text-center>
+                <ion-note>
+                    {{ request.ect }}
+                </ion-note>
+            </ion-col> -->
+        </ion-row>
+
+    </ion-card>
+
+</ion-content>

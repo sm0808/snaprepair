@@ -1,0 +1,260 @@
+<ion-content class="main-view" *ngIf="requestModal">
+    <div class="overlay" (click)="dismiss()"></div>
+
+    <div class="modal_content" style="overflow:auto">
+
+        <ion-title>
+            <ion-grid>
+                <ion-row class="header-class">
+                    <ion-col text-center>
+                        <strong class="list_header">Request</strong>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-title>
+
+
+        <ion-slides [slidesPerView]="slidesPerView" class="image-slider">
+            <ion-slide *ngFor="let img of images">
+                <img *ngIf="!imgloaded[i]" src="{{ loadingAnimation }}" class="thumb-img" />
+                <img [hidden]="!imgloaded[i]" (load)="imgloaded[i] = true" src="{{ img }}" class="thumb-img" imageViewer/>
+
+                <!-- <img *ngIf="!loaded" src="{{ loadingAnimation }}" class="thumb-img" />
+                <img [hidden]="!loaded" (load)="loaded = true" src="{{ img }}" class="thumb-img" imageViewer/> -->
+                <!-- <img src="{{ img || loadingAnimation }}" alt="" class="thumb-img" imageViewer> -->
+            </ion-slide>
+        </ion-slides>
+
+        <ion-list no-border>
+            <ion-list-header color="light">
+                <strong class="list_header" item-start>Request User</strong>
+            </ion-list-header>
+
+            <ion-item>
+                <ion-icon name='person' color="primary" item-start></ion-icon>
+                {{ request.name }}
+            </ion-item>
+
+            <ion-item>
+                <ion-icon name='mail' color="primary" item-start></ion-icon>
+                {{ request.email }}
+            </ion-item>
+
+            <ion-item>
+                <ion-icon name='call' color="primary" item-start></ion-icon>
+                {{ request.phone }}
+            </ion-item>
+
+            <ion-item>
+                <ion-icon name='ios-pin' color="primary" item-start></ion-icon>
+                {{ request.address }}
+            </ion-item>
+        </ion-list>
+
+        <ion-list no-border>
+            <ion-list-header color="light">
+                <strong class="list_header" item-start>Request Details</strong>
+            </ion-list-header>
+
+            <ion-item>
+                <ion-row>
+                    <ion-col col-6 text-left>
+                        <strong>Category Name</strong>
+                    </ion-col>
+
+                    <ion-col col-6 text-right>
+                        {{ request.cat_name }}
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+            <ion-item>
+                <ion-row>
+                    <ion-col col-6 text-left>
+                        <strong>Expected Completion Time</strong>
+                    </ion-col>
+
+                    <ion-col col-6 text-right>
+                        {{ request.ect }}
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+            <ion-item>
+                <ion-row>
+                    <ion-col col-6 text-left>
+                        <strong>Status of Job</strong>
+                    </ion-col>
+
+                    <ion-col col-6 text-right>
+                        {{ request.soj }}
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+            <ion-item>
+                <ion-row>
+                    <ion-col col-6 text-left>
+                        <strong>Description</strong>
+                    </ion-col>
+
+                    <ion-col col-6 text-right>
+                        {{ request.description }}
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+        </ion-list>
+
+        <button ion-button block (click)="dismiss()">Dismiss</button>
+    </div>
+</ion-content>
+
+<!-- Show Offer Modal Content -->
+<ion-content class="main-view" *ngIf="!requestModal">
+    <div class="overlay" (click)="dismiss()"></div>
+
+    <div class="modal_content" style="overflow:auto">
+
+        <ion-title>
+            <ion-grid>
+                <ion-row class="header-class">
+                    <ion-col text-center>
+                        <strong class="list_header">Offer Details</strong>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-title>
+
+
+        <ion-slides [slidesPerView]="slidesPerView" class="image-slider">
+            <ion-slide *ngFor="let img of images">
+                <img *ngIf="!imgloaded[i]" src="{{ loadingAnimation }}" class="thumb-img" />
+                <img [hidden]="!imgloaded[i]" (load)="imgloaded[i] = true" src="{{ img }}" class="thumb-img" imageViewer/>
+                <!-- <img *ngIf="!loaded" src="{{ loadingAnimation }}" class="thumb-img" />
+                <img [hidden]="!loaded" (load)="loaded = true" src="{{ img }}" class="thumb-img" imageViewer/> -->
+                <!-- <img src="{{ img || loadingAnimation }}" alt="" class="thumb-img" imageViewer> -->
+            </ion-slide>
+        </ion-slides>
+
+        <ion-list no-border>
+            <ion-list-header color="light">
+                <strong class="list_header" item-start>Request User</strong>
+            </ion-list-header>
+
+            <ion-item>
+                <ion-icon name='person' color="primary" item-start></ion-icon>
+                {{ offer.name }}
+            </ion-item>
+
+            <ion-item>
+                <ion-icon name='mail' color="primary" item-start></ion-icon>
+                {{ offer.email }}
+            </ion-item>
+
+            <ion-item>
+                <ion-icon name='call' color="primary" item-start></ion-icon>
+                {{ offer.phone }}
+            </ion-item>
+
+            <ion-item>
+                <ion-icon name='ios-pin' color="primary" item-start></ion-icon>
+                {{ offer.address }}
+            </ion-item>
+        </ion-list>
+
+        <ion-list no-border>
+            <ion-list-header color="light">
+                <strong class="list_header" item-start>Request Details</strong>
+            </ion-list-header>
+
+            <ion-item>
+                <ion-row>
+                    <ion-col col-6 text-left>
+                        <strong>Category Name</strong>
+                    </ion-col>
+
+                    <ion-col col-6 text-right>
+                        {{ offer.cat_name }}
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+            <ion-item>
+                <ion-row>
+                    <ion-col col-6 text-left>
+                        <strong>Expected Completion Time</strong>
+                    </ion-col>
+
+                    <ion-col col-6 text-right>
+                        {{ offer.ect }}
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+            <ion-item>
+                <ion-row>
+                    <ion-col col-6 text-left>
+                        <strong>Status of Job</strong>
+                    </ion-col>
+
+                    <ion-col col-6 text-right>
+                        {{ offer.soj }}
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+            <ion-item>
+                <ion-row>
+                    <ion-col col-6 text-left>
+                        <strong>Description</strong>
+                    </ion-col>
+
+                    <ion-col col-6 text-right>
+                        {{ offer.description }}
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+        </ion-list>
+
+        <ion-list no-border>
+            <ion-list-header color="light">
+                <strong class="list_header" item-start>Offer Details</strong>
+            </ion-list-header>
+
+            <ion-item>
+                <ion-row>
+                    <ion-col col-6 text-left>
+                        <strong>Offered Price</strong>
+                    </ion-col>
+
+                    <ion-col col-6 text-right>
+                        {{ offer.price }}
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+            <ion-item>
+                <ion-row>
+                    <ion-col col-6 text-left>
+                        <strong>Offer Description</strong>
+                    </ion-col>
+
+                    <ion-col col-6 text-right>
+                        {{ offer.offer_description }}
+                    </ion-col>
+                </ion-row>
+            </ion-item>
+
+
+        </ion-list>
+
+        <button ion-button block (click)="dismiss()">Dismiss</button>
+    </div>
+</ion-content>
+<!-- <ion-footer transparent>
+    <ion-toolbar transparent>
+        <button ion-button full (click)="dismiss()">OK</button>
+    </ion-toolbar>
+</ion-footer> -->

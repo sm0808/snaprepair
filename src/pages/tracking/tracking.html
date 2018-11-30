@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <!-- <ion-title>{{'ON_THE_WAY' | translate}}</ion-title> -->
+    <ion-title>RIDE DETAIL</ion-title>
+    <ion-buttons end>
+      <button ion-button *ngIf="tripStatus == 'finished'"  (click)="showRateCard()">{{'FINISH_TRIP' | translate}}</button>
+      <button ion-button *ngIf="tripStatus == 'waiting'" (click)="cancelTrip()">{{'CANCEL_TRIP' | translate}}</button>
+      <!-- <a href="tel:{{sos}}" ion-button *ngIf="tripStatus == 'going'">{{'SOS' | translate}}</a> -->
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- <ion-grid>
+    <ion-row class="header-class">
+      <ion-col col-12 *ngIf="tripStatus == 'waiting'" style="background: black; color: white">
+        <strong>Status: Driver has started moving</strong>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  <div *ngIf="tripStatus == 'waiting'" class="status_div">
+    <strong>Status: Driver has started moving</strong>
+  </div>
+
+  <div *ngIf="tripStatus == 'waiting'" class="change_dest" (click)="changeDestination()">
+    <span>Click here to Change Destination</span>
+  </div>
+
+  <div id="map" style="z-index: -1;"></div>
+</ion-content>
+
+<ion-footer>
+    <div style="float:right;background:yellow; color: #222">{{ 'OTP' | translate}}: {{trip.otp}}</div>
+    <ion-item>
+      <ion-avatar item-left>
+          <img src="{{ (driver)?.photoURL }}"/>
+      </ion-avatar>
+      <h2>{{ (driver)?.name }} &nbsp; {{(driver)?.rating}} <ion-icon name="md-star" color="yellow"></ion-icon> </h2>
+      <p>{{ (driver)?.plate }} &middot; {{ (driver)?.brand }}</p>
+      <a item-right ion-button clear (click) = "Message()" href="tel: +12014264448 ">
+        <ion-icon name="call"></ion-icon>&nbsp;{{'CALL' | translate}}
+      </a>
+      <a item-right ion-button clear (click) = "Message()"  href="sms: +12014264448 ">
+        <ion-icon name="call"></ion-icon>&nbsp;{{'SMS' | translate}}
+      </a>
+
+    </ion-item>
+</ion-footer>

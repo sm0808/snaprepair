@@ -1,0 +1,32 @@
+<ion-content scroll="false" class="bg_N">
+
+    <div padding padding-horizontal text-center class="animated fadeInDown">
+
+        <ion-segment color="primary" style="background-color: white;">
+            <ion-segment-button (click)="login()" style="border-right: 0.5px solid rgba(36, 43, 49, 0.2);">
+                {{ 'SIGN IN' | translate }}
+            </ion-segment-button>
+
+            <ion-segment-button (click)="signup()" style="border-left: 0.5px solid rgba(36, 43, 49, 0.2); color:black;" disabled>
+                {{ 'REGISTER' | translate }}
+            </ion-segment-button>
+        </ion-segment>
+
+        <div style="margin-top: -33px;">
+            <span class="dot">
+          <p class="or">OR</p>
+        </span>
+        </div>
+
+    </div>
+
+    <div class="splash-info">
+        <img src="./assets/img/icon/logo.png" alt="">
+        <!-- <div class="splash-logo"></div>
+        <div class="splash-intro">
+            {{ 'SnapRepair' | translate }}
+        </div> -->
+    </div>
+
+
+</ion-content>

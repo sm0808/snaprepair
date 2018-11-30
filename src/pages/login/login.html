@@ -1,0 +1,125 @@
+<!-- <ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+            <ion-icon name="ios-arrow-back-outline"></ion-icon>
+        </button>
+        <ion-title>
+            <ion-grid>
+                <ion-row class="header-class">
+                    <ion-col col-1 style="margin-left: -23px;">
+                        <div class="logoHeader"></div>
+                    </ion-col>
+                    <ion-col col-1 offset-3>
+                        <strong>{{ 'SIGN IN' | translate }}</strong>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-title>
+    </ion-navbar>
+</ion-header> -->
+
+<!-- <ion-content padding class="animated fadeIn login auth-page"> -->
+<ion-content class="animated fadeIn" padding style="display: none">
+
+
+    <div class="login-content">
+
+        <!-- <ion-grid>
+            <ion-row>
+                <ion-col col-6>
+                    <button ion-button icon-start block color="light">
+            <ion-icon name="logo-googleplus"></ion-icon>
+            <p>  |  {{ 'GOOGLE' | translate }}</p>
+          </button>
+                </ion-col>
+                <ion-col col-6>
+                    <button ion-button icon-start block color="light">
+            <ion-icon name="logo-facebook"></ion-icon>
+            <p>  |  {{ 'FACEBOOK' | translate }}</p>
+          </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid> -->
+
+        <!-- <h6 class="hr_line"><span> OR </span></h6> -->
+
+        <!-- Logo -->
+        <div padding padding-horizontal text-center class="animated fadeInDown">
+            <div class="logo"></div>
+            <h2 ion-text>
+                <strong>YUR</strong>
+            </h2>
+        </div>
+
+        <!-- Login form -->
+        <!-- <form class="list-form"> -->
+        <form>
+            <ion-item>
+                <ion-label floating>
+                    <!-- class="text-primary" -->
+                    <ion-icon name="mail" item-start></ion-icon>
+                    Email
+                </ion-label>
+                <ion-input type="email" name="email" [(ngModel)]="user.email"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>
+                    <ion-icon name="lock" item-start></ion-icon>
+                    Password
+                </ion-label>
+                <ion-input type="password" name="pass" [(ngModel)]="user.password"></ion-input>
+            </ion-item>
+        </form>
+
+        <div>
+            <button ion-button icon-start block tappable (click)="login()">
+        <ion-icon name="log-in"></ion-icon>
+        {{'SIGN IN' | translate }}
+      </button>
+
+        </div>
+
+        <button ion-button item-right clear block (click)="forgotPass()" [disabled]="user.email.length == 0"><strong style="color: #55e5eedb">{{'Forgot Password ?' | translate }}</strong></button>
+
+
+        <!-- Other links -->
+        <div text-center margin-top>
+            <span ion-text color="secondary" tappable (click)="signup()">New here? <strong>Sign up</strong></span>
+        </div>
+
+    </div>
+</ion-content>
+
+<ion-content scroll="false">
+    <div class="splash-bg"></div>
+    <div class="splash-info">
+        <div class="splash-logo"></div>
+        <div class="splash-intro">
+            {{ 'SnapRepair' | translate }}
+        </div>
+    </div>
+    <div padding>
+        <!-- Login form -->
+        <form>
+            <ion-item>
+                <ion-label floating>
+                    <!-- class="text-primary" -->
+                    <ion-icon name="mail" item-start></ion-icon>
+                    Email
+                </ion-label>
+                <ion-input type="email" name="email" [(ngModel)]="user.email"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>
+                    <ion-icon name="lock" item-start></ion-icon>
+                    Password
+                </ion-label>
+                <ion-input type="password" name="pass" [(ngModel)]="user.password"></ion-input>
+            </ion-item>
+        </form>
+        <!--  <button ion-button block (click)="signup()">{{ 'SIGNUP' | translate }}</button> -->
+        <button ion-button block (click)="login()">{{ 'LOGIN' | translate }}</button>
+    </div>
+</ion-content>

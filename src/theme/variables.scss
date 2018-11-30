@@ -1,0 +1,37 @@
+@import "ionic.globals";
+$text-color: #000;
+// $text-color: #4c6df9;
+$background-color: #fff;
+$driverProfilePictureSize: 120px;
+// primary: navigation, button
+// secondary: used as background for cars
+// $colors: (
+//   primary: #222222,
+//   secondary: #FFC107,
+//   danger: #D65451,
+//   light: #FFF,
+//   dark: #444,
+//   gray: #a2a2a2,
+//   white: #FFF,
+//   bg-color: #F7F9FB,
+//   border-color: #E9EBEB,
+// );
+.buttonCss {
+    button.alert-button:nth-child(2) {
+        margin-right: 39%;
+        color: gray;
+    }
+    button.alert-button:nth-child(1) {
+        background-color: gray;
+        color: white;
+        margin-right: 38%;
+    }
+}
+
+$colors: ( // primary: #cfbc51, cea042
+primary: #ff972e, secondary: rgb(75, 211, 8), danger: #f53d3d, light: #f6f6f6, dark: #808080, facebook: #3B5998, instagram: #125688, twitter: #55ACEE, email: #dd4b39, gray: #a2a2a2, white: #FFF, bg-color: #F7F9FB, border-color: #E9EBEB, app: #b18323);
+$searchbar-ios-input-text-color: #fff;
+$searchbar-ios-input-search-icon-color: #fff;
+@import "ionic.theme.default";
+$ionicons-font-path: "../assets/fonts";
+@import "ionic.ionicons";

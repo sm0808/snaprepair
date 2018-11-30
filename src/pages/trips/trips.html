@@ -1,0 +1,60 @@
+<!-- -->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2>
+            <div class="logoHeader"></div>
+          </ion-col>
+          <ion-col col-4>
+            <strong>Recent Trips</strong>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-title>
+    <!--<ion-buttons end>
+      <button ion-button tappable (click)="presentNotifications($event)">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+      <button ion-button tappable (click)="goToAccount()">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="animated fadeIn common-bg">
+
+  <!-- HISTORY Section -->
+  <div padding>
+    <ion-card *ngFor="let trip of trips">
+      <ion-card-content>
+        <p>{{ trip.$key }}</p>
+        <ion-row>
+          <ion-col>
+            <b style="text-align:center">{{'FROM' | translate}}</b>
+            <p>{{ trip.origin.vicinity }}
+              <br/>
+              <ion-note>{{ trip.pickedUpAt | amDateFormat: 'YYYY-MM-DD HH:mm'}}</ion-note>
+            </p>
+          </ion-col>
+          <ion-col>
+            <b style="text-align:center">{{'TO' | translate}}</b>
+            <p>{{ trip.destination.vicinity }}
+              <br/>
+              <ion-note>{{ trip.droppedOffAt | amDateFormat: 'YYYY-MM-DD HH:mm'}}</ion-note>
+            </p>
+          </ion-col>
+        </ion-row>
+        <p>{{'PAYMENT_MODE' | translate}}: {{ trip.paymentMethod }}</p>
+        <p>{{'FEE' | translate}}: {{trip.currency}} {{trip.fee}} </p>
+          
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

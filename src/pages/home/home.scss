@@ -1,0 +1,27 @@
+page-home {
+    .social-cards ion-col {
+        padding: 0;
+    }
+    // ion-card img {
+    //     display: block;
+    //     width: 100%;
+    //     height: 224px;
+    // }
+    .btnCss {
+        button.alert-button:nth-child(1) {
+            color: red;
+        }
+        button.alert-button:nth-child(2) {
+            color: green;
+        }
+    }
+}
+
+.CancelCss {
+    color: red !important;
+}
+
+.SendCss {
+    color: green !important;
+    font-size: 16px !important;
+}

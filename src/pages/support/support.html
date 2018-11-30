@@ -1,0 +1,46 @@
+<!-- -->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2>
+            <div class="logoHeader"></div>
+          </ion-col>
+          <ion-col col-4>
+            <strong>Support</strong>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-title>
+    <!--<ion-buttons end>
+      <button ion-button tappable (click)="presentNotifications($event)">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+      <button ion-button tappable (click)="goToAccount()">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="animated fadeIn common-bg">
+  <!--description-->
+  <div class="border-bottom" padding>
+    <span ion-text color="secondary" class="bold headingSection2">Support</span>
+  </div>
+  <div padding class="light-bg">
+    <button ion-button icon-left full color="email" menuClose (click)="sendMail()">
+      <ion-icon name="mail"></ion-icon>
+      Email
+    </button>
+    <button class="marginT-16px" ion-button icon-left full color="instagram" menuClose (click)="makeCall()">
+      <ion-icon name="call"></ion-icon>
+      Call
+    </button>
+  </div>
+
+</ion-content>

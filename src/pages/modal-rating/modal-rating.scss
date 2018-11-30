@@ -1,0 +1,30 @@
+page-modal-rating {
+
+}
+.heading{
+    text-align: center;
+}
+* {
+    box-sizing: border-box;
+}
+
+.column {
+    float: left;
+    width: 20%;
+    padding: 5px;
+}
+
+/* Clearfix (clear floats) */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.feedback{
+    width:100%;
+}
+ion-textarea{
+    border-style: inset;
+    border-width: 2px;
+}

@@ -1,0 +1,110 @@
+<!-- -->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-2>
+            <div class="logoHeader"></div>
+          </ion-col>
+          <ion-col col-4>
+            <strong>Share</strong>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-title>
+    <!--<ion-buttons end>
+      <button ion-button tappable (click)="presentNotifications($event)">
+        <ion-icon name="notifications"></ion-icon>
+      </button>
+      <button ion-button tappable (click)="goToAccount()">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons> -->
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="animated fadeIn common-bg">
+  <ion-list>
+    <ion-item-group class="group">
+       <ion-item-divider color="dark">Share through social media</ion-item-divider>
+       <ion-item>
+          <button
+             class="button"
+             ion-button
+             icon-right
+             block
+             padding-vertical
+             color="facebook"
+             (click)="shareViaFacebook()">
+                Share this via Facebook
+                <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>
+          </button>
+       </ion-item>
+
+
+       <ion-item>
+          <button
+             class="button"
+             ion-button
+             icon-right
+             block
+             padding-vertical
+             color="instagram"
+             (click)="shareViaInstagram()">
+                Share this via Instagram
+                <ion-icon ios="logo-instagram" md="logo-instagram"></ion-icon>
+          </button>
+       </ion-item>
+
+
+       <ion-item>
+          <button
+             class="button"
+             ion-button
+             icon-right
+             block
+             padding-vertical
+             color="twitter"
+             (click)="shareViaTwitter()">
+                Share this via Twitter
+                <ion-icon ios="logo-twitter" md="logo-twitter"></ion-icon>
+          </button>
+       </ion-item>
+    </ion-item-group>
+
+
+
+    <ion-item-group class="group">
+       <ion-item-divider color="dark">Share via e-mail</ion-item-divider>
+       <ion-item>
+          <ion-label block>To: </ion-label>
+          <ion-input
+             block
+             type="text"
+             placeholder="E-mail address..."
+             [(ngModel)]="sendTo"></ion-input>
+       </ion-item>
+
+
+
+       <ion-item>
+          <button
+             class="button"
+             ion-button
+             icon-right
+             block
+             padding-vertical
+             color="email"
+             (click)="shareViaEmail()">
+                Share this via Email
+                <ion-icon ios="ios-mail" md="md-mail"></ion-icon>
+          </button>
+       </ion-item>
+    </ion-item-group>
+
+ </ion-list>
+</ion-content>

@@ -1,0 +1,31 @@
+<!--Material Design Menu-->
+<ion-menu [content]="content" side="left" id="menu-material">
+    <ion-content>
+        <div class="menu-header">
+            <!--material-design-background-->
+            <img class="user-avatar round" style="height:90px;max-width:90px;" [src]="userPic" />
+            <div style="background:#00000078; width: 100%">
+                <p class="name">{{ name }}</p>
+                <p class="e-mail">{{ email }}</p>
+            </div>
+        </div>
+        <ion-list>
+            <button menuClose="left" ion-item detail-none *ngFor="let menuItem of appMenuItems" (click)="openPage(menuItem)">
+              <ion-icon [name]="menuItem.icon" item-left></ion-icon>
+              {{menuItem.title}}
+            </button>
+        </ion-list>
+    </ion-content>
+
+    <ion-footer transparent>
+        <ion-toolbar transparent>
+            <button ion-item menuClose class="text-1x" menuClose (click)="logout()">
+                <ion-icon name="ios-log-out" item-left></ion-icon>
+                Log Out
+            </button>
+        </ion-toolbar>
+    </ion-footer>
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<!-- <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav> -->

@@ -1,0 +1,177 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <!-- <ion-icon name="menu"></ion-icon> -->
+      <ion-icon name="ios-arrow-back-outline"></ion-icon>
+    </button>
+
+    <ion-title>
+      <ion-grid>
+        <ion-row class="header-class">
+          <ion-col col-1 style="margin-left: -23px;">
+            <div class="logoHeader"></div>
+          </ion-col>
+          <ion-col col-1 offset-3>
+            <strong>{{ 'REGISTER' | translate }}</strong>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-title>
+
+  </ion-navbar>
+
+
+</ion-header>
+
+<!-- <ion-content class="auth-page"> -->
+<ion-content class="animated fadeIn">
+  <div class="login-content">
+
+    <ion-grid lg>
+      <ion-row>
+        <ion-col col-6>
+          <button ion-button icon-start block color="light">
+            <ion-icon name="logo-googleplus"></ion-icon>
+            <p> | {{ 'GOOGLE' | translate }}</p>
+          </button>
+        </ion-col>
+        <ion-col col-6>
+          <button ion-button icon-start block color="light">
+            <ion-icon name="logo-facebook"></ion-icon>
+            <p> | {{ 'FACEBOOK' | translate }}</p>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <h6 class="hr_line">
+      <span> OR </span>
+    </h6>
+
+    <!-- Logo -->
+    <!-- <div text-center>
+      <div class="logo"></div>
+      <h2 ion-text class="text-primary">
+        <strong style="color: #cfbc51;">YUR</strong>
+      </h2>
+    </div> -->
+
+    <!-- Register form -->
+    <!-- <form class="list-form"> -->
+    <form>
+
+      <ion-grid lg>
+
+        <ion-row>
+          <!-- <ion-col col-3  style="margin-top: 10%" >
+            <img src=" {{user.photoURL}}" style="width:50px;height:50px;border-radius:100px" (click)="chooseFile()">
+            <form ngNoForm>
+              <input id="avatar" type="file" (change)="upload()">
+            </form>
+          </ion-col> -->
+          <ion-col >
+
+            <ion-item>
+              <ion-label floating>
+                <ion-icon name="person" item-start class="text-primary"></ion-icon>
+                First Name
+              </ion-label>
+              <!-- <ion-input type="text" name="fname" [(ngModel)]="name"></ion-input> -->
+              <ion-input type="text" name="fname" [(ngModel)]="user.fname"></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label floating>
+                <ion-icon name="person" item-start class="text-primary"></ion-icon>
+                Last Name
+              </ion-label>
+              <!-- <ion-input type="text" name="lname"></ion-input> -->
+              <ion-input type="text" name="lname" [(ngModel)]="user.lname"></ion-input>
+            </ion-item>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+          Email
+        </ion-label>
+        <!-- <ion-input type="email" name="email" [(ngModel)]="email"></ion-input> -->
+        <ion-input type="email" name="email" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="md-phone-portrait" item-start class="text-primary"></ion-icon>
+          10 Digit Mobile Number
+        </ion-label>
+        <!-- <ion-input type="tel" name="phone" [(ngModel)]="phoneNumber"></ion-input> -->
+        <ion-input type="tel" name="phone" [(ngModel)]="user.phone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Password
+        </ion-label>
+        <!-- <ion-input type="password" name="password" [(ngModel)]="password"></ion-input> -->
+        <ion-input type="password" name="password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          Refereal Code (If Referred)
+        </ion-label>
+        <!-- <ion-input type="text" name="referal"></ion-input> -->
+        <ion-input type="text" name="referal" [(ngModel)]="user.referal"></ion-input>
+      </ion-item>
+    </form>
+
+    <div margin-top>
+
+
+      <!--
+      <p text-center ion-text color="secondary">Or Sign Up with:</p>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-facebook">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-twitter">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-gplus">
+              <ion-icon name="logo-googleplus"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      -->
+    </div>
+
+    <!-- Other links -->
+    <!-- <div text-center margin-top padding>
+      <span ion-text color="primary" tappable (click)="login()">I have an account</span>
+    </div> -->
+
+  </div>
+</ion-content>
+
+<ion-footer align="center" no-border>
+  <ion-toolbar>
+    <ion-title>
+      <button ion-button block style="background: black" tappable (click)="signup()">
+        {{'Submit' | translate}}
+      </button>
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>
