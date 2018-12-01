@@ -32,12 +32,22 @@ page-login {
     .splash-info {
         position: relative;
         z-index: 2;
-        margin-top: -64px;
+        margin-top: -95px;
         text-align: center;
+    }
+    .logo-div{
+        text-align: -webkit-center;
+    }
+    .login-logo {
+        background: white;
+        height: 190px;
+        max-width: 190px;
+        border-radius: 100%;
     }
     .splash-logo {
         margin: auto;
-        background: url('../assets/img/icon/finger-snap.jpg') repeat transparent;
+        // background: url('../assets/img/icon/finger-snap.jpg') repeat transparent;
+        background: url('../assets/img/icon/logo.png') repeat transparent;
         background-size: 100%;
         width: 128px;
         height: 128px;

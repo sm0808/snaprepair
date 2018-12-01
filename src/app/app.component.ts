@@ -74,20 +74,8 @@ export class MyApp {
     //   Keyboard.disableScroll(true)
     //   StatusBar.styleDefault();
     // });
+    this.appMenuItems = [];
     this.initializeApp();
-    this.appMenuItems = [
-      { title: 'Recent Requests', component: HomePage, icon: 'ios-list-outline'},
-      { title: 'Recent Offers', component: AdminOffersPage, icon: 'ios-pricetag-outline'},
-      { title: 'Accepted Offers', component: AdminAcceptedOffersPage, icon: 'ios-checkmark-circle-outline'},
-      { title: 'Mannage Zips', component: ZipsPage, icon: 'ios-navigate-outline'},
-      { title: 'Profile', component: UserPage, icon: 'ios-contact-outline' },
-      // { title: 'About Us', component: AboutPage, icon: 'ios-information-circle-outline' },
-      // { title: 'My Recent Trips', component: TripsPage, icon: 'ios-pricetag-outline' },
-      // { title: 'Payment', component: PaymentPage, icon: 'ios-card-outline' },
-      // { title: 'Support', component: SupportPage, icon: 'ios-mail-outline' },
-      // { title: 'Share', component: SharePage, icon: 'md-share' },
-      // { title: 'Earn Commission', component: CommissionPage, icon: 'ios-cash-outline' },
-    ];
 
     events.subscribe('user:updated', (user, time) => {
       // user and time are the same arguments passed in `events.publish(user, time)`
@@ -97,6 +85,7 @@ export class MyApp {
       this.name    = this.user.name;
       this.email   = this.user.email;
       this.userPic = USER_IMG_URL + this.user.image;
+      this.setAppMenu();
     });
   }
 
@@ -120,11 +109,42 @@ export class MyApp {
         this.name    = this.user.name.toUpperCase();
         this.email   = this.user.email;
         this.userPic = USER_IMG_URL + this.user.image;
+        this.setAppMenu();
+
         this.nav.setRoot(HomePage);
       } else {
         this.nav.setRoot(WelcomePage);
       }
     });
+  }
+
+  setAppMenu() {
+    if (this.user.isAdmin == '1') {
+      console.log("isAdmin");
+      this.appMenuItems = [
+        { title: 'Recent Requests', component: HomePage, icon: 'ios-list-outline'},
+        { title: 'Recent Offers', component: AdminOffersPage, icon: 'ios-pricetag-outline'},
+        { title: 'Accepted Offers', component: AdminAcceptedOffersPage, icon: 'ios-checkmark-circle-outline'},
+        { title: 'Mannage Zips', component: ZipsPage, icon: 'ios-navigate-outline'},
+        { title: 'Profile', component: UserPage, icon: 'ios-contact-outline' },
+        // { title: 'About Us', component: AboutPage, icon: 'ios-information-circle-outline' },
+        // { title: 'My Recent Trips', component: TripsPage, icon: 'ios-pricetag-outline' },
+        // { title: 'Payment', component: PaymentPage, icon: 'ios-card-outline' },
+        // { title: 'Support', component: SupportPage, icon: 'ios-mail-outline' },
+        // { title: 'Share', component: SharePage, icon: 'md-share' },
+        // { title: 'Earn Commission', component: CommissionPage, icon: 'ios-cash-outline' },
+      ];
+    }
+    else {
+      console.log("is Not Admin");
+      this.appMenuItems = [
+        { title: 'Recent Requests', component: HomePage, icon: 'ios-list-outline'},
+        // { title: 'Recent Offers', component: AdminOffersPage, icon: 'ios-pricetag-outline'},
+        // { title: 'Accepted Offers', component: AdminAcceptedOffersPage, icon: 'ios-checkmark-circle-outline'},
+        // { title: 'Mannage Zips', component: ZipsPage, icon: 'ios-navigate-outline'},
+        { title: 'Profile', component: UserPage, icon: 'ios-contact-outline' },
+      ];
+    }
   }
 
   // view current user profile

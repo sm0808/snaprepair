@@ -68,9 +68,9 @@ export class UserPage {
   // save user info
   save() {
     if(this.c_password != this.password)
-      this.presentAlert('Password Missmatch!', 'Please make sure you enter same password');
+      this.showAlert('Password Missmatch!', 'Please make sure you enter same password');
     else if(this.user.name == '' || this.user.password == '')
-      this.presentAlert('Empty Fields!', 'All fields are required');
+      this.showAlert('Empty Fields!', 'All fields are required');
     else {
       let loading = this.loadingCtrl.create({ content: 'Please wait...' });
       loading.present();
@@ -88,6 +88,7 @@ export class UserPage {
         this.trigger_User_Update_Event();
       }, (err) => {
         loading.dismiss();
+        this.showAlert('Error Updating', JSON.stringify(err));
         console.log(err);
       });
 
@@ -98,7 +99,7 @@ export class UserPage {
     this.events.publish('user:updated', this.user, Date.now());
   }
 
-  presentAlert(title, mesasge) {
+  showAlert(title, mesasge) {
     let alert = this.alertCtrl.create({
       title: title,
       subTitle: mesasge,
@@ -114,20 +115,24 @@ export class UserPage {
   }
 
   fileChange(event){
-    if(event.target.files && event.target.files[0]){
-      let reader = new FileReader();
+    try {
+      if(event.target.files && event.target.files[0]){
+        let reader = new FileReader();
 
-      reader.onload = (event:any) => {
-        this.userPic   = event.target.result;
+        reader.onload = (event:any) => {
+          this.userPic   = event.target.result;
+        }
+        reader.readAsDataURL(event.target.files[0]);
       }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-      let fileList: FileList = event.target.files;
-      console.log("fileList: ",fileList);
+        let fileList: FileList = event.target.files;
+        console.log("fileList: ",fileList);
 
-      let file: File = fileList[0];
-      // this.user['profilePic'] = file;
-      console.log(file);
+        let file: File = fileList[0];
+        // this.user['profilePic'] = file;
+        console.log(file);
+    } catch(error) {
+      this.showAlert('Error Changing File', JSON.stringify(error));
+    }
   }
 
   // upload thumb for item

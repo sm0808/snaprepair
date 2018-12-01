@@ -20,7 +20,7 @@ export class LoginPage {
   constructor(public nav: NavController, public authService: AuthService,
     public alertCtrl: AlertController, public loadingCtrl: LoadingController,
     public toast: ToastController, public translate: TranslateService,
-    public userService: UserProvider, public toastCtrl: ToastController, 
+    public userService: UserProvider, public toastCtrl: ToastController,
     public events: Events ) {
 
     this.isRegisterEnabled = ENABLE_SIGNUP;
@@ -69,6 +69,7 @@ export class LoginPage {
         }
       }, (err) => {
         loading.dismiss();
+        this.showAlert('Error Logging In', JSON.stringify(err));
         console.log(err);
       });
     }
@@ -76,6 +77,15 @@ export class LoginPage {
 
   trigger_User_Update_Event() {
     this.events.publish('user:updated', this.user, Date.now());
+  }
+
+  showAlert(title, mesasge) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: mesasge,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   forgotPass() {

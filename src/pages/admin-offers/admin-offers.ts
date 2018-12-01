@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, Platform, AlertController, LoadingController, ToastController, NavParams, ModalController } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { ModalPage } from '../modal/modal';
-import { API_URL, IMG_URL } from "../../services/constants";
+import { API_URL, IMG_URL, USER_IMG_URL } from "../../services/constants";
 
 import { Requests } from "../../services/requests";
 import { Offers } from "../../services/offers";
@@ -23,6 +23,7 @@ export class AdminOffersPage {
 
   public offers            : any;
   public user              : any;
+  public USER_IMG_URL      : any = USER_IMG_URL;
   public loading           : any;
   public imgloaded         : any = [];
   public loadingAnimation  : any = './assets/img/loading-animation.gif';
@@ -96,7 +97,7 @@ export class AdminOffersPage {
   update_Quote(offerID, price) {
     console.log("offerID: ",offerID);
     console.log("price: ",price);
-    
+
     // Send Admin Offer
     this.showLoading('Updating Offer...');
     this.offerService.update_Offer(offerID, price).then((result) => {
@@ -108,7 +109,7 @@ export class AdminOffersPage {
           }
         }
       }
-      localStorage.setItem('offers', JSON.stringify(this.offers));     // Update Offers in localStorage 
+      localStorage.setItem('offers', JSON.stringify(this.offers));     // Update Offers in localStorage
       this.showToast('Offer Updated');
       this.hideLoading();
     }, (err) => {

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, Platform, AlertController, LoadingController, ToastController, NavParams, ModalController } from 'ionic-angular';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { ModalPage } from '../modal/modal';
-import { API_URL, IMG_URL } from "../../services/constants";
+import { API_URL, IMG_URL, USER_IMG_URL } from "../../services/constants";
 
 import { Requests } from "../../services/requests";
 import { Offers } from "../../services/offers";
@@ -24,6 +24,7 @@ export class AdminAcceptedOffersPage {
 
   public offers            : any;
   public user              : any;
+  public USER_IMG_URL      : any = USER_IMG_URL;
   public offerStatus       : any;
   public loading           : any;
   public imgloaded         : any = [];
@@ -99,7 +100,7 @@ export class AdminAcceptedOffersPage {
     });
     toast.present();
   }
-  
+
   showLoading(message) {
     this.loading = this.loadingCtrl.create({
       content: message

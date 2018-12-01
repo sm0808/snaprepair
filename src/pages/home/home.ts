@@ -3,7 +3,7 @@ import { NavController, Platform, AlertController, LoadingController, ToastContr
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { ModalPage } from '../modal/modal';
-import { API_URL, IMG_URL } from "../../services/constants";
+import { API_URL, IMG_URL, USER_IMG_URL } from "../../services/constants";
 
 import 'rxjs/Rx'
 import { Observable } from 'rxjs/Observable';
@@ -31,6 +31,7 @@ export class HomePage {
   // Intialize all Variables
   public requests          : any;
   public user              : any;
+  public USER_IMG_URL      : any = USER_IMG_URL;
   public loading           : any;
   public imgloaded         : any = [];
   public loadingAnimation  : any = './assets/img/loading-animation.gif';
@@ -43,7 +44,6 @@ export class HomePage {
               public modalCtrl: ModalController, public offerService: Offers) {
       // this.translate.setDefaultLang('en');
       this.user = JSON.parse(localStorage.getItem('userData'));
-
 
       let loading = this.loadingCtrl.create({ content: 'Getting Requests...' });
       loading.present();
@@ -64,7 +64,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    
+
   }
 
   ionViewWillLeave() {
@@ -155,6 +155,15 @@ export class HomePage {
       position: 'top'
     });
     toast.present();
+  }
+
+  showAlert(title, mesasge) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: mesasge,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   viewDetails(requestID) {

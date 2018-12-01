@@ -34,7 +34,7 @@
         <ion-card *ngIf="offer.status == 1" id="card-{{offer.offerId}}">
             <ion-item>
                 <ion-avatar item-start>
-                    <img src="assets/img/avatar/marty-avatar.png">
+                    <img src="{{ USER_IMG_URL + offer.image }}">
                 </ion-avatar>
                 <h2>{{ offer.name }}</h2>
                 <ion-note>{{ offer.email }}</ion-note>
