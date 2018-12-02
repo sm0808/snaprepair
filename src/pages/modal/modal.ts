@@ -52,6 +52,21 @@ export class ModalPage {
                 this.get_Request_Images();
                 console.log("reqID",this.reqID);
               }
+              else if(navParams.get('accepted_offerID')) {
+                this.requestModal = false;
+                this.offers   = JSON.parse(localStorage.getItem('accepted_offers'));
+                this.offerID  = navParams.get('accepted_offerID');
+
+                for (let i = 0; i < this.offers.length; i++) {
+                  if(this.offerID == this.offers[i]['offerId']) {
+                    this.offer = this.offers[i];
+                    this.reqID = this.offer['requestId'];
+                    break;
+                  }
+                }
+                this.get_Request_Images();
+                console.log("offer", this.offer);
+              }
               else {
                 this.requestModal = false;
                 this.offers   = JSON.parse(localStorage.getItem('offers'));

@@ -21,7 +21,6 @@
 <!-- <ion-content padding class="animated fadeIn login auth-page"> -->
 <ion-content class="animated fadeIn" padding style="display: none">
 
-
     <div class="login-content">
 
         <!-- <ion-grid>
@@ -91,7 +90,7 @@
     </div>
 </ion-content>
 
-<ion-content scroll="false">
+<ion-content scroll="false" class="animated fadeIn">
     <div class="splash-bg"></div>
     <div class="splash-info">
         <!-- <div class="splash-logo"></div> -->
@@ -106,25 +105,32 @@
     </div>
     <div padding>
         <!-- Login form -->
-        <form>
-            <ion-item>
-                <ion-label floating>
-                    <!-- class="text-primary" -->
-                    <ion-icon name="mail" item-start></ion-icon>
-                    Email
-                </ion-label>
-                <ion-input type="email" name="email" [(ngModel)]="user.email"></ion-input>
-            </ion-item>
+        <ion-item>
+            <ion-label floating>
+                <!-- class="text-primary" -->
+                <ion-icon name="mail" item-start></ion-icon>
+                Email
+            </ion-label>
+            <ion-input type="email" name="email" [(ngModel)]="user.email"></ion-input>
+        </ion-item>
 
-            <ion-item>
-                <ion-label floating>
-                    <ion-icon name="lock" item-start></ion-icon>
-                    Password
-                </ion-label>
-                <ion-input type="password" name="pass" [(ngModel)]="user.password"></ion-input>
-            </ion-item>
-        </form>
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="lock" item-start></ion-icon>
+                Password
+            </ion-label>
+            <ion-input type="password" name="pass" [(ngModel)]="user.password"></ion-input>
+        </ion-item>
+        <!-- <form>
+            
+        </form> -->
         <!--  <button ion-button block (click)="signup()">{{ 'SIGNUP' | translate }}</button> -->
-        <button ion-button block (click)="login()">{{ 'LOGIN' | translate }}</button>
+        <!-- <button ion-button block (click)="login()">{{ 'LOGIN' | translate }}</button> -->
     </div>
 </ion-content>
+
+<ion-footer transparent>
+    <ion-toolbar transparent padding>
+        <button ion-button block (click)="login()">{{ 'LOGIN' | translate }}</button>
+    </ion-toolbar>
+</ion-footer>

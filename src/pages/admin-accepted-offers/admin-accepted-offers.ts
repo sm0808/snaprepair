@@ -79,7 +79,7 @@ export class AdminAcceptedOffersPage {
 
   viewDetails(offerID) {
     console.log("offerID: ",offerID);
-    let Modal = this.modalCtrl.create(ModalPage, { offerID: offerID});
+    let Modal = this.modalCtrl.create(ModalPage, { accepted_offerID: offerID});
     Modal.present();
   }
 

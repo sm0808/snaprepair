@@ -29,13 +29,16 @@ page-login {
             background-position: 100% 0;
         }
     }
+    .scroll-content {
+        padding-bottom: 0 !important;
+    }
     .splash-info {
         position: relative;
         z-index: 2;
         margin-top: -95px;
         text-align: center;
     }
-    .logo-div{
+    .logo-div {
         text-align: -webkit-center;
     }
     .login-logo {

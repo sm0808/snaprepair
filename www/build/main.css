@@ -56942,6 +56942,10 @@ page-login .splash-bg {
   }
 }
 
+page-login .scroll-content {
+  padding-bottom: 0 !important;
+}
+
 page-login .splash-info {
   position: relative;
   z-index: 2;

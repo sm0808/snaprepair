@@ -27,12 +27,24 @@ export class UserProvider {
         });
     });
   }
-  signup(data) {
+
+  validateEmail(email) {
+      // return this.http.get(SERVER_ADDRESS + 'auth/validate-username/' + username).map(res => res.json());
+      return new Promise((resolve, reject) => {
+        this.http.get(this.apiUrl+'/user.php?action=validateEmail&email='+email)
+          .subscribe(res => {
+            resolve(res);
+          }, (err) => {
+            reject(err);
+          });
+      });
+  }
+
+  signup(data, profilePic) {
     return new Promise((resolve, reject) => {
-      console.log(data);
-      let urlParam = 'firstName=' + encodeURI(data.fname) + '&lastName=' + encodeURI(data.lname) + '&email=' + encodeURI(data.email) + '&password=' + encodeURI(data.password) + '&userType=' + encodeURI(data.type) + '&phone=' + encodeURI(data.phone) + '&referralCode=' + encodeURI(data.referal);
-      console.log(this.apiUrl+'/SignUp?'+urlParam);
-      this.http.post(this.apiUrl+'/SignUp?'+urlParam,JSON.stringify(data))
+      let urlParam = 'action=registerUser&name=' + encodeURI(data.name) + '&email=' + encodeURI(data.email) + '&phone=' + encodeURI(data.phone) + '&password=' + encodeURI(data.password);
+
+      this.http.post(this.apiUrl+'/user.php?'+urlParam, profilePic)
         .subscribe(res => {
           console.log(res);
           resolve(res);

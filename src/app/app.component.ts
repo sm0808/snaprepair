@@ -4,7 +4,7 @@ import { ViewChild } from '@angular/core';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { BackgroundMode } from '@ionic-native/background-mode';
-// import { Keyboard } from '@ionic-native/keyboard';
+// import { Keyboard } from 'ionic-native/keyboard';
 
 // import pages
 import { LoginPage } from '../pages/login/login';
@@ -67,6 +67,8 @@ export class MyApp {
               public translate: TranslateService, public modalCtrl: ModalController,
               public geo: Geolocation, public backgroundMode: BackgroundMode,
               public events: Events) {
+
+                // public keyboard: Keyboard
     this.translate.setDefaultLang('en');
     this.translate.use('en');
     // this.platform.ready().then(() => {
@@ -96,6 +98,9 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+      // this.keyboard.disableScroll(true)
+
       // // let status bar overlay webview
       // this.statusBar.overlaysWebView(true);
       //

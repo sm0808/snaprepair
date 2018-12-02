@@ -129,8 +129,8 @@
     <div padding>
 
         <div style="text-align:center">
-            <img *ngIf="!imgloaded" src="{{ loadingAnimation }}" style="max-width: 90px; height: 90px; border-radius:100px" />
-            <img [hidden]="!imgloaded" (load)="imgloaded = true" src="{{ userPic }}" style="max-width: 90px; height: 90px; border-radius:100px" (click)="chooseFile()" />
+            <img *ngIf="!imgloaded" src="{{ loadingAnimation }}" style="width: 90px; height: 90px; border-radius:100px" />
+            <img [hidden]="!imgloaded" (load)="imgloaded = true" src="{{ userPic }}" style="width: 90px; height: 90px; border-radius:100px" (click)="chooseFile()" />
 
             <!-- <img src="{{ userPic }}" style="width: 70px;border-radius:100px" (click)="chooseFile()"> -->
             <form ngNoForm>
