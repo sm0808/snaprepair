@@ -7,6 +7,8 @@ import * as firebase from 'firebase';
 import { ENABLE_SIGNUP } from '../../services/constants';
 import { TranslateService } from '@ngx-translate/core';
 import { UserProvider } from '../../providers/user/user';
+import { UserRequestsPage } from '../user-requests/user-requests';
+
 //B33437 awais@gmail.com
 @Component({
   selector: 'page-login',
@@ -65,7 +67,12 @@ export class LoginPage {
         else {
           localStorage.setItem('userData', JSON.stringify(result));
           this.trigger_User_Update_Event();
-          this.nav.setRoot(HomePage);
+          if (result['isAdmin'] == '1') {
+            this.nav.setRoot(HomePage);
+          }
+          else {
+            this.nav.setRoot(UserRequestsPage);
+          }
         }
       }, (err) => {
         loading.dismiss();

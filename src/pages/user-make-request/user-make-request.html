@@ -1,0 +1,61 @@
+<!--
+  Generated template for the UserMakeRequestPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar color="primary">
+        <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button>
+
+        <ion-title>
+            <ion-grid>
+                <ion-row class="header-class">
+                    <ion-col col-2>
+                        <!-- <div class="logoHeader"></div> -->
+                    </ion-col>
+                    <ion-col col-6>
+                        <strong>Make Request</strong>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+            <!-- <strong>Requests</strong> -->
+        </ion-title>
+
+    </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+    <button ion-button color="danger" clear small icon-start (click)="takePicture_Simple()">
+      <ion-icon name='ios-camera'></ion-icon>
+      Take Pic
+    </button>
+
+    <button ion-button color="danger" clear small icon-start (click)="openImagePicker()">
+      <ion-icon name='ios-image'></ion-icon>
+      Select From Gallery
+    </button>
+    <ion-card *ngFor="let photo of photos">
+        <img src="{{photo}}" imageViewer/>
+    </ion-card>
+
+    <img src="{{pathForImage(lastImage)}}" style="width: 100%" [hidden]="lastImage === null">
+    <h3 [hidden]="lastImage !== null">Please Select Image!</h3>
+</ion-content>
+
+
+<ion-footer>
+    <ion-toolbar color="primary">
+        <ion-buttons>
+            <button ion-button icon-left (click)="presentActionSheet()">
+          <ion-icon name="camera"></ion-icon>Select Image
+        </button>
+            <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null">
+          <ion-icon name="cloud-upload"></ion-icon>Upload
+        </button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-footer>

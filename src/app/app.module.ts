@@ -37,6 +37,8 @@ import { AdminOffersPage } from '../pages/admin-offers/admin-offers';
 import { AdminAcceptedOffersPage } from '../pages/admin-accepted-offers/admin-accepted-offers';
 import { ZipsPage } from '../pages/zips/zips';
 import { UserRequestsPage } from '../pages/user-requests/user-requests';
+import { UserOffersPage } from '../pages/user-offers/user-offers';
+import { UserMakeRequestPage } from '../pages/user-make-request/user-make-request';
 
 import { PaymentMethodPage } from '../pages/payment-method/payment-method';
 import { PlacesPage } from '../pages/places/places';
@@ -58,6 +60,9 @@ import { ModalPage } from '../pages/modal/modal';
 import { CallNumber } from '@ionic-native/call-number';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Crop } from '@ionic-native/crop';
+import { Camera } from '@ionic-native/camera';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -94,6 +99,8 @@ export const firebaseConfig = {
     AdminAcceptedOffersPage,
     ZipsPage,
     UserRequestsPage,
+    UserOffersPage,
+    UserMakeRequestPage,
     PaymentMethodPage,
     PlacesPage,
     RegisterPage,
@@ -142,6 +149,8 @@ export const firebaseConfig = {
     AdminAcceptedOffersPage,
     ZipsPage,
     UserRequestsPage,
+    UserOffersPage,
+    UserMakeRequestPage,
     PaymentMethodPage,
     PlacesPage,
     RegisterPage,
@@ -176,6 +185,9 @@ export const firebaseConfig = {
     Requests,
     Offers,
     Zips,
+    ImagePicker,
+		Crop,
+		Camera,
     { provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider
   ]

@@ -1,8 +1,8 @@
 {
   "_from": "cordova-plugin-badge@>=0.8.5",
-  "_id": "cordova-plugin-badge@0.8.7",
+  "_id": "cordova-plugin-badge@0.8.8",
   "_inBundle": false,
-  "_integrity": "sha512-s+s4yusKdeJ4sMPhQs4zR3lR2UuROzSy14GFAp00pTHPiBfCtxeINSUYAZYnpuO3RGx6PPlVCwSJpVG0IdM58g==",
+  "_integrity": "sha512-RhIBtd5xhD/iLnxjt35jvOae28oNW/wtMZBOmQR3Rf0y4wirvA1bpAZEhBoFqL+rZGhsd6ddOdQXdex1T0DRyQ==",
   "_location": "/cordova-plugin-badge",
   "_phantomChildren": {},
   "_requested": {
@@ -19,10 +19,10 @@
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-badge/-/cordova-plugin-badge-0.8.7.tgz",
-  "_shasum": "fe4942aa24af6822da85c01ccce6a831afff5931",
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-badge/-/cordova-plugin-badge-0.8.8.tgz",
+  "_shasum": "0924018699b48f92dd3b33615452737582144c96",
   "_spec": "cordova-plugin-badge@>=0.8.5",
-  "_where": "/Users/mac/Desktop/YUR Driver code/Rider",
+  "_where": "C:\\Users\\sb_08\\Desktop\\Waqar Project\\snaprepair-master",
   "author": {
     "name": "Sebastián Katzer"
   },
@@ -78,5 +78,5 @@
     "type": "git",
     "url": "git+https://github.com/katzer/cordova-plugin-badge.git"
   },
-  "version": "0.8.7"
+  "version": "0.8.8"
 }

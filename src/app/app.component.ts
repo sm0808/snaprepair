@@ -13,6 +13,8 @@ import { AdminOffersPage } from '../pages/admin-offers/admin-offers';
 import { AdminAcceptedOffersPage } from '../pages/admin-accepted-offers/admin-accepted-offers';
 import { ZipsPage } from '../pages/zips/zips';
 import { UserRequestsPage } from '../pages/user-requests/user-requests';
+import { UserOffersPage } from '../pages/user-offers/user-offers';
+import { UserMakeRequestPage } from '../pages/user-make-request/user-make-request';
 
 import { PaymentMethodPage } from '../pages/payment-method/payment-method';
 import { PlacesPage } from '../pages/places/places';
@@ -143,10 +145,11 @@ export class MyApp {
       this.nav.setRoot(HomePage);
     }
     else {
-      console.log("is Not Admin");
+      console.log("is Not Admin"); 
       this.appMenuItems = [
+        { title: 'Make Requests', component: UserMakeRequestPage, icon: 'logo-buffer'},
         { title: 'Recent Requests', component: UserRequestsPage, icon: 'ios-list-outline'},
-        // { title: 'Recent Offers', component: AdminOffersPage, icon: 'ios-pricetag-outline'},
+        { title: 'Recent Offers', component: UserOffersPage, icon: 'ios-pricetag-outline'},
         // { title: 'Accepted Offers', component: AdminAcceptedOffersPage, icon: 'ios-checkmark-circle-outline'},
         // { title: 'Mannage Zips', component: ZipsPage, icon: 'ios-navigate-outline'},
         { title: 'Profile', component: UserPage, icon: 'ios-contact-outline' },

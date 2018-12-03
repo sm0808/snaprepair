@@ -9,7 +9,58 @@
   "installed_plugins": {
     "call-number": {
       "PACKAGE_NAME": "com.snaprepair1.app1"
+    },
+    "cordova-plugin-accountkit": {
+      "APP_ID": "767580770058358",
+      "APP_NAME": "YUR Rider",
+      "CLIENT_TOKEN": "6d97e93101b1681dfcb868539f6161ea",
+      "API_VERSION": "v1.2.0",
+      "PACKAGE_NAME": "com.snaprepair1.app1"
+    },
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "com.snaprepair1.app1"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.snaprepair1.app1"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.snaprepair1.app1"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.snaprepair1.app1"
+    },
+    "cordova-plugin-local-notification": {
+      "PACKAGE_NAME": "com.snaprepair1.app1"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.snaprepair1.app1"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.snaprepair1.app1"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "ANDROID_SUPPORT_V4_VERSION": "24.1.1+",
+      "PACKAGE_NAME": "com.snaprepair1.app1"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "com.snaprepair1.app1"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.snaprepair1.app1"
+    },
+    "cordova-plugin-crop": {
+      "PACKAGE_NAME": "com.snaprepair1.app1"
+    },
+    "cordova-plugin-telerik-imagepicker": {
+      "PACKAGE_NAME": "com.snaprepair1.app1"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-plugin-badge": {
+      "PACKAGE_NAME": "com.snaprepair1.app1"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "com.snaprepair1.app1"
+    }
+  }
 }

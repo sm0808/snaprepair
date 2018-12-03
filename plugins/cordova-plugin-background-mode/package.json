@@ -1,19 +1,19 @@
 {
-  "_from": "cordova-plugin-background-mode",
+  "_from": "cordova-plugin-background-mode@^0.7.2",
   "_id": "cordova-plugin-background-mode@0.7.2",
   "_inBundle": false,
   "_integrity": "sha1-6vVjnAZahyMbPs91em4osQHQMy8=",
   "_location": "/cordova-plugin-background-mode",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "range",
     "registry": true,
-    "raw": "cordova-plugin-background-mode",
+    "raw": "cordova-plugin-background-mode@^0.7.2",
     "name": "cordova-plugin-background-mode",
     "escapedName": "cordova-plugin-background-mode",
-    "rawSpec": "",
+    "rawSpec": "^0.7.2",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "^0.7.2"
   },
   "_requiredBy": [
     "#USER",
@@ -21,8 +21,8 @@
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-background-mode/-/cordova-plugin-background-mode-0.7.2.tgz",
   "_shasum": "eaf5639c065a87231b3ecf757a6e28b101d0332f",
-  "_spec": "cordova-plugin-background-mode",
-  "_where": "/Users/mac/Desktop/YUR Driver code/Rider",
+  "_spec": "cordova-plugin-background-mode@^0.7.2",
+  "_where": "C:\\Users\\sb_08\\Desktop\\Waqar Project\\snaprepair-master",
   "author": {
     "name": "Sebastián Katzer"
   },

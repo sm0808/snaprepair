@@ -1,8 +1,8 @@
 {
   "_from": "cordova-plugin-x-socialsharing@^5.4.1",
-  "_id": "cordova-plugin-x-socialsharing@5.4.1",
+  "_id": "cordova-plugin-x-socialsharing@5.4.3",
   "_inBundle": false,
-  "_integrity": "sha512-JZcSf0heLKivlaYwmJ/n72Y049wD5FA10yfsJUeOZZpRvGtytnSQtTz0LyT4mGzEDiLUm5WD9k3082Ec4PlaGg==",
+  "_integrity": "sha512-4HjeMtil1nWYGul7+/YIKqhPLensUG1cjar0FQQ7kSsic1v8y6dhDdsPzOJR+R4pXmjOqW1OrIGMtpKufjwymA==",
   "_location": "/cordova-plugin-x-socialsharing",
   "_phantomChildren": {},
   "_requested": {
@@ -19,10 +19,10 @@
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/cordova-plugin-x-socialsharing/-/cordova-plugin-x-socialsharing-5.4.1.tgz",
-  "_shasum": "357c4d4b2ce83d4dcef672b9917b1018c6e0b3b7",
+  "_resolved": "https://registry.npmjs.org/cordova-plugin-x-socialsharing/-/cordova-plugin-x-socialsharing-5.4.3.tgz",
+  "_shasum": "33dea3eda95203095e14d49622e341a2dbac745e",
   "_spec": "cordova-plugin-x-socialsharing@^5.4.1",
-  "_where": "E:\\Work\\Invictus\\Yur Driver\\On Going\\Rider",
+  "_where": "C:\\Users\\sb_08\\Desktop\\Waqar Project\\snaprepair-master",
   "author": {
     "name": "Eddy Verbruggen - @EddyVerbruggen"
   },
@@ -73,5 +73,5 @@
     "type": "git",
     "url": "git+https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin.git"
   },
-  "version": "5.4.1"
+  "version": "5.4.3"
 }
