@@ -18,9 +18,31 @@ export class Requests {
 
   get_Requests() {
     console.log("apiUrl: ",this.apiUrl);
-    
+
     return new Promise((resolve, reject) => {
       this.http.get(this.apiUrl+'/request.php?action=get_Requests')
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  get_user_Requests(userId) {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.apiUrl+'/request.php?action=get_user_Requests&userId='+userId)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  delete_Request(reqID) {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.apiUrl+'/request.php?action=delete_Request&reqID='+reqID)
         .subscribe(res => {
           resolve(res);
         }, (err) => {

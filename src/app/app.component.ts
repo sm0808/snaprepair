@@ -12,6 +12,8 @@ import { HomePage } from '../pages/home/home';
 import { AdminOffersPage } from '../pages/admin-offers/admin-offers';
 import { AdminAcceptedOffersPage } from '../pages/admin-accepted-offers/admin-accepted-offers';
 import { ZipsPage } from '../pages/zips/zips';
+import { UserRequestsPage } from '../pages/user-requests/user-requests';
+
 import { PaymentMethodPage } from '../pages/payment-method/payment-method';
 import { PlacesPage } from '../pages/places/places';
 import { RegisterPage } from '../pages/register/register';
@@ -115,8 +117,6 @@ export class MyApp {
         this.email   = this.user.email;
         this.userPic = USER_IMG_URL + this.user.image;
         this.setAppMenu();
-
-        this.nav.setRoot(HomePage);
       } else {
         this.nav.setRoot(WelcomePage);
       }
@@ -139,16 +139,20 @@ export class MyApp {
         // { title: 'Share', component: SharePage, icon: 'md-share' },
         // { title: 'Earn Commission', component: CommissionPage, icon: 'ios-cash-outline' },
       ];
+
+      this.nav.setRoot(HomePage);
     }
     else {
       console.log("is Not Admin");
       this.appMenuItems = [
-        { title: 'Recent Requests', component: HomePage, icon: 'ios-list-outline'},
+        { title: 'Recent Requests', component: UserRequestsPage, icon: 'ios-list-outline'},
         // { title: 'Recent Offers', component: AdminOffersPage, icon: 'ios-pricetag-outline'},
         // { title: 'Accepted Offers', component: AdminAcceptedOffersPage, icon: 'ios-checkmark-circle-outline'},
         // { title: 'Mannage Zips', component: ZipsPage, icon: 'ios-navigate-outline'},
         { title: 'Profile', component: UserPage, icon: 'ios-contact-outline' },
       ];
+
+      this.nav.setRoot(UserRequestsPage);
     }
   }
 

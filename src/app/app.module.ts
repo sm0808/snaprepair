@@ -36,6 +36,7 @@ import { LoginPage } from '../pages/login/login';
 import { AdminOffersPage } from '../pages/admin-offers/admin-offers';
 import { AdminAcceptedOffersPage } from '../pages/admin-accepted-offers/admin-accepted-offers';
 import { ZipsPage } from '../pages/zips/zips';
+import { UserRequestsPage } from '../pages/user-requests/user-requests';
 
 import { PaymentMethodPage } from '../pages/payment-method/payment-method';
 import { PlacesPage } from '../pages/places/places';
@@ -92,6 +93,7 @@ export const firebaseConfig = {
     AdminOffersPage,
     AdminAcceptedOffersPage,
     ZipsPage,
+    UserRequestsPage,
     PaymentMethodPage,
     PlacesPage,
     RegisterPage,
@@ -139,6 +141,7 @@ export const firebaseConfig = {
     AdminOffersPage,
     AdminAcceptedOffersPage,
     ZipsPage,
+    UserRequestsPage,
     PaymentMethodPage,
     PlacesPage,
     RegisterPage,
