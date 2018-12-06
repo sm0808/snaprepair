@@ -38,16 +38,28 @@
       <ion-icon name='ios-image'></ion-icon>
       Select From Gallery
     </button>
-    <ion-card *ngFor="let photo of photos">
-        <img src="{{photo}}" imageViewer/>
+    <ion-card>
+        <!-- <img src="{{photo}}" imageViewer/> -->
+
+        <ion-slides [slidesPerView]="slidesPerView" class="image-slider">
+            <ion-slide *ngFor="let i = index; let photo of photos" style="padding: 2px;">
+                <img src="{{ photo }}" class="thumb-img" style="border-radius: 4px;" imageViewer/>
+
+                <button ion-button color="danger" clear icon-only (click)="removeImage(i)">
+                    <ion-icon name='trash' is-active="false"></ion-icon>
+                </button>
+            </ion-slide>
+        </ion-slides>
     </ion-card>
 
-    <img src="{{pathForImage(lastImage)}}" style="width: 100%" [hidden]="lastImage === null">
-    <h3 [hidden]="lastImage !== null">Please Select Image!</h3>
+
+
+    <!-- <img src="{{pathForImage(lastImage)}}" style="width: 100%" [hidden]="lastImage === null">
+    <h3 [hidden]="lastImage !== null">Please Select Image!</h3> -->
 </ion-content>
 
 
-<ion-footer>
+<!-- <ion-footer>
     <ion-toolbar color="primary">
         <ion-buttons>
             <button ion-button icon-left (click)="presentActionSheet()">
@@ -58,4 +70,4 @@
         </button>
         </ion-buttons>
     </ion-toolbar>
-</ion-footer>
+</ion-footer> -->

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ActionSheetController, ToastController, Platform, LoadingController, Loading } from 'ionic-angular';
+import { NavController, NavParams, ActionSheetController, ToastController, Platform, LoadingController, Loading, AlertController } from 'ionic-angular';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Crop } from '@ionic-native/crop';
 import { Camera } from '@ionic-native/camera';
@@ -20,14 +20,16 @@ var cordova: any;
 })
 export class UserMakeRequestPage {
 
-  lastImage: string = null;
-  loading: Loading;
-  public photos :any = [];
+  public slidesPerView  : number = 2;
+  public lastImage      : string = null;
+  public loading        : Loading;
+  public photos         : any = [];
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public imagePicker: ImagePicker, public cropService: Crop,
               public camera: Camera, public actionSheetCtrl: ActionSheetController,
               private file: File, public toastCtrl: ToastController,
-              public platform: Platform, public loadingCtrl: LoadingController) {
+              public platform: Platform, public loadingCtrl: LoadingController,
+              public alertCtrl: AlertController) {
   }
 
   // private transfer: Transfer, 
@@ -44,8 +46,20 @@ export class UserMakeRequestPage {
     // this.photos = new Array<string>();
     this.imagePicker.getPictures(options)
     .then((results) => {
+      // // console.log("results: ", JSON.stringify(results));
+      // for (var i = 0; i < results.length; i++) {
+      //     // console.log('Image URI: ' + results[i]);
+      //     let picture = 'data:image/jpg;base64,' + results[i];
+      //     this.showAlert('picture', picture);
+      //     // console.log("picture: ",picture);
+          
+                
+      //     // Push to array
+      //     this.photos.push(picture);
+      // }
+      
       this.reduceImages(results).then(() => {
-        console.log('all images cropped!!');
+        console.log('all images cropped!! CROP ENDED');
       });
     }, (err) => { console.log(err) });
   }
@@ -56,16 +70,46 @@ export class UserMakeRequestPage {
       correctOrientation: true
     };
 
+    // let options = {
+    //     // sourceType: selectedSourceType,
+    //     quality: 100,
+    //     destinationType: this.camera.DestinationType.DATA_URL,
+    //     correctOrientation: true,
+    //     encodingType: this.camera.EncodingType.JPEG,
+    //     mediaType: this.camera.MediaType.PICTURE,
+    //     targetWidth: 1024,
+    //     targetHeight: 1024
+    // }
+
     this.camera.getPicture(options)
     .then((data) => {
+
+      // this.base64.encodeFile(data).then((base64File: string) => {
+      //   console.log("base64File: ",base64File);
+      //   // let picture = 'data:image/jpg;base64,' + base64File;
+      //   // console.log("picture: ",picture);
+      //   this.photos.push(base64File);
+      // }, (err) => {
+      //   console.log(err);
+      // });
+
+      // let picture = 'data:image/jpg;base64,' + data;
+      // console.log("picture: ",picture);
+      
+            
+      // // Push to array
+      // this.photos.push(picture);
+
       // this.photos = new Array<string>();
       this.cropService
-      .crop(data, {quality: 75})
+      .crop(data, {quality: 90})
       .then((newImage) => {
         console.log('newImage: ',newImage);
         
-        this.photos.push(newImage);
-        console.log(this.photos[0]);
+        // this.photos.push(newImage);
+        // console.log(this.photos[0]);
+
+        this.pathToBase64(newImage);
         
       }, error => console.error("Error cropping image", error));
     }, function(error) {
@@ -76,106 +120,63 @@ export class UserMakeRequestPage {
   reduceImages(selected_pictures: any) : any {
     return selected_pictures.reduce((promise:any, item:any) => {
       return promise.then((result) => {
-        return this.cropService.crop(item, {quality: 75})
+        return this.cropService.crop(item, {quality: 90})
         .then((cropped_image) => {
           console.log('all images cropped!!', cropped_image);
-          this.photos.push(cropped_image);
+          // console.log(location.href);
+
+          // this.base64.encodeFile(cropped_image).then((base64File: string) => {
+          //   // console.log("base64File: ",base64File);
+          //   let picture = 'data:image/jpg;base64,' + base64File;
+          //   // console.log("picture: ",picture);
+          //   this.photos.push(picture);
+          // }, (err) => {
+          //   console.log(err);
+          // });
+          
+          // this.photos.push(cropped_image);
+          this.pathToBase64(cropped_image);
         });
       });
     }, Promise.resolve());
   }
 
-  public presentActionSheet() {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Select Image Source',
-      buttons: [
-        {
-          text: 'Load from Library',
-          handler: () => {
-            this.takePicture(this.camera.PictureSourceType.PHOTOLIBRARY);
-          }
-        },
-        {
-          text: 'Use Camera',
-          handler: () => {
-            this.takePicture(this.camera.PictureSourceType.CAMERA);
-          }
-        },
-        {
-          text: 'Cancel',
-          role: 'cancel'
-        }
-      ]
-    });
-    actionSheet.present();
-  }
-
-  public takePicture(sourceType) {
-    // Create options for the Camera Dialog
-    var options = {
-      quality: 100,
-      sourceType: sourceType,
-      saveToPhotoAlbum: false,
-      correctOrientation: true
-    };
-   
-    // Get the data of an image
-    this.camera.getPicture(options).then((imagePath) => {
-      // Special handling for Android library
-      if (this.platform.is('android') && sourceType === this.camera.PictureSourceType.PHOTOLIBRARY) {
-        // this.filePath.resolveNativePath(imagePath)
-        //   .then(filePath => {
-        //     let correctPath = filePath.substr(0, filePath.lastIndexOf('/') + 1);
-        //     let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
-        //     this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
-        //   });
-        let correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
-        let currentName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.lastIndexOf('?'));
-        this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
-      } else {
-        var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
-        var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
-        this.copyFileToLocalDir(correctPath, currentName, this.createFileName());
+  pathToBase64(res) {
+      let path : string = res.toString();
+      try {
+        let n = path.lastIndexOf("/");
+        let x = path.lastIndexOf("g");
+        let nameFile = path.substring(n+1, x+1);
+        // console.log("nameFile", JSON.stringify(nameFile));
+        let directory = path.substring(0, n);
+        // console.log("nameFile", JSON.stringify(nameFile));
+        // alert("nameFile :" + nameFile + " *directory: " +directory.toString()+ " *allPath: " + res);
+        this.file.readAsDataURL(directory.toString(), nameFile).then((res) => {
+          // console.log("readAsDataURL res", JSON.stringify(res));
+          // this.photos.push(res);
+          this.photos.splice(0, 0, res);
+          
+        }).catch(err => alert('error pathToBase64 ' + JSON.stringify(err)));
+      } catch(error) {
+         alert(error);
       }
-    }, (err) => {
-      this.presentToast('Error while selecting image.');
-    });
   }
 
-  // Create a new name for the image
-private createFileName() {
-  var d = new Date(),
-  n = d.getTime(),
-  newFileName =  n + ".jpg";
-  return newFileName;
-}
- 
-// Copy the image to a local folder
-private copyFileToLocalDir(namePath, currentName, newFileName) {
-  this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
-    this.lastImage = newFileName;
-  }, error => {
-    this.presentToast('Error while storing file.');
-  });
-}
- 
-private presentToast(text) {
-  let toast = this.toastCtrl.create({
-    message: text,
-    duration: 3000,
-    position: 'top'
-  });
-  toast.present();
-}
- 
-// Always get the accurate path to your apps folder
-public pathForImage(img) {
-  if (img === null) {
-    return '';
-  } else {
-    return cordova.file.dataDirectory + img;
+  removeImage(index) {
+    this.photos.splice(index, 1);
+    console.log("photos", JSON.stringify(this.photos));
   }
-}
+
+  showAlert(title, mesasge) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: mesasge,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  
 
 // public uploadImage() {
 //   // Destination URL

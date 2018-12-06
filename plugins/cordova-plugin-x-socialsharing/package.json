@@ -1,5 +1,5 @@
 {
-  "_from": "cordova-plugin-x-socialsharing@^5.4.1",
+  "_from": "cordova-plugin-x-socialsharing@^5.4.3",
   "_id": "cordova-plugin-x-socialsharing@5.4.3",
   "_inBundle": false,
   "_integrity": "sha512-4HjeMtil1nWYGul7+/YIKqhPLensUG1cjar0FQQ7kSsic1v8y6dhDdsPzOJR+R4pXmjOqW1OrIGMtpKufjwymA==",
@@ -8,12 +8,12 @@
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "cordova-plugin-x-socialsharing@^5.4.1",
+    "raw": "cordova-plugin-x-socialsharing@^5.4.3",
     "name": "cordova-plugin-x-socialsharing",
     "escapedName": "cordova-plugin-x-socialsharing",
-    "rawSpec": "^5.4.1",
+    "rawSpec": "^5.4.3",
     "saveSpec": null,
-    "fetchSpec": "^5.4.1"
+    "fetchSpec": "^5.4.3"
   },
   "_requiredBy": [
     "#USER",
@@ -21,7 +21,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/cordova-plugin-x-socialsharing/-/cordova-plugin-x-socialsharing-5.4.3.tgz",
   "_shasum": "33dea3eda95203095e14d49622e341a2dbac745e",
-  "_spec": "cordova-plugin-x-socialsharing@^5.4.1",
+  "_spec": "cordova-plugin-x-socialsharing@^5.4.3",
   "_where": "C:\\Users\\sb_08\\Desktop\\Waqar Project\\snaprepair-master",
   "author": {
     "name": "Eddy Verbruggen - @EddyVerbruggen"

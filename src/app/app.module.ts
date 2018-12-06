@@ -187,7 +187,7 @@ export const firebaseConfig = {
     Zips,
     ImagePicker,
 		Crop,
-		Camera,
+    Camera,
     { provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider
   ]
