@@ -29,18 +29,22 @@
 
 
 <ion-content padding>
-    <button ion-button color="danger" clear small icon-start (click)="takePicture_Simple()">
-      <ion-icon name='ios-camera'></ion-icon>
-      Take Pic
-    </button>
+    <ion-row>
+        <ion-col text-center col-4>
+            <button ion-button color="danger" clear icon-start (click)="takePicture_Simple()">
+                <ion-icon name='ios-camera'></ion-icon>
+                Take A Pic
+            </button>
+        </ion-col>
+        <ion-col text-center col-8>
+            <button ion-button color="secondary" clear icon-start (click)="openImagePicker()">
+                <ion-icon name='ios-image'></ion-icon>
+                Select From Gallery
+            </button>
+        </ion-col>
+    </ion-row>
 
-    <button ion-button color="danger" clear small icon-start (click)="openImagePicker()">
-      <ion-icon name='ios-image'></ion-icon>
-      Select From Gallery
-    </button>
     <ion-card>
-        <!-- <img src="{{photo}}" imageViewer/> -->
-
         <ion-slides [slidesPerView]="slidesPerView" class="image-slider">
             <ion-slide *ngFor="let i = index; let photo of photos" style="padding: 2px;">
                 <img src="{{ photo }}" class="thumb-img" style="border-radius: 4px;" imageViewer/>
@@ -52,10 +56,61 @@
         </ion-slides>
     </ion-card>
 
+    <ion-list>
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="pin" item-start class="text-primary"></ion-icon>
+                Zipcode
+            </ion-label>
+
+            <ion-select [(ngModel)]="request_m.zip" class="selectStyle">
+                <ion-option *ngFor="let zip of zips" value="{{ zip['code'] }}">{{ zip['code'] }}</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+                Address
+            </ion-label>
+            <ion-input type="text" name="phone" [(ngModel)]="request_m.address"></ion-input>
+        </ion-item>
 
 
-    <!-- <img src="{{pathForImage(lastImage)}}" style="width: 100%" [hidden]="lastImage === null">
-    <h3 [hidden]="lastImage !== null">Please Select Image!</h3> -->
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="md-list" item-start class="text-primary"></ion-icon>
+                Work Category
+            </ion-label>
+
+            <ion-select [(ngModel)]="request_m.categoryId" class="selectStyle">
+                <ion-option *ngFor="let cat of categories" value="{{ cat['categoryId'] }}">{{ cat['cat_name'] }}</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="md-calendar" item-start class="text-primary"></ion-icon>
+                Expected Completion Time
+            </ion-label>
+            <ion-datetime displayFormat="DDDD MMM D, YYYY" max="2022-12-31" [(ngModel)]="request_m.ect"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>
+                <ion-icon name="md-bookmark" item-start class="text-primary"></ion-icon>
+                Description
+            </ion-label>
+            <ion-input type="text" name="phone" [(ngModel)]="request_m.description"></ion-input>
+            <!-- <ion-textarea placeholder="Enter a description" [(ngModel)]="request_m.description"></ion-textarea> -->
+        </ion-item>
+
+    </ion-list>
+
+    <button ion-button icon-left block (click)="sendRequest()">
+        <ion-icon name="cloud-upload"></ion-icon> Send Request
+    </button>
+
 </ion-content>
 
 

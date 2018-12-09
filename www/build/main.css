@@ -57473,6 +57473,10 @@ page-user .split-row ion-col:last-child {
   padding-right: 0;
 }
 
+page-user-make-request .scroll-content {
+  padding-bottom: 0 !important;
+}
+
 page-welcome .bg_N {
   background: url("../assets/img/launchscreen-bg.png") no-repeat center center fixed #000;
   background-size: cover;

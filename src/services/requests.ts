@@ -17,8 +17,6 @@ export class Requests {
   }
 
   get_Requests() {
-    console.log("apiUrl: ",this.apiUrl);
-
     return new Promise((resolve, reject) => {
       this.http.get(this.apiUrl+'/request.php?action=get_Requests')
         .subscribe(res => {
@@ -62,14 +60,35 @@ export class Requests {
     });
   }
 
-  signup(data) {
+  get_user_make_req_data() {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.apiUrl+'/request.php?action=get_make_req_data')
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  sendRequest(data) {
     return new Promise((resolve, reject) => {
       console.log(data);
-      let urlParam = 'firstName=' + encodeURI(data.fname) + '&lastName=' + encodeURI(data.lname) + '&email=' + encodeURI(data.email) + '&password=' + encodeURI(data.password) + '&userType=' + encodeURI(data.type) + '&phone=' + encodeURI(data.phone) + '&referralCode=' + encodeURI(data.referal);
-      console.log(this.apiUrl+'/SignUp?'+urlParam);
-      this.http.post(this.apiUrl+'/SignUp?'+urlParam,JSON.stringify(data))
+      // let urlParam = 'firstName=' + encodeURI(data.fname) + '&lastName=' + encodeURI(data.lname) + '&email=' + encodeURI(data.email) + '&password=' + encodeURI(data.password) + '&userType=' + encodeURI(data.type) + '&phone=' + encodeURI(data.phone) + '&referralCode=' + encodeURI(data.referal);
+      // console.log(this.apiUrl+'/SignUp?'+urlParam);
+      // JSON.stringify(data)
+      let formData = new FormData();
+      formData.append( 'address', data['address'] );
+      formData.append( 'categoryId', data['categoryId'] );
+      formData.append( 'description', data['description'] );
+      formData.append( 'ect', data['ect'] );
+      formData.append( 'zip', data['zip'] );
+      formData.append( 'userId', data['userId'] );
+      formData.append( 'img', JSON.stringify(data['img']) );
+
+      this.http.post(this.apiUrl+'/request.php?action=add_Request', formData)
         .subscribe(res => {
-          console.log(res);
+          console.log("res: ", JSON.stringify(res));
           resolve(res);
         }, (err) => {
           reject(err);
