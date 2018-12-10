@@ -8,6 +8,10 @@ import { UserProvider } from '../../providers/user/user';
 import { USER_IMG_URL } from "../../services/constants";
 import * as firebase from 'firebase';
 
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Crop } from '@ionic-native/crop';
+import { File } from '@ionic-native/file';
+
 @Component({
   selector: 'page-register',
   templateUrl: 'register.html'
@@ -17,11 +21,14 @@ export class RegisterPage {
   public isValidEmail      : any    = false;
   public loadingAnimation  : any    = './assets/img/loading-animation.gif';
   public c_password        : any    = '';
+  public userPicBase64     : any;
   public user              : any    = { name: '', email: '', phone: '', password: '', image: USER_IMG_URL+'avatar.png'};
 
   constructor(public nav: NavController, public authService: AuthService,
               public alertCtrl: AlertController,public loadingCtrl: LoadingController,
-              public translate: TranslateService, public userService: UserProvider) {}
+              public translate: TranslateService, public userService: UserProvider,
+              public imagePicker: ImagePicker, public cropService: Crop,
+              private file: File,) {}
 
   signup() {
     if(this.user['email'].length == 0 || this.user['password'].length == 0 || this.user['name'].length == 0 || this.user['phone'].length == 0){
@@ -33,9 +40,12 @@ export class RegisterPage {
     else{
       let loading = this.loadingCtrl.create({ content: 'Creating Account...'});
       loading.present();
-      let profilePic = (<HTMLInputElement>document.getElementById('avatar')).files[0];
-      let formData   = new FormData();
-      formData.append('profilePic', profilePic);
+
+      if(typeof this.userPicBase64 == 'undefined')
+        this.userPicBase64 = '';
+
+      let formData = new FormData();
+      formData.append('profilePic', this.userPicBase64);
       
       // Register User to Server
       this.userService.signup(this.user, formData).then((result) => {
@@ -83,56 +93,45 @@ export class RegisterPage {
     }
   }
 
-  chooseFile() {
-    document.getElementById('avatar').click();
-  }
-
-  fileChange(event){
-    try {
-      if(event.target.files && event.target.files[0]){
-        let reader = new FileReader();
-
-        reader.onload = (event:any) => {
-          console.log("event: ",event);
-          
-          this.user.image   = event.target.result;
-          this.showAlert('User Image', this.user.image);
-          // this.user.image   = event.target.files[0];
-        }
-        reader.readAsDataURL(event.target.files[0]);
+  openImagePicker() {
+      let options= {
+        maximumImagesCount: 1,
       }
-        let fileList: FileList = event.target.files;
-        console.log("fileList: ",fileList);
-
-        let file: File = fileList[0];
-        // this.user.image = file;
-        // this.user['profilePic'] = file;
-        console.log("file: ",file);
-    } catch(error) {
-      this.showAlert('Error Changing File', JSON.stringify(error));
-    }
+      this.imagePicker.getPictures(options)
+      .then((results) => {
+        this.reduceImages(results).then(() => {
+          console.log('all images cropped!! CROP ENDED');
+        });
+      }, (err) => { console.log(err) });    
   }
 
-  // upload thumb for item
-  upload() {
-    // Create a root reference
-    // let storageRef = firebase.storage().ref();
-    // let loading = this.loadingCtrl.create({ content: 'Please wait...' });
-    // loading.present();
+  reduceImages(selected_pictures: any) : any {
+    return selected_pictures.reduce((promise:any, item:any) => {
+      return promise.then((result) => {
+        return this.cropService.crop(item, {quality: 90})
+        .then((cropped_image) => {
+          console.log('all images cropped!!', cropped_image);
+          this.user.image = cropped_image;
+          this.pathToBase64(this.user.image);
+          // this.pushToImages(cropped_image);
+        });
+      });
+    }, Promise.resolve());
+  }
 
-    for (let selectedFile of [(<HTMLInputElement>document.getElementById('avatar')).files[0]]) {
-      // this.user.image = [(<HTMLInputElement>document.getElementById('avatar')).files[0]];
-      // this.user.image = selectedFile;
-      console.log("selectedFile: ",selectedFile);
-      
-      let path = '/users/' + Date.now() + `${selectedFile.name}`;
-      console.log("path: ",path);
-      // let iRef = storageRef.child(path);
-      // iRef.put(selectedFile).then((snapshot) => {
-      //   loading.dismiss();
-      //   this.user['photoURL'] = snapshot.downloadURL;
-      //   //console.log(snapshot.fullPath);
-      // });
+  pathToBase64(res) {
+    let path : string = res.toString();
+    try {
+      let n = path.lastIndexOf("/");
+      let x = path.lastIndexOf("g");
+      let nameFile = path.substring(n+1, x+1);
+      let directory = path.substring(0, n);
+      this.file.readAsDataURL(directory.toString(), nameFile).then((res) => {
+        this.userPicBase64 = res;
+        // this.userPic = res;      
+      }).catch(err => alert('error pathToBase64 ' + JSON.stringify(err)));
+    } catch(error) {
+      alert(error);
     }
   }
 

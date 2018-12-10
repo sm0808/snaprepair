@@ -11,7 +11,7 @@
                         <!-- <div class="logoHeader"></div> -->
                     </ion-col>
                     <ion-col col-6>
-                        <strong>User Requests</strong>
+                        <strong>Recent Requests</strong>
                     </ion-col>
                 </ion-row>
             </ion-grid>
@@ -40,9 +40,21 @@
         <ion-card-content>
             <p><strong>Category:</strong> {{ request.cat_name }}</p>
             <p><strong>Description:</strong> {{ request.description }}</p>
+
+
+            <ion-col col-12 [hidden]="request.price == null">
+                <p><strong>SnapRepair Offered Prize:</strong>
+                    <ion-badge color="secondary">${{ request.price }}</ion-badge>
+                </p>
+            </ion-col>
+
             <ion-note>
                 Expected Completion Time: {{ request.ect }}
             </ion-note>
+            <!-- <ion-col text-center col-6>
+                <ion-badge color="primary">{{ request.price }}</ion-badge>
+            </ion-col> -->
+
         </ion-card-content>
 
         <ion-row>
@@ -52,11 +64,21 @@
                   View Details
                 </button>
             </ion-col>
-            <ion-col text-center col-6>
+            <ion-col text-center col-6 [hidden]="request.price != null">
                 <button ion-button color="danger" clear small icon-start (click)="deleteRequest(request.requestId)">
                   <ion-icon name='md-trash'></ion-icon>
                   Delete
                 </button>
+            </ion-col>
+
+            <ion-col text-center col-6 class="badge_Margin" [hidden]="request.price == null">
+                <ion-select [(ngModel)]="request.status" class="selectStyle" placeholder="Accept / Decline" (ionChange)="updateAcceptStatus(request.offerId, $event)">
+                    <ion-option value="1">Accept</ion-option>
+                    <ion-option value="-1">Decline</ion-option>
+                </ion-select>
+
+                <!-- <ion-badge [hidden]="offer.status != 1" color="secondary">Offer Accepted</ion-badge>
+                <ion-badge [hidden]="offer.status != 0" color="danger">Offer Not Accepted</ion-badge> -->
             </ion-col>
             <!-- <ion-col align-self-center text-center>
                 <ion-note>

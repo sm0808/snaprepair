@@ -57477,6 +57477,15 @@ page-user-make-request .scroll-content {
   padding-bottom: 0 !important;
 }
 
+page-user-requests .badge_Margin {
+  margin-top: -3px;
+}
+
+page-user-requests .selectStyle {
+  color: #ff972e !important;
+  max-width: 100% !important;
+}
+
 page-welcome .bg_N {
   background: url("../assets/img/launchscreen-bg.png") no-repeat center center fixed #000;
   background-size: cover;

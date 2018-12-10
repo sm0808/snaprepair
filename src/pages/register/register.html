@@ -55,12 +55,12 @@
 
         <div style="text-align:center; margin-top: 7px;">
             <img *ngIf="!imgloaded" src="{{ loadingAnimation }}" style="width: 90px; height: 90px; border-radius:100px" />
-            <img [hidden]="!imgloaded" (load)="imgloaded = true" src="{{ user.image }}" style="width: 90px; height: 90px; border-radius:100px" (click)="chooseFile()" />
+            <img [hidden]="!imgloaded" (load)="imgloaded = true" src="{{ user.image }}" style="width: 90px; height: 90px; border-radius:100px" (click)="openImagePicker()" />
 
             <!-- <img src="{{ userPic }}" style="width: 70px;border-radius:100px" (click)="chooseFile()"> -->
-            <form ngNoForm>
+            <!-- <form ngNoForm>
                 <input id="avatar" name="file" type="file" (change)="fileChange($event)">
-            </form>
+            </form> -->
         </div>
         <!-- <div text-center>
             <div class="logo"></div>

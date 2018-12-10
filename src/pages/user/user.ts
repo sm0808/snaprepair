@@ -3,6 +3,9 @@ import { NavController, NavParams, ToastController, LoadingController, Platform,
 import { AngularFireDatabase } from "angularfire2/database/database";
 import { LoginPage } from '../login/login';
 import { HomePage } from "../home/home";
+import { ImagePicker } from '@ionic-native/image-picker';
+import { Crop } from '@ionic-native/crop';
+import { File } from '@ionic-native/file';
 
 import { USER_IMG_URL } from "../../services/constants";
 
@@ -21,10 +24,11 @@ declare var Stripe: any;
   templateUrl: 'user.html',
 })
 export class UserPage {
-  public user       : any = { name: '', email: '', password: ''};
-  public userPic    : any;
-  public password   : any = '';
-  public c_password : any = '';
+  public user          : any = { name: '', email: '', password: ''};
+  public userPic       : any;
+  public userPicBase64 : any;
+  public password      : any = '';
+  public c_password    : any = '';
   public loadingAnimation  : any = './assets/img/loading-animation.gif';
 
 
@@ -34,7 +38,9 @@ export class UserPage {
               public alertCtrl: AlertController, public toastCtrl: ToastController,
               public loadingCtrl: LoadingController, public platform: Platform,
               public tripService: TripService, public translate: TranslateService,
-              public db: AngularFireDatabase, public events: Events) {
+              public db: AngularFireDatabase, public events: Events,
+              public imagePicker: ImagePicker, public cropService: Crop,
+              private file: File,) {
 
                 this.user = JSON.parse(localStorage.getItem('userData'));
                 console.log("this.user: ",this.user);
@@ -74,10 +80,13 @@ export class UserPage {
     else {
       let loading = this.loadingCtrl.create({ content: 'Please wait...' });
       loading.present();
-      let x = (<HTMLInputElement>document.getElementById('avatar')).files[0];
-      console.log(x);
+      // let x = (<HTMLInputElement>document.getElementById('avatar')).files[0];
+      // console.log(x);
+      if(typeof this.userPicBase64 == 'undefined')
+        this.userPicBase64 = '';
+
       let formData = new FormData();
-      formData.append('profilePic', x);
+      formData.append('profilePic', this.userPicBase64);
 
       this.userService.UpdateProfile(this.user.userId, this.user.name, this.user.email, this.password, this.user.image, formData).then((result) => {
         console.log(result);
@@ -109,29 +118,71 @@ export class UserPage {
   }
 
 
-  // choose file for upload
-  chooseFile() {
-    document.getElementById('avatar').click();
+  // // choose file for upload
+  // chooseFile() {
+  //   document.getElementById('avatar').click();
+  // }
+
+  // fileChange(event){
+  //   try {
+  //     if(event.target.files && event.target.files[0]){
+  //       let reader = new FileReader();
+
+  //       reader.onload = (event:any) => {
+  //         this.userPic   = event.target.result;
+  //       }
+  //       reader.readAsDataURL(event.target.files[0]);
+  //     }
+  //       let fileList: FileList = event.target.files;
+  //       console.log("fileList: ",fileList);
+
+  //       let file: File = fileList[0];
+  //       // this.user['profilePic'] = file;
+  //       console.log(file);
+  //   } catch(error) {
+  //     this.showAlert('Error Changing File', JSON.stringify(error));
+  //   }
+  // }
+
+  openImagePicker() {
+      let options= {
+        maximumImagesCount: 1,
+      }
+      this.imagePicker.getPictures(options)
+      .then((results) => {
+        this.reduceImages(results).then(() => {
+          console.log('all images cropped!! CROP ENDED');
+        });
+      }, (err) => { console.log(err) });    
   }
 
-  fileChange(event){
+  reduceImages(selected_pictures: any) : any {
+    return selected_pictures.reduce((promise:any, item:any) => {
+      return promise.then((result) => {
+        return this.cropService.crop(item, {quality: 90})
+        .then((cropped_image) => {
+          console.log('all images cropped!!', cropped_image);
+          this.userPic = cropped_image;
+          this.pathToBase64(this.userPic);
+          // this.pushToImages(cropped_image);
+        });
+      });
+    }, Promise.resolve());
+  }
+
+  pathToBase64(res) {
+    let path : string = res.toString();
     try {
-      if(event.target.files && event.target.files[0]){
-        let reader = new FileReader();
-
-        reader.onload = (event:any) => {
-          this.userPic   = event.target.result;
-        }
-        reader.readAsDataURL(event.target.files[0]);
-      }
-        let fileList: FileList = event.target.files;
-        console.log("fileList: ",fileList);
-
-        let file: File = fileList[0];
-        // this.user['profilePic'] = file;
-        console.log(file);
+      let n = path.lastIndexOf("/");
+      let x = path.lastIndexOf("g");
+      let nameFile = path.substring(n+1, x+1);
+      let directory = path.substring(0, n);
+      this.file.readAsDataURL(directory.toString(), nameFile).then((res) => {
+        this.userPicBase64 = res;
+        // this.userPic = res;      
+      }).catch(err => alert('error pathToBase64 ' + JSON.stringify(err)));
     } catch(error) {
-      this.showAlert('Error Changing File', JSON.stringify(error));
+       alert(error);
     }
   }
 

@@ -30,6 +30,7 @@ export class UserMakeRequestPage {
   public lastImage      : string = null;
   public loading        : Loading;
   public photos         : any = [];
+  public photosBase64   : any = [];
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
               public imagePicker: ImagePicker, public cropService: Crop,
@@ -63,8 +64,9 @@ export class UserMakeRequestPage {
     if(this.photos.length >= 5) 
       this.alertCtrl.create({ subTitle:'5 images per Request are Allowed!', buttons: ['ok']}).present();
     else {
+      let count = 5 - this.photos.length;
       let options= {
-        maximumImagesCount: 5,
+        maximumImagesCount: count,
       }
       this.imagePicker.getPictures(options)
       .then((results) => {
@@ -114,7 +116,8 @@ export class UserMakeRequestPage {
 
   pushToImages(path) {
     // this.photos.push(path);
-    // this.set_slidesPerView();
+    this.photos.splice(0, 0, path);
+    this.set_slidesPerView();
     this.pathToBase64(path);
   }
 
@@ -124,16 +127,13 @@ export class UserMakeRequestPage {
         let n = path.lastIndexOf("/");
         let x = path.lastIndexOf("g");
         let nameFile = path.substring(n+1, x+1);
-        // console.log("nameFile", JSON.stringify(nameFile));
         let directory = path.substring(0, n);
-        // console.log("nameFile", JSON.stringify(nameFile));
-        // alert("nameFile :" + nameFile + " *directory: " +directory.toString()+ " *allPath: " + res);
         this.file.readAsDataURL(directory.toString(), nameFile).then((res) => {
-          // console.log("readAsDataURL res", JSON.stringify(res));
-          // this.photos.push(res);
-          this.photos.splice(0, 0, res);
-          this.set_slidesPerView();
-
+          // this.photosBase64.push(res);
+          this.photosBase64.splice(0, 0, path);
+          // console.log("this.photosBase64: ",this.photosBase64);
+          // this.photos.splice(0, 0, res);
+          // this.set_slidesPerView();
         }).catch(err => alert('error pathToBase64 ' + JSON.stringify(err)));
       } catch(error) {
          alert(error);
@@ -149,6 +149,7 @@ export class UserMakeRequestPage {
 
   removeImage(index) {
     this.photos.splice(index, 1);
+    this.photosBase64.splice(index, 1);
     this.set_slidesPerView();
     // console.log("photos", JSON.stringify(this.photos));
   }
@@ -159,24 +160,26 @@ export class UserMakeRequestPage {
     else if(this.photos.length < 1)
         this.alertCtrl.create({ subTitle:'Atleast provide one image for request!', buttons: ['ok']}).present();
     else {
+      this.showLoading('Sending Request');
+
       let user = JSON.parse(localStorage.getItem('userData'));
       this.request_m['userId'] = user['userId'];
-      this.request_m['img']    = this.photos;
+      this.request_m['img']    = this.photosBase64;
 
-      // let reqData = {};
-      // reqData['data'] = this.request_m;
-      // console.log("reqData: ",JSON.stringify(reqData));
+      console.log("this.photosBase64 Main: ",this.photosBase64);
+      console.log("this.request_m: ",this.request_m);
 
-      this.showLoading('Sending Request');
       // Send Request 
       this.requestService.sendRequest(this.request_m).then((result) => {
         console.log('result: ',result);
         this.hideLoading();
-        // if (result) {
-        //   this.navCtrl.setRoot(UserRequestsPage);
-        // }
+        if (result) {
+          this.showAlert('Request Sent', 'Your request has been sent to SnapRepair');
+          this.navCtrl.setRoot(UserRequestsPage);
+        }
       }, (err) => {
         this.hideLoading();
+        this.showAlert('Request Sending Failed', JSON.stringify(err));
         console.log("err", JSON.stringify(err));
       });
 

@@ -14,7 +14,8 @@ export let ENABLE_SIGNUP = true;
 export let SOS = "";
 
 export let API_URL = 'http://snaprepair1.com/SnapRepair_App/api/controller';
-export let IMG_URL = 'http://blakbronco.com/service/images/';
+// export let IMG_URL = 'http://blakbronco.com/service/images/';
+export let IMG_URL = 'http://snaprepair1.com/SnapRepair_App/images/request/';
 export let USER_IMG_URL = 'http://snaprepair1.com/SnapRepair_App/images/user/';
 
 // NOTE: Please update your firebase configurations on src/app/app.module.ts

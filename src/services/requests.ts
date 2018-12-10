@@ -73,18 +73,8 @@ export class Requests {
 
   sendRequest(data) {
     return new Promise((resolve, reject) => {
-      console.log(data);
-      // let urlParam = 'firstName=' + encodeURI(data.fname) + '&lastName=' + encodeURI(data.lname) + '&email=' + encodeURI(data.email) + '&password=' + encodeURI(data.password) + '&userType=' + encodeURI(data.type) + '&phone=' + encodeURI(data.phone) + '&referralCode=' + encodeURI(data.referal);
-      // console.log(this.apiUrl+'/SignUp?'+urlParam);
-      // JSON.stringify(data)
       let formData = new FormData();
-      formData.append( 'address', data['address'] );
-      formData.append( 'categoryId', data['categoryId'] );
-      formData.append( 'description', data['description'] );
-      formData.append( 'ect', data['ect'] );
-      formData.append( 'zip', data['zip'] );
-      formData.append( 'userId', data['userId'] );
-      formData.append( 'img', JSON.stringify(data['img']) );
+      formData.append( 'data', JSON.stringify(data) );
 
       this.http.post(this.apiUrl+'/request.php?action=add_Request', formData)
         .subscribe(res => {
