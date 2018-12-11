@@ -32,14 +32,26 @@
     <ion-row>
         <ion-col text-center col-4>
             <button ion-button color="danger" clear icon-start (click)="takePicture_Simple()">
-                <ion-icon name='ios-camera'></ion-icon>
-                Take A Pic
+                <ion-row>
+                    <ion-col text-center col-12>
+                        <ion-icon name='ios-camera'></ion-icon>
+                    </ion-col>
+                    <ion-col text-center col-12>
+                        <div>Take A Pic</div>
+                    </ion-col>
+                </ion-row>
             </button>
         </ion-col>
         <ion-col text-center col-8>
             <button ion-button color="secondary" clear icon-start (click)="openImagePicker()">
-                <ion-icon name='ios-image'></ion-icon>
-                Select From Gallery
+                <ion-row>
+                    <ion-col text-center col-12>
+                        <ion-icon name='ios-image'></ion-icon>
+                    </ion-col>
+                    <ion-col text-center col-12>
+                        <div>Select From Gallery</div>
+                    </ion-col>
+                </ion-row>
             </button>
         </ion-col>
     </ion-row>

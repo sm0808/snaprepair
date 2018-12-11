@@ -145,11 +145,11 @@ export class MyApp {
       this.nav.setRoot(HomePage);
     }
     else {
-      console.log("is Not Admin"); 
+      console.log("is Not Admin");
       this.appMenuItems = [
         { title: 'Make Requests', component: UserMakeRequestPage, icon: 'logo-buffer'},
         { title: 'Recent Requests', component: UserRequestsPage, icon: 'ios-list-outline'},
-        { title: 'Recent Offers', component: UserOffersPage, icon: 'ios-pricetag-outline'},
+        { title: 'Accepted Offers', component: UserOffersPage, icon: 'ios-pricetag-outline'},
         // { title: 'Accepted Offers', component: AdminAcceptedOffersPage, icon: 'ios-checkmark-circle-outline'},
         // { title: 'Mannage Zips', component: ZipsPage, icon: 'ios-navigate-outline'},
         { title: 'Profile', component: UserPage, icon: 'ios-contact-outline' },
