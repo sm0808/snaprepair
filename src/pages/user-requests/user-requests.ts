@@ -2,7 +2,7 @@ import { Component, ChangeDetectorRef, NgZone, ViewChild, ElementRef } from '@an
 import { NavController, Platform, AlertController, LoadingController, ToastController, NavParams, ModalController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocalNotifications } from '@ionic-native/local-notifications';
-import { ModalPage } from '../modal/modal';
+import { ModalUserPage } from '../modal-user/modal-user';
 import { API_URL, IMG_URL, USER_IMG_URL } from "../../services/constants";
 
 import 'rxjs/Rx'
@@ -105,6 +105,60 @@ export class UserRequestsPage {
     });
   }
 
+  // User Agree / Disagree to Offer
+  presentConfirm(offerID, price, requestId) {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Offer',
+      message: 'By Accepting this offer of $'+ price +' you agree to accept <strong style="color: red">Terms and Conditions of SnapRepair</strong>. <br><br> *After accepting the offers, this request will be moved to Accepted Offers.',
+      buttons: [
+        {
+          text: 'Decline',
+          cssClass:'CancelCss',
+          role: 'cancel',
+          handler: () => {
+            console.log('Decline clicked');
+            this.updateRequest_Offer_Status(offerID, '-1', requestId)
+          }
+        },
+        {
+          text: 'Accept',
+          cssClass:'SendCss',
+          handler: () => {
+            console.log('Accept clicked offerID: ', offerID);
+            this.updateRequest_Offer_Status(offerID, '1', requestId)
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  updateRequest_Offer_Status(offerID, status, requestId) {
+    let loading = this.loadingCtrl.create({ content: 'Updating Requests Status...' });
+      loading.present();
+
+      // Get Requests for Admin
+      this.offerService.update_Offer_status_by_user(offerID, status).then((result) => {
+        console.log("result: ",result);
+        if (result) {
+          for (let i = 0; i < this.requests.length; i++) {
+            if (this.requests[i].requestId == requestId) {
+              if(status == -1)
+                this.requests[i]['offer']['status'] = status; // Update Offer Status to decline
+              else
+                this.requests.splice(i, 1);                   // Move Request to accepted offer
+              loading.dismiss();
+              break;
+            }
+          }
+        }
+      }, (err) => {
+        loading.dismiss();
+        console.log(err);
+      });
+
+      
+  }
 
   // Show note popup when click to 'Submit Offer'
   showNotePopup(reqID) {
@@ -193,7 +247,7 @@ export class UserRequestsPage {
 
   viewDetails(requestID) {
     console.log("requestID: ",requestID);
-    let Modal = this.modalCtrl.create(ModalPage, { reqID: requestID});
+    let Modal = this.modalCtrl.create(ModalUserPage, { reqID: requestID});
     Modal.present();
   }
 

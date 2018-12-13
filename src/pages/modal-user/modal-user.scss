@@ -1,0 +1,113 @@
+.mymodal {
+    width: 90%;
+    height: 60%;
+    top: 32%;
+    left: 5%;
+    right: 5%;
+    bottom: 10%;
+}
+
+page-modal-user {
+    ion-modal {
+        background-color: rgba(0, 0, 0, 0.5);
+        ion-content.content {
+            top: 15%;
+            left: 10%;
+            width: 80%;
+            height: 54%;
+            border-radius: 10px;
+            .scroll-content {
+                border-radius: 20px;
+            }
+        }
+        .scroll-content {
+            overflow-y: hidden !important;
+        }
+    }
+    //////////////////////////////
+    modal-wrapper {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+    @media not all and (min-height: 600px) and (min-width: 768px) {
+        ion-modal ion-backdrop {
+            visibility: hidden;
+        }
+    }
+    @media only screen and (min-height: 0px) and (min-width: 0px) {
+        .modal-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .main-view {
+        background: transparent;
+    }
+    .overlay {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        opacity: .5;
+        background-color: #333;
+    }
+    .modal_content {
+        position: absolute;
+        // top: calc(50% - (50%/2));
+        top: calc(50% - (80%/2));
+        left: 0;
+        right: 0;
+        width: 95%;
+        height: 85%;
+        border-radius: 4%;
+        // padding: 10px;
+        z-index: 100;
+        margin: 0 auto;
+        margin-left: 7px;
+        // padding: 10px;
+        color: #333;
+        background: #e8e8e8;
+        background: -moz-linear-gradient(top, #fff 0%, #e8e8e8 100%);
+        background: -webkit-linear-gradient(top, #fff 0%, #e8e8e8 100%);
+        background: linear-gradient(to bottom, #fff 0%, #e8e8e8 100%);
+        border-radius: 5px;
+        box-shadow: 0 2px 3px rgba(51, 51, 51, .35);
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        overflow: hidden;
+    }
+    .slide-image {
+        max-height: 100% !important;
+        max-width: 100% !important;
+        margin: 18px 0 !important;
+    }
+    ion-slides {
+        height: auto;
+    }
+    // ion-slide.swiper-slide {
+    //     left: 25%;
+    // }
+    .slide-zoom {
+        background: #e6e6e6;
+    }
+    .thumb-img {
+        padding: 1px;
+    }
+    .list_header {
+        color: color($colors, primary);
+    }
+    .nameSpan {
+        color: black;
+        margin-left: 8px;
+    }
+    .label {
+        font-size: 14px !important;
+        white-space: inherit !important;
+    }
+}

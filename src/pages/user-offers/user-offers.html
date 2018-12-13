@@ -38,7 +38,7 @@
 <ion-content>
 
     <div *ngFor="let offer of offers">
-        <ion-card *ngIf="offer.status != 1" id="card-{{offer.offerId}}">
+        <ion-card id="card-{{offer.offerId}}">
 
             <ion-item>
                 <ion-avatar item-start>
@@ -62,20 +62,28 @@
 
             <ion-row>
                 <ion-col col-6 text-center>
-                    <button ion-button color="danger" clear small icon-start (click)="viewDetails(offer.offerId)">
-                    <ion-icon name='ios-bookmark'></ion-icon>
-                    View Details
-                  </button>
+                    <button ion-button color="instagram" clear small icon-start (click)="viewDetails(offer.offerId)">
+                        <ion-icon name='ios-bookmark'></ion-icon>
+                        View Details
+                    </button>
                 </ion-col>
-                <ion-col col-6 text-center *ngIf="offer.status != -1">
+                <!-- <ion-col col-6 text-center *ngIf="offer.status != -1">
                     <button ion-button clear small color="instagram" icon-start (click)="showUpdatePopup(offer.offerId, offer.price)">
                       <ion-icon name='ios-refresh-circle'></ion-icon>
                       Update Quote
                   </button>
+                </ion-col> -->
+                <ion-col col-6 text-center>
+                    <ion-badge color="facebook" *ngIf="offer.accept_status == 'Processing'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>
+                    <ion-badge color="secondary" *ngIf="offer.accept_status == 'In Transit'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>
+                    <ion-badge color="primary" *ngIf="offer.accept_status == 'Delivered'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>
                 </ion-col>
-                <ion-col text-right class="badge_Margin">
-                    <ion-badge [hidden]="offer.status != -1" color="danger">Offer Declined</ion-badge>
-                    <ion-badge [hidden]="offer.status != 0" color="primary">Offer Not Accepted Yet!</ion-badge>
+
+                <ion-col text-right *ngIf="offer.accept_status != 'Delivered'">
+                    <button ion-button color="danger" clear small icon-start item-end (click)="cancelRequest(offer.requestId, offer.offerId, offer.accept_status)">
+                        <ion-icon name='ios-trash'></ion-icon>
+                        Cancel Request
+                    </button>
                 </ion-col>
             </ion-row>
 

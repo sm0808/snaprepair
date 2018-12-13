@@ -39,6 +39,17 @@ export class Offers {
     });
   }
 
+  get_user_accepted_offers(userId) {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.apiUrl+'/offer.php?action=get_user_accepted_offers&userId='+userId)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
   send_Offer(reqID, price, desc) {
     return new Promise((resolve, reject) => {
       this.http.get(this.apiUrl+'/offer.php?action=add_offer&reqID='+reqID+'&price='+price+'&desc='+desc)
@@ -53,6 +64,17 @@ export class Offers {
   update_Offer(offerID, price) {
     return new Promise((resolve, reject) => {
       this.http.get(this.apiUrl+'/offer.php?action=update_Offer&offerID='+offerID+'&price='+price)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  update_Offer_status_by_user(offerID, status) {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.apiUrl+'/offer.php?action=update_Offer_status_by_user&offerID='+offerID+'&status='+status)
         .subscribe(res => {
           resolve(res);
         }, (err) => {

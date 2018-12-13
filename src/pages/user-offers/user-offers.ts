@@ -36,16 +36,18 @@ export class UserOffersPage {
     public localNotifications: LocalNotifications, public modalCtrl: ModalController,
     public offerService: Offers) {
 
+      this.user = JSON.parse(localStorage.getItem('userData'));
       this.showLoading('Getting Recent Offers');
 
       // Get Offers by Admin
-      this.offerService.get_Offers().then((result) => {
-        this.hideLoading();
+      this.offerService.get_user_accepted_offers(this.user.userId).then((result) => {
         this.offers = result;
         for (let i = 0; i < this.offers.length; i++) {
           this.offers[i]['img'] = IMG_URL + '' + this.offers[i]['img'];
         }
         localStorage.setItem('offers', JSON.stringify(this.offers));
+
+        this.hideLoading();
         console.log('this.offers: ',this.offers);
       }, (err) => {
         this.hideLoading();
@@ -117,6 +119,45 @@ export class UserOffersPage {
       this.hideLoading();
       console.log(err);
     });
+  }
+
+  cancelRequest(reqID, offerID, accept_status) {
+    console.log("reqID: ",reqID);
+    console.log("offerID: ",offerID);
+    let message = '';
+    if(accept_status == 'Processing')
+      message = 'Are you sure you want to cancel this request?';
+    else
+      message = 'Cancelling the request at \'In Transit\' stage will cost you 20% of the offered prize. <br> Are you sure you want to cancel this request?';
+    
+    this.presentConfirm(reqID, offerID, message)
+  }
+
+  presentConfirm(requestId, offerID, message) {
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Cancellation',
+      message: message,
+      buttons: [
+        {
+          text: 'Decline',
+          cssClass:'CancelCss',
+          role: 'cancel',
+          handler: () => {
+            console.log('Decline clicked');
+            // this.updateRequest_Offer_Status(offerID, '-1', requestId)
+          }
+        },
+        {
+          text: 'Accept',
+          cssClass:'SendCss',
+          handler: () => {
+            console.log('Accept clicked offerID: ', offerID + ' requestId: ' + requestId);
+            // this.updateRequest_Offer_Status(offerID, '1', requestId)
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   // Push Notification

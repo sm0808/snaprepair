@@ -55,6 +55,7 @@ import { AboutPage } from '../pages/about/about';
 import { WelcomePage } from '../pages/welcome/welcome';
 import { ConfirmationPage } from '../pages/confirmation/confirmation';
 import { ModalPage } from '../pages/modal/modal';
+import { ModalUserPage } from '../pages/modal-user/modal-user';
 
 //Import plugins
 import { CallNumber } from '@ionic-native/call-number';
@@ -116,6 +117,7 @@ export const firebaseConfig = {
     WelcomePage,
     ConfirmationPage,
     ModalPage,
+    ModalUserPage,
     UpdateCard
   ],
   imports: [
@@ -166,7 +168,8 @@ export const firebaseConfig = {
     AboutPage,
     WelcomePage,
     ConfirmationPage,
-    ModalPage
+    ModalPage,
+    ModalUserPage
   ],
   providers: [
     StatusBar,
