@@ -25,13 +25,13 @@
 
     <ion-card *ngFor="let i = index; let request of requests" id="card-{{request.requestId}}">
 
-        <ion-item>
+        <!-- <ion-item>
             <ion-avatar item-start>
                 <img src="{{ USER_IMG_URL + request.image }}">
             </ion-avatar>
             <h2>{{ request.name }}</h2>
             <ion-note>{{ request.email }}</ion-note>
-        </ion-item>
+        </ion-item> -->
 
         <img *ngIf="!imgloaded[i]" src="{{ loadingAnimation }}" />
         <img [hidden]="!imgloaded[i]" (load)="imgloaded[i] = true" src="{{ request.img }}" />

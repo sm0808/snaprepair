@@ -120,11 +120,16 @@
     <script src="assets/js/infobubble.js"></script>
 
     <!-- load stripe payment api-->
-    <!-- <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
 
-<script type="text/javascript">
-  Stripe.setPublishableKey('pk_test_QdJhKnvMrQSTKBcmZ2PEgVnb');
-</script> -->
+    <script>
+        console.log("StripeCheckout: ", StripeCheckout);
+    </script>
+
+    <script type="text/javascript">
+        Stripe.setPublishableKey('pk_test_lc3DMraJHlJtQLWNNvnXjPvA');
+    </script>
 
     <!-- The polyfills js is generated during the build process -->
     <script src="build/polyfills.js"></script>

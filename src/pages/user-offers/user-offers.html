@@ -40,13 +40,13 @@
     <div *ngFor="let offer of offers">
         <ion-card id="card-{{offer.offerId}}">
 
-            <ion-item>
+            <!-- <ion-item>
                 <ion-avatar item-start>
                     <img src="{{ USER_IMG_URL + offer.image }}">
                 </ion-avatar>
                 <h2>{{ offer.name }}</h2>
                 <ion-note>{{ offer.email }}</ion-note>
-            </ion-item>
+            </ion-item> -->
 
             <img *ngIf="!imgloaded[i]" src="{{ loadingAnimation }}" />
             <img [hidden]="!imgloaded[i]" (load)="imgloaded[i] = true" src="{{ offer.img }}" />
@@ -77,12 +77,19 @@
                     <ion-badge color="facebook" *ngIf="offer.accept_status == 'Processing'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>
                     <ion-badge color="secondary" *ngIf="offer.accept_status == 'In Transit'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>
                     <ion-badge color="primary" *ngIf="offer.accept_status == 'Delivered'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>
+                    <ion-badge color="primary" *ngIf="offer.isComplete == '1' &&  offer.isCancelled != '1'" class="badge_Margin">Paid</ion-badge>
+                    <ion-badge color="danger" *ngIf="offer.isCancelled == '1'" class="badge_Margin">Request Cancelled</ion-badge>
                 </ion-col>
 
-                <ion-col text-right *ngIf="offer.accept_status != 'Delivered'">
-                    <button ion-button color="danger" clear small icon-start item-end (click)="cancelRequest(offer.requestId, offer.offerId, offer.accept_status)">
+                <ion-col text-right>
+                    <button ion-button color="danger" *ngIf="offer.accept_status != 'Delivered' && offer.isCancelled != '1'" clear small icon-start item-end (click)="cancelRequest(offer.offerId, offer.accept_status, offer.price)">
                         <ion-icon name='ios-trash'></ion-icon>
                         Cancel Request
+                    </button>
+
+                    <button ion-button color="secondary" *ngIf="offer.accept_status == 'Delivered' && offer.isComplete != '1'" icon-start item-end (click)="Payment(offer.offerId, '0', offer.price, offer.offer_description)">
+                        <ion-icon name='md-cash'></ion-icon>
+                        Proceed To Pay
                     </button>
                 </ion-col>
             </ion-row>

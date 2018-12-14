@@ -250,12 +250,16 @@ var UserRequestsPage = (function () {
     };
     UserRequestsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-user-requests',template:/*ion-inline-start:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\user-requests\user-requests.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <button ion-button menuToggle>\n\n            <ion-icon name="menu"></ion-icon>\n\n        </button>\n\n\n\n        <ion-title>\n\n            <ion-grid>\n\n                <ion-row class="header-class">\n\n                    <ion-col col-2>\n\n                        <!-- <div class="logoHeader"></div> -->\n\n                    </ion-col>\n\n                    <ion-col col-6>\n\n                        <strong>Recent Requests</strong>\n\n                    </ion-col>\n\n                </ion-row>\n\n            </ion-grid>\n\n            <!-- <strong>Requests</strong> -->\n\n        </ion-title>\n\n\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="cards-bg social-cards">\n\n\n\n    <ion-card *ngFor="let i = index; let request of requests" id="card-{{request.requestId}}">\n\n\n\n        <ion-item>\n\n            <ion-avatar item-start>\n\n                <img src="{{ USER_IMG_URL + request.image }}">\n\n            </ion-avatar>\n\n            <h2>{{ request.name }}</h2>\n\n            <ion-note>{{ request.email }}</ion-note>\n\n        </ion-item>\n\n\n\n        <img *ngIf="!imgloaded[i]" src="{{ loadingAnimation }}" />\n\n        <img [hidden]="!imgloaded[i]" (load)="imgloaded[i] = true" src="{{ request.img }}" />\n\n        <!-- <img src="{{ request.img || loadingAnimation }}"> -->\n\n\n\n        <ion-card-content>\n\n            <p><strong>Category:</strong> {{ request.cat_name }}</p>\n\n            <p><strong>Description:</strong> {{ request.description }}</p>\n\n\n\n\n\n            <ion-col col-12 *ngIf="request[\'offer\']">\n\n                <p><strong>SnapRepair Offered Prize:</strong>\n\n                    <ion-badge color="secondary">${{ request[\'offer\'].price }}</ion-badge>\n\n                </p>\n\n            </ion-col>\n\n\n\n            <ion-note>\n\n                Expected Completion Time: {{ request.ect }}\n\n            </ion-note>\n\n            <!-- <ion-col text-center col-6>\n\n                <ion-badge color="primary">{{ request.price }}</ion-badge>\n\n            </ion-col> -->\n\n\n\n        </ion-card-content>\n\n\n\n        <ion-row>\n\n            <ion-col text-center col-6>\n\n                <button ion-button color="instagram" clear small icon-start (click)="viewDetails(request.requestId)">\n\n                  <ion-icon name=\'ios-bookmark\'></ion-icon>\n\n                  View Details\n\n                </button>\n\n            </ion-col>\n\n            <ion-col text-center col-6 *ngIf="!request[\'offer\']">\n\n                <button ion-button color="danger" clear small icon-start (click)="deleteRequest(request.requestId)">\n\n                  <ion-icon name=\'md-trash\'></ion-icon>\n\n                  Delete\n\n                </button>\n\n            </ion-col>\n\n\n\n            <ion-col text-center col-6 *ngIf="request[\'offer\']">\n\n\n\n                <button ion-button color="secondary" [hidden]="request[\'offer\'].status != 0" clear small icon-start (click)="presentConfirm(request[\'offer\'].offerId, request[\'offer\'].price, request.requestId)">\n\n                    <ion-icon name=\'md-bookmark\'></ion-icon>\n\n                    Accept / Decline\n\n                </button>\n\n\n\n                <!-- <ion-badge [hidden]="offer.status != 1" color="secondary">Offer Accepted</ion-badge> -->\n\n                <ion-badge class="badge_Margin" [hidden]="request[\'offer\'].status != -1" color="danger">Offer Declined</ion-badge>\n\n            </ion-col>\n\n            <!-- <ion-col align-self-center text-center>\n\n                <ion-note>\n\n                    {{ request.ect }}\n\n                </ion-note>\n\n            </ion-col> -->\n\n        </ion-row>\n\n\n\n    </ion-card>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\user-requests\user-requests.html"*/,
+            selector: 'page-user-requests',template:/*ion-inline-start:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\user-requests\user-requests.html"*/'<ion-header>\n\n    <ion-navbar color="primary">\n\n        <button ion-button menuToggle>\n\n            <ion-icon name="menu"></ion-icon>\n\n        </button>\n\n\n\n        <ion-title>\n\n            <ion-grid>\n\n                <ion-row class="header-class">\n\n                    <ion-col col-2>\n\n                        <!-- <div class="logoHeader"></div> -->\n\n                    </ion-col>\n\n                    <ion-col col-6>\n\n                        <strong>Recent Requests</strong>\n\n                    </ion-col>\n\n                </ion-row>\n\n            </ion-grid>\n\n            <!-- <strong>Requests</strong> -->\n\n        </ion-title>\n\n\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n<ion-content class="cards-bg social-cards">\n\n\n\n    <ion-card *ngFor="let i = index; let request of requests" id="card-{{request.requestId}}">\n\n\n\n        <!-- <ion-item>\n\n            <ion-avatar item-start>\n\n                <img src="{{ USER_IMG_URL + request.image }}">\n\n            </ion-avatar>\n\n            <h2>{{ request.name }}</h2>\n\n            <ion-note>{{ request.email }}</ion-note>\n\n        </ion-item> -->\n\n\n\n        <img *ngIf="!imgloaded[i]" src="{{ loadingAnimation }}" />\n\n        <img [hidden]="!imgloaded[i]" (load)="imgloaded[i] = true" src="{{ request.img }}" />\n\n        <!-- <img src="{{ request.img || loadingAnimation }}"> -->\n\n\n\n        <ion-card-content>\n\n            <p><strong>Category:</strong> {{ request.cat_name }}</p>\n\n            <p><strong>Description:</strong> {{ request.description }}</p>\n\n\n\n\n\n            <ion-col col-12 *ngIf="request[\'offer\']">\n\n                <p><strong>SnapRepair Offered Prize:</strong>\n\n                    <ion-badge color="secondary">${{ request[\'offer\'].price }}</ion-badge>\n\n                </p>\n\n            </ion-col>\n\n\n\n            <ion-note>\n\n                Expected Completion Time: {{ request.ect }}\n\n            </ion-note>\n\n            <!-- <ion-col text-center col-6>\n\n                <ion-badge color="primary">{{ request.price }}</ion-badge>\n\n            </ion-col> -->\n\n\n\n        </ion-card-content>\n\n\n\n        <ion-row>\n\n            <ion-col text-center col-6>\n\n                <button ion-button color="instagram" clear small icon-start (click)="viewDetails(request.requestId)">\n\n                  <ion-icon name=\'ios-bookmark\'></ion-icon>\n\n                  View Details\n\n                </button>\n\n            </ion-col>\n\n            <ion-col text-center col-6 *ngIf="!request[\'offer\']">\n\n                <button ion-button color="danger" clear small icon-start (click)="deleteRequest(request.requestId)">\n\n                  <ion-icon name=\'md-trash\'></ion-icon>\n\n                  Delete\n\n                </button>\n\n            </ion-col>\n\n\n\n            <ion-col text-center col-6 *ngIf="request[\'offer\']">\n\n\n\n                <button ion-button color="secondary" [hidden]="request[\'offer\'].status != 0" clear small icon-start (click)="presentConfirm(request[\'offer\'].offerId, request[\'offer\'].price, request.requestId)">\n\n                    <ion-icon name=\'md-bookmark\'></ion-icon>\n\n                    Accept / Decline\n\n                </button>\n\n\n\n                <!-- <ion-badge [hidden]="offer.status != 1" color="secondary">Offer Accepted</ion-badge> -->\n\n                <ion-badge class="badge_Margin" [hidden]="request[\'offer\'].status != -1" color="danger">Offer Declined</ion-badge>\n\n            </ion-col>\n\n            <!-- <ion-col align-self-center text-center>\n\n                <ion-note>\n\n                    {{ request.ect }}\n\n                </ion-note>\n\n            </ion-col> -->\n\n        </ion-row>\n\n\n\n    </ion-card>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\user-requests\user-requests.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_7__services_requests__["a" /* Requests */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__services_requests__["a" /* Requests */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* LoadingController */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_9__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_9__ngx_translate_core__["c" /* TranslateService */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__["a" /* LocalNotifications */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__["a" /* LocalNotifications */]) === "function" && _l || Object, typeof (_m = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ModalController */]) === "function" && _m || Object, typeof (_o = typeof __WEBPACK_IMPORTED_MODULE_8__services_offers__["a" /* Offers */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_8__services_offers__["a" /* Offers */]) === "function" && _o || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_7__services_requests__["a" /* Requests */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* LoadingController */], __WEBPACK_IMPORTED_MODULE_9__ngx_translate_core__["c" /* TranslateService */],
+            __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_local_notifications__["a" /* LocalNotifications */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ModalController */], __WEBPACK_IMPORTED_MODULE_8__services_offers__["a" /* Offers */]])
     ], UserRequestsPage);
     return UserRequestsPage;
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
 }());
 
 //# sourceMappingURL=user-requests.js.map
@@ -268,7 +272,7 @@ var UserRequestsPage = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DealService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database_database__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database_database__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__auth_service__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1018,7 +1022,7 @@ var DEFAULT_AVATAR = "http://placehold.it/150x150";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database_database__ = __webpack_require__(74);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_database_database__ = __webpack_require__(73);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_image_picker__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_crop__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_file__ = __webpack_require__(81);
@@ -1027,7 +1031,7 @@ var DEFAULT_AVATAR = "http://placehold.it/150x150";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__services_trip_service__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ngx_translate_core__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__providers_user_user__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_add_operator_map__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_add_operator_map__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1264,7 +1268,7 @@ var UserPage = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__register_register__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__home_home__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_auth_service__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_firebase__ = __webpack_require__(357);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_firebase__ = __webpack_require__(356);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_firebase__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__services_constants__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ngx_translate_core__ = __webpack_require__(24);
@@ -1718,11 +1722,11 @@ webpackEmptyAsyncContext.id = 209;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AuthService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(269);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__(263);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_storage__ = __webpack_require__(264);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_take__ = __webpack_require__(271);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_take__ = __webpack_require__(265);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_take___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_take__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__constants__ = __webpack_require__(14);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -1842,39 +1846,39 @@ var AuthService = (function () {
 
 var map = {
 	"../pages/about/about.module": [
-		905,
+		906,
 		8
 	],
 	"../pages/commission/commission.module": [
-		906,
+		905,
 		7
 	],
 	"../pages/modal-final-fare/modal-final-fare.module": [
-		907,
+		908,
 		2
 	],
 	"../pages/modal-notification/modal-notification.module": [
-		908,
+		909,
 		1
 	],
 	"../pages/modal-rating/modal-rating.module": [
-		909,
+		907,
 		0
 	],
 	"../pages/payment/payment.module": [
-		910,
+		913,
 		6
 	],
 	"../pages/share/share.module": [
-		911,
+		910,
 		5
 	],
 	"../pages/support/support.module": [
-		912,
+		911,
 		4
 	],
 	"../pages/trips/trips.module": [
-		913,
+		912,
 		3
 	]
 };
@@ -1900,9 +1904,9 @@ module.exports = webpackAsyncContext;
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return UserProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_constants__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2196,7 +2200,7 @@ var UserProvider = (function () {
 
 /***/ }),
 
-/***/ 355:
+/***/ 357:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2323,8 +2327,8 @@ var UpdateCard = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TripService; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database_database__ = __webpack_require__(74);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__place__ = __webpack_require__(597);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_database_database__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__place__ = __webpack_require__(592);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__auth_service__ = __webpack_require__(25);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -2819,7 +2823,7 @@ var AdminAcceptedOffersPage = (function () {
     };
     AdminAcceptedOffersPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-admin-accepted-offers',template:/*ion-inline-start:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\admin-accepted-offers\admin-accepted-offers.html"*/'<!--\n\n  Generated template for the AdminAcceptedOffersPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n    <ion-navbar color="primary">\n\n        <button ion-button menuToggle>\n\n  <ion-icon name="menu"></ion-icon>\n\n</button>\n\n\n\n        <ion-title>\n\n            <ion-grid>\n\n                <ion-row class="header-class">\n\n                    <ion-col col-2>\n\n                        <!-- <div class="logoHeader"></div> -->\n\n                    </ion-col>\n\n                    <ion-col col-6>\n\n                        <strong>Accepted Offers</strong>\n\n                    </ion-col>\n\n                </ion-row>\n\n            </ion-grid>\n\n        </ion-title>\n\n\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n\n\n<ion-content>\n\n\n\n    <div *ngFor="let offer of offers">\n\n        <ion-card *ngIf="offer.status == 1" id="card-{{offer.offerId}}">\n\n            <ion-item>\n\n                <ion-avatar item-start>\n\n                    <img src="{{ USER_IMG_URL + offer.image }}">\n\n                </ion-avatar>\n\n                <h2>{{ offer.name }}</h2>\n\n                <ion-note>{{ offer.email }}</ion-note>\n\n            </ion-item>\n\n\n\n            <img *ngIf="!imgloaded[i]" src="{{ loadingAnimation }}" />\n\n            <img [hidden]="!imgloaded[i]" (load)="imgloaded[i] = true" src="{{ offer.img }}" />\n\n            <!-- <img src="{{ offer.img || loadingAnimation }}"> -->\n\n\n\n            <ion-card-content>\n\n                <p><strong>Category:</strong> {{ offer.cat_name }}</p>\n\n                <p><strong>Description:</strong> {{ offer.description }}</p>\n\n                <ion-note>\n\n                    Expected Completion Time: {{ offer.ect }}\n\n                </ion-note>\n\n            </ion-card-content>\n\n\n\n            <ion-row>\n\n                <ion-col text-center col-6>\n\n                    <button ion-button color="danger" clear small icon-start (click)="viewDetails(offer.offerId)">\n\n                      <ion-icon name=\'ios-bookmark\'></ion-icon>\n\n                      View Details\n\n                    </button>\n\n                </ion-col>\n\n                <ion-col text-center align-self-center col-6 class="badge_Margin">\n\n                    <ion-select [(ngModel)]="offer.accept_status" class="selectStyle" (ionChange)="updateAcceptStatus(offer.offerId, $event)">\n\n                        <ion-option value="Processing">Processing</ion-option>\n\n                        <ion-option value="In Transit">In Transit</ion-option>\n\n                        <ion-option value="Delivered">Delivered</ion-option>\n\n                    </ion-select>\n\n\n\n                    <!-- <ion-badge [hidden]="offer.status != 1" color="secondary">Offer Accepted</ion-badge>\n\n                    <ion-badge [hidden]="offer.status != 0" color="danger">Offer Not Accepted</ion-badge> -->\n\n                </ion-col>\n\n            </ion-row>\n\n        </ion-card>\n\n    </div>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\admin-accepted-offers\admin-accepted-offers.html"*/,
+            selector: 'page-admin-accepted-offers',template:/*ion-inline-start:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\admin-accepted-offers\admin-accepted-offers.html"*/'<!--\n\n  Generated template for the AdminAcceptedOffersPage page.\n\n\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n\n  Ionic pages and navigation.\n\n-->\n\n<ion-header>\n\n    <ion-navbar color="primary">\n\n        <button ion-button menuToggle>\n\n  <ion-icon name="menu"></ion-icon>\n\n</button>\n\n\n\n        <ion-title>\n\n            <ion-grid>\n\n                <ion-row class="header-class">\n\n                    <ion-col col-2>\n\n                        <!-- <div class="logoHeader"></div> -->\n\n                    </ion-col>\n\n                    <ion-col col-6>\n\n                        <strong>Accepted Offers</strong>\n\n                    </ion-col>\n\n                </ion-row>\n\n            </ion-grid>\n\n        </ion-title>\n\n\n\n    </ion-navbar>\n\n</ion-header>\n\n\n\n\n\n\n\n<ion-content>\n\n\n\n    <div *ngFor="let offer of offers">\n\n        <ion-card *ngIf="offer.status == 1" id="card-{{offer.offerId}}">\n\n            <ion-item>\n\n                <ion-avatar item-start>\n\n                    <img src="{{ USER_IMG_URL + offer.image }}">\n\n                </ion-avatar>\n\n                <h2>{{ offer.name }}</h2>\n\n                <ion-note>{{ offer.email }}</ion-note>\n\n            </ion-item>\n\n\n\n            <img *ngIf="!imgloaded[i]" src="{{ loadingAnimation }}" />\n\n            <img [hidden]="!imgloaded[i]" (load)="imgloaded[i] = true" src="{{ offer.img }}" />\n\n            <!-- <img src="{{ offer.img || loadingAnimation }}"> -->\n\n\n\n            <ion-card-content>\n\n                <p><strong>Category:</strong> {{ offer.cat_name }}</p>\n\n                <p><strong>Description:</strong> {{ offer.description }}</p>\n\n                <ion-note>\n\n                    Expected Completion Time: {{ offer.ect }}\n\n                </ion-note>\n\n            </ion-card-content>\n\n\n\n            <ion-row>\n\n                <ion-col text-center col-6>\n\n                    <button ion-button color="danger" clear small icon-start (click)="viewDetails(offer.offerId)">\n\n                      <ion-icon name=\'ios-bookmark\'></ion-icon>\n\n                      View Details\n\n                    </button>\n\n                </ion-col>\n\n                <ion-col text-center align-self-center col-6>\n\n                    <ion-select [(ngModel)]="offer.accept_status" *ngIf="offer.isComplete != \'1\' &&  offer.isCancelled != \'1\'" class="selectStyle badge_Select" (ionChange)="updateAcceptStatus(offer.offerId, $event)">\n\n                        <ion-option value="Processing">Processing</ion-option>\n\n                        <ion-option value="In Transit">In Transit</ion-option>\n\n                        <ion-option value="Delivered">Delivered</ion-option>\n\n                    </ion-select>\n\n\n\n                    <ion-badge color="facebook" *ngIf="offer.accept_status == \'Processing\' && offer.isCancelled == \'1\'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>\n\n                    <ion-badge color="secondary" *ngIf="offer.accept_status == \'In Transit\' && offer.isCancelled == \'1\'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>\n\n                    <ion-badge color="primary" *ngIf="offer.accept_status == \'Delivered\' && offer.isComplete == \'1\' &&  offer.isCancelled != \'1\'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>\n\n                    <ion-badge color="primary" *ngIf="offer.isComplete == \'1\' &&  offer.isCancelled != \'1\'" class="badge_Margin">Paid</ion-badge>\n\n                    <ion-badge color="danger" *ngIf="offer.isCancelled == \'1\'" class="badge_Margin">Request Cancelled</ion-badge>\n\n                    <!-- <ion-badge [hidden]="offer.status != 1" color="secondary">Offer Accepted</ion-badge>\n\n                    <ion-badge [hidden]="offer.status != 0" color="danger">Offer Not Accepted</ion-badge> -->\n\n                </ion-col>\n\n                <ion-col col-6 text-center>\n\n\n\n                </ion-col>\n\n            </ion-row>\n\n        </ion-card>\n\n    </div>\n\n\n\n</ion-content>'/*ion-inline-end:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\admin-accepted-offers\admin-accepted-offers.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Platform */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_5__services_requests__["a" /* Requests */],
@@ -3009,9 +3013,9 @@ var ZipsPage = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Zips; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -3367,17 +3371,21 @@ var UserOffersPage = (function () {
             console.log(err);
         });
     };
-    UserOffersPage.prototype.cancelRequest = function (reqID, offerID, accept_status) {
-        console.log("reqID: ", reqID);
+    UserOffersPage.prototype.cancelRequest = function (offerID, accept_status, price) {
         console.log("offerID: ", offerID);
         var message = '';
-        if (accept_status == 'Processing')
+        var inTransit = false;
+        if (accept_status == 'Processing') {
             message = 'Are you sure you want to cancel this request?';
-        else
-            message = 'Cancelling the request at \'In Transit\' stage will cost you 20% of the offered prize. <br> Are you sure you want to cancel this request?';
-        this.presentConfirm(reqID, offerID, message);
+        }
+        else {
+            message = 'Cancelling the request at \'In Transit\' stage will cost you 20% of the offered price. <br> Are you sure you want to cancel this request?';
+            inTransit = true;
+        }
+        this.presentConfirm(offerID, message, inTransit, price);
     };
-    UserOffersPage.prototype.presentConfirm = function (requestId, offerID, message) {
+    UserOffersPage.prototype.presentConfirm = function (offerID, message, inTransit, price) {
+        var _this = this;
         var alert = this.alertCtrl.create({
             title: 'Confirm Cancellation',
             message: message,
@@ -3388,20 +3396,111 @@ var UserOffersPage = (function () {
                     role: 'cancel',
                     handler: function () {
                         console.log('Decline clicked');
-                        // this.updateRequest_Offer_Status(offerID, '-1', requestId)
                     }
                 },
                 {
                     text: 'Accept',
                     cssClass: 'SendCss',
                     handler: function () {
-                        console.log('Accept clicked offerID: ', offerID + ' requestId: ' + requestId);
+                        console.log('Accept clicked offerID: ', offerID);
+                        if (inTransit) {
+                            price = (price * 20) / 100; // 20% Charge for Cancellation
+                            _this.Payment(offerID, '1', price, 'Cancellation Charges of Request In Transit Stage');
+                        }
+                        else {
+                            _this.cancel_Request(offerID, '1');
+                        }
                         // this.updateRequest_Offer_Status(offerID, '1', requestId)
                     }
                 }
             ]
         });
         alert.present();
+    };
+    UserOffersPage.prototype.Payment = function (offerID, isCancelled, price, desc) {
+        this.showLoading('Please Wait');
+        var self = this;
+        var _loop_1 = function (i) {
+            if (this_1.offers[i]['offerId'] == offerID) {
+                var offer_1 = this_1.offers[i];
+                console.log("offer: ", offer_1);
+                console.log("price: ", price);
+                console.log("desc: ", desc);
+                handler = StripeCheckout.configure({
+                    key: 'pk_test_lc3DMraJHlJtQLWNNvnXjPvA',
+                    image: './assets/img/icon/logo.png',
+                    locale: 'auto',
+                    email: offer_1['email'],
+                    opened: function () {
+                        self.hideLoading();
+                    },
+                    token: function (token) {
+                        // You can access the token ID with `token.id`.
+                        // Get the token ID to your server-side code for use.
+                        console.log("token: ", token.id);
+                        self.stripePayment_To_Server(offerID, token.id, offer_1['email'], price, isCancelled);
+                    },
+                });
+                // Open Checkout with further options:
+                handler.open({
+                    name: 'SnapRepair',
+                    description: desc,
+                    amount: price + '00'
+                });
+                // Close Checkout on page navigation:
+                window.addEventListener('popstate', function () {
+                    handler.close();
+                });
+                return "break";
+            }
+        };
+        var this_1 = this, handler;
+        for (var i = 0; i < this.offers.length; i++) {
+            var state_1 = _loop_1(i);
+            if (state_1 === "break")
+                break;
+        }
+    };
+    UserOffersPage.prototype.stripePayment_To_Server = function (offerID, token, email, price, isCancelled) {
+        var _this = this;
+        this.showLoading('Confirming Payment');
+        this.offerService.charge_accepted_Offer(offerID, token, email, price, isCancelled).then(function (result) {
+            console.log("result: ", result);
+            if (result) {
+                for (var i = 0; i < _this.offers.length; i++) {
+                    if (offerID == _this.offers[i]['offerId']) {
+                        _this.offers[i]['isComplete'] = '1';
+                        _this.offers[i]['isCancelled'] = isCancelled;
+                        _this.showToast('Payment Complete. Thanks!');
+                        _this.hideLoading();
+                        break;
+                    }
+                }
+            }
+        }, function (err) {
+            _this.hideLoading();
+            console.log(err);
+        });
+    };
+    UserOffersPage.prototype.cancel_Request = function (offerID, isCancelled) {
+        var _this = this;
+        this.showLoading('Cancelling Request');
+        this.offerService.cancel_Request(offerID, isCancelled).then(function (result) {
+            console.log("result: ", result);
+            if (result) {
+                for (var i = 0; i < _this.offers.length; i++) {
+                    if (offerID == _this.offers[i]['offerId']) {
+                        _this.offers[i]['isCancelled'] = isCancelled;
+                        _this.showToast('Request Cancelled Successfully!');
+                        _this.hideLoading();
+                        break;
+                    }
+                }
+            }
+        }, function (err) {
+            _this.hideLoading();
+            console.log(err);
+        });
     };
     // Push Notification
     UserOffersPage.prototype.singlenotification = function (id, title, text) {
@@ -3414,7 +3513,7 @@ var UserOffersPage = (function () {
     UserOffersPage.prototype.showToast = function (message) {
         var toast = this.toastCtrl.create({
             message: message,
-            duration: 1000,
+            duration: 2500,
             position: 'top'
         });
         toast.present();
@@ -3430,7 +3529,7 @@ var UserOffersPage = (function () {
     };
     UserOffersPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-user-offers',template:/*ion-inline-start:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\user-offers\user-offers.html"*/'<!--\n  Generated template for the AdminOffersPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<!-- <ion-header>\n\n  <ion-navbar>\n    <ion-title>admin_offers</ion-title>\n  </ion-navbar>\n\n</ion-header> -->\n\n<ion-header>\n    <ion-navbar color="primary">\n        <button ion-button menuToggle>\n  <ion-icon name="menu"></ion-icon>\n</button>\n\n        <ion-title>\n            <ion-grid>\n                <ion-row class="header-class">\n                    <!-- <ion-col col-1>\n                        <!-- <div class="logoHeader"></div> --\n                    </ion-col> -->\n                    <ion-col col-11>\n                        <strong>Offers by SnapRepair</strong>\n                    </ion-col>\n                </ion-row>\n            </ion-grid>\n        </ion-title>\n\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n\n    <div *ngFor="let offer of offers">\n        <ion-card id="card-{{offer.offerId}}">\n\n            <ion-item>\n                <ion-avatar item-start>\n                    <img src="{{ USER_IMG_URL + offer.image }}">\n                </ion-avatar>\n                <h2>{{ offer.name }}</h2>\n                <ion-note>{{ offer.email }}</ion-note>\n            </ion-item>\n\n            <img *ngIf="!imgloaded[i]" src="{{ loadingAnimation }}" />\n            <img [hidden]="!imgloaded[i]" (load)="imgloaded[i] = true" src="{{ offer.img }}" />\n            <!-- <img src="{{ offer.img || loadingAnimation }}"> -->\n\n            <ion-card-content>\n                <p><strong>Category:</strong> {{ offer.cat_name }}</p>\n                <p><strong>Description:</strong> {{ offer.description }}</p>\n                <ion-note>\n                    Expected Completion Time: {{ offer.ect }}\n                </ion-note>\n            </ion-card-content>\n\n            <ion-row>\n                <ion-col col-6 text-center>\n                    <button ion-button color="instagram" clear small icon-start (click)="viewDetails(offer.offerId)">\n                        <ion-icon name=\'ios-bookmark\'></ion-icon>\n                        View Details\n                    </button>\n                </ion-col>\n                <!-- <ion-col col-6 text-center *ngIf="offer.status != -1">\n                    <button ion-button clear small color="instagram" icon-start (click)="showUpdatePopup(offer.offerId, offer.price)">\n                      <ion-icon name=\'ios-refresh-circle\'></ion-icon>\n                      Update Quote\n                  </button>\n                </ion-col> -->\n                <ion-col col-6 text-center>\n                    <ion-badge color="facebook" *ngIf="offer.accept_status == \'Processing\'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>\n                    <ion-badge color="secondary" *ngIf="offer.accept_status == \'In Transit\'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>\n                    <ion-badge color="primary" *ngIf="offer.accept_status == \'Delivered\'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>\n                </ion-col>\n\n                <ion-col text-right *ngIf="offer.accept_status != \'Delivered\'">\n                    <button ion-button color="danger" clear small icon-start item-end (click)="cancelRequest(offer.requestId, offer.offerId, offer.accept_status)">\n                        <ion-icon name=\'ios-trash\'></ion-icon>\n                        Cancel Request\n                    </button>\n                </ion-col>\n            </ion-row>\n\n        </ion-card>\n    </div>\n\n</ion-content>'/*ion-inline-end:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\user-offers\user-offers.html"*/,
+            selector: 'page-user-offers',template:/*ion-inline-start:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\user-offers\user-offers.html"*/'<!--\n  Generated template for the AdminOffersPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<!-- <ion-header>\n\n  <ion-navbar>\n    <ion-title>admin_offers</ion-title>\n  </ion-navbar>\n\n</ion-header> -->\n\n<ion-header>\n    <ion-navbar color="primary">\n        <button ion-button menuToggle>\n  <ion-icon name="menu"></ion-icon>\n</button>\n\n        <ion-title>\n            <ion-grid>\n                <ion-row class="header-class">\n                    <!-- <ion-col col-1>\n                        <!-- <div class="logoHeader"></div> --\n                    </ion-col> -->\n                    <ion-col col-11>\n                        <strong>Offers by SnapRepair</strong>\n                    </ion-col>\n                </ion-row>\n            </ion-grid>\n        </ion-title>\n\n    </ion-navbar>\n</ion-header>\n\n\n<ion-content>\n\n    <div *ngFor="let offer of offers">\n        <ion-card id="card-{{offer.offerId}}">\n\n            <!-- <ion-item>\n                <ion-avatar item-start>\n                    <img src="{{ USER_IMG_URL + offer.image }}">\n                </ion-avatar>\n                <h2>{{ offer.name }}</h2>\n                <ion-note>{{ offer.email }}</ion-note>\n            </ion-item> -->\n\n            <img *ngIf="!imgloaded[i]" src="{{ loadingAnimation }}" />\n            <img [hidden]="!imgloaded[i]" (load)="imgloaded[i] = true" src="{{ offer.img }}" />\n            <!-- <img src="{{ offer.img || loadingAnimation }}"> -->\n\n            <ion-card-content>\n                <p><strong>Category:</strong> {{ offer.cat_name }}</p>\n                <p><strong>Description:</strong> {{ offer.description }}</p>\n                <ion-note>\n                    Expected Completion Time: {{ offer.ect }}\n                </ion-note>\n            </ion-card-content>\n\n            <ion-row>\n                <ion-col col-6 text-center>\n                    <button ion-button color="instagram" clear small icon-start (click)="viewDetails(offer.offerId)">\n                        <ion-icon name=\'ios-bookmark\'></ion-icon>\n                        View Details\n                    </button>\n                </ion-col>\n                <!-- <ion-col col-6 text-center *ngIf="offer.status != -1">\n                    <button ion-button clear small color="instagram" icon-start (click)="showUpdatePopup(offer.offerId, offer.price)">\n                      <ion-icon name=\'ios-refresh-circle\'></ion-icon>\n                      Update Quote\n                  </button>\n                </ion-col> -->\n                <ion-col col-6 text-center>\n                    <ion-badge color="facebook" *ngIf="offer.accept_status == \'Processing\'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>\n                    <ion-badge color="secondary" *ngIf="offer.accept_status == \'In Transit\'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>\n                    <ion-badge color="primary" *ngIf="offer.accept_status == \'Delivered\'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>\n                    <ion-badge color="primary" *ngIf="offer.isComplete == \'1\' &&  offer.isCancelled != \'1\'" class="badge_Margin">Paid</ion-badge>\n                    <ion-badge color="danger" *ngIf="offer.isCancelled == \'1\'" class="badge_Margin">Request Cancelled</ion-badge>\n                </ion-col>\n\n                <ion-col text-right>\n                    <button ion-button color="danger" *ngIf="offer.accept_status != \'Delivered\' && offer.isCancelled != \'1\'" clear small icon-start item-end (click)="cancelRequest(offer.offerId, offer.accept_status, offer.price)">\n                        <ion-icon name=\'ios-trash\'></ion-icon>\n                        Cancel Request\n                    </button>\n\n                    <button ion-button color="secondary" *ngIf="offer.accept_status == \'Delivered\' && offer.isComplete != \'1\'" icon-start item-end (click)="Payment(offer.offerId, \'0\', offer.price, offer.offer_description)">\n                        <ion-icon name=\'md-cash\'></ion-icon>\n                        Proceed To Pay\n                    </button>\n                </ion-col>\n            </ion-row>\n\n        </ion-card>\n    </div>\n\n</ion-content>'/*ion-inline-end:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\user-offers\user-offers.html"*/,
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Platform */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Platform */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_5__services_requests__["a" /* Requests */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_5__services_requests__["a" /* Requests */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* LoadingController */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_7__ngx_translate_core__["c" /* TranslateService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_7__ngx_translate_core__["c" /* TranslateService */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */]) === "function" && _g || Object, typeof (_h = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */]) === "function" && _h || Object, typeof (_j = typeof __WEBPACK_IMPORTED_MODULE_2__ionic_native_local_notifications__["a" /* LocalNotifications */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__ionic_native_local_notifications__["a" /* LocalNotifications */]) === "function" && _j || Object, typeof (_k = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ModalController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["q" /* ModalController */]) === "function" && _k || Object, typeof (_l = typeof __WEBPACK_IMPORTED_MODULE_6__services_offers__["a" /* Offers */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_6__services_offers__["a" /* Offers */]) === "function" && _l || Object])
     ], UserOffersPage);
@@ -3750,9 +3849,9 @@ var WelcomePage = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Requests; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4166,51 +4265,6 @@ var MapPage = (function () {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-/**
- * Generated class for the AboutPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var AboutPage = (function () {
-    function AboutPage(navCtrl, navParams) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-    }
-    AboutPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad AboutPage');
-    };
-    AboutPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-about',template:/*ion-inline-start:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\about\about.html"*/'<!-- -->\n<ion-header>\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <ion-grid>\n        <ion-row>\n          <ion-col col-2>\n            <div class="logoHeader"></div>\n          </ion-col>\n          <ion-col col-4>\n            <strong>About Us</strong>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="common-bg">\n  <!--description-->\n  <div class="border-bottom" padding>\n    <span ion-text color="primary" class="bold headingSection">YUR Drivers Network</span>\n    <p ion-text color="secondary">YUR Drivers Network is built from the bottom up, the brainstorm of 2 friends with different skill sets and one common experience, they both drove for rideshare companies to learn the business. Then they reinvented it built on trust and respect – where every driver has a chance to earn a real living, where every passenger feels secure.</p>\n  </div>\n\n  <!--high light-->\n  <div class="border-bottom" padding>\n    <div padding class="light-bg">\n      <ion-icon name="usd" class="text-2x" color="primary"></ion-icon>\n      <span ion-text color="primary" class="bold">YUR Money</span>\n      <p ion-text color="secondary">As a YUR Drivers Network driver you will receive your income once a week, deposited directly into your account.</p>\n    </div>\n  </div>\n  <!--high light-->\n  <div class="border-bottom" padding>\n    <div padding class="light-bg">\n      <ion-icon name="usd" class="text-2x" color="primary"></ion-icon>\n      <span ion-text color="primary" class="bold">YUR Businessy</span>\n      <p ion-text color="secondary">It\'s all up to you. Your network and your business can be as large as you want to make it. There is no limit to the number of new drivers or passengers you can refer.</p>\n    </div>\n  </div>\n  <!--high light-->\n  <div class="border-bottom" padding>\n    <div padding class="light-bg">\n      <ion-icon name="usd" class="text-2x" color="primary"></ion-icon>\n      <span ion-text color="primary" class="bold">YUR Network</span>\n      <p ion-text color="secondary">You will now be able to earn income from potentially thousands of fares. Just refer new drivers and passengers to YUR and see your income grow!</p>\n    </div>\n  </div>\n  <!--high light-->\n  <div class="border-bottom" padding>\n    <div padding class="light-bg">\n      <ion-icon name="usd" class="text-2x" color="primary"></ion-icon>\n      <span ion-text color="primary" class="bold">Reliable, Safe, Secure</span>\n      <p ion-text color="secondary">With our unique biometric check you can be sure that the driver that was screened is the person driving the car. No other rideshare company offers this.</p>\n    </div>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\about\about.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */]])
-    ], AboutPage);
-    return AboutPage;
-}());
-
-//# sourceMappingURL=about.js.map
-
-/***/ }),
-
-/***/ 553:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CommissionPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
@@ -4252,19 +4306,355 @@ var CommissionPage = (function () {
 
 /***/ }),
 
+/***/ 553:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AboutPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+/**
+ * Generated class for the AboutPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var AboutPage = (function () {
+    function AboutPage(navCtrl, navParams) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+    }
+    AboutPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad AboutPage');
+    };
+    AboutPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-about',template:/*ion-inline-start:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\about\about.html"*/'<!-- -->\n<ion-header>\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <ion-grid>\n        <ion-row>\n          <ion-col col-2>\n            <div class="logoHeader"></div>\n          </ion-col>\n          <ion-col col-4>\n            <strong>About Us</strong>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="common-bg">\n  <!--description-->\n  <div class="border-bottom" padding>\n    <span ion-text color="primary" class="bold headingSection">YUR Drivers Network</span>\n    <p ion-text color="secondary">YUR Drivers Network is built from the bottom up, the brainstorm of 2 friends with different skill sets and one common experience, they both drove for rideshare companies to learn the business. Then they reinvented it built on trust and respect – where every driver has a chance to earn a real living, where every passenger feels secure.</p>\n  </div>\n\n  <!--high light-->\n  <div class="border-bottom" padding>\n    <div padding class="light-bg">\n      <ion-icon name="usd" class="text-2x" color="primary"></ion-icon>\n      <span ion-text color="primary" class="bold">YUR Money</span>\n      <p ion-text color="secondary">As a YUR Drivers Network driver you will receive your income once a week, deposited directly into your account.</p>\n    </div>\n  </div>\n  <!--high light-->\n  <div class="border-bottom" padding>\n    <div padding class="light-bg">\n      <ion-icon name="usd" class="text-2x" color="primary"></ion-icon>\n      <span ion-text color="primary" class="bold">YUR Businessy</span>\n      <p ion-text color="secondary">It\'s all up to you. Your network and your business can be as large as you want to make it. There is no limit to the number of new drivers or passengers you can refer.</p>\n    </div>\n  </div>\n  <!--high light-->\n  <div class="border-bottom" padding>\n    <div padding class="light-bg">\n      <ion-icon name="usd" class="text-2x" color="primary"></ion-icon>\n      <span ion-text color="primary" class="bold">YUR Network</span>\n      <p ion-text color="secondary">You will now be able to earn income from potentially thousands of fares. Just refer new drivers and passengers to YUR and see your income grow!</p>\n    </div>\n  </div>\n  <!--high light-->\n  <div class="border-bottom" padding>\n    <div padding class="light-bg">\n      <ion-icon name="usd" class="text-2x" color="primary"></ion-icon>\n      <span ion-text color="primary" class="bold">Reliable, Safe, Secure</span>\n      <p ion-text color="secondary">With our unique biometric check you can be sure that the driver that was screened is the person driving the car. No other rideshare company offers this.</p>\n    </div>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\about\about.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */]])
+    ], AboutPage);
+    return AboutPage;
+}());
+
+//# sourceMappingURL=about.js.map
+
+/***/ }),
+
 /***/ 554:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SharePage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__ = __webpack_require__(170);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+/**
+ * Generated class for the SharePage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var SharePage = (function () {
+    function SharePage(navCtrl, navParams, socialSharing, platform) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.socialSharing = socialSharing;
+        this.platform = platform;
+        this.subject = 'Message from Social Sharing App';
+        this.message = 'Take your app development skills to the next level with Mastering Ionic - the definitive guide';
+        this.image = 'http://masteringionic2.com/perch/resources/mastering-ionic-2-cover-1-w320.png';
+        this.uri = 'http://masteringionic2.com/products/product-detail/s/mastering-ionic-2-e-book';
+    }
+    SharePage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad SharePage');
+    };
+    SharePage.prototype.shareViaEmail = function () {
+        var _this = this;
+        this.platform.ready()
+            .then(function () {
+            _this.socialSharing.canShareViaEmail()
+                .then(function () {
+                _this.socialSharing.shareViaEmail(_this.message, _this.subject, _this.sendTo)
+                    .then(function (data) {
+                    console.log('Shared via Email');
+                })
+                    .catch(function (err) {
+                    console.log('Not able to be shared via Email');
+                });
+            })
+                .catch(function (err) {
+                console.log('Sharing via Email NOT enabled');
+            });
+        });
+    };
+    SharePage.prototype.shareViaFacebook = function () {
+        var _this = this;
+        this.platform.ready()
+            .then(function () {
+            _this.socialSharing.canShareVia('com.apple.social.facebook', _this.message, _this.image, _this.uri)
+                .then(function (data) {
+                _this.socialSharing.shareViaFacebook(_this.message, _this.image, _this.uri)
+                    .then(function (data) {
+                    console.log('Shared via Facebook');
+                })
+                    .catch(function (err) {
+                    console.log('Was not shared via Facebook');
+                });
+            })
+                .catch(function (err) {
+                console.log('Not able to be shared via Facebook');
+            });
+        });
+    };
+    SharePage.prototype.shareViaInstagram = function () {
+        var _this = this;
+        this.platform.ready()
+            .then(function () {
+            _this.socialSharing.shareViaInstagram(_this.message, _this.image)
+                .then(function (data) {
+                console.log('Shared via shareViaInstagram');
+            })
+                .catch(function (err) {
+                console.log('Was not shared via Instagram');
+            });
+        });
+    };
+    SharePage.prototype.shareViaTwitter = function () {
+        var _this = this;
+        this.platform.ready()
+            .then(function () {
+            _this.socialSharing.canShareVia('com.apple.social.twitter', _this.message, _this.image, _this.uri)
+                .then(function (data) {
+                _this.socialSharing.shareViaTwitter(_this.message, _this.image, _this.uri)
+                    .then(function (data) {
+                    console.log('Shared via Twitter');
+                })
+                    .catch(function (err) {
+                    console.log('Was not shared via Twitter');
+                });
+            });
+        })
+            .catch(function (err) {
+            console.log('Not able to be shared via Twitter');
+        });
+    };
+    SharePage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-share',template:/*ion-inline-start:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\share\share.html"*/'<!-- -->\n<ion-header>\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <ion-grid>\n        <ion-row>\n          <ion-col col-2>\n            <div class="logoHeader"></div>\n          </ion-col>\n          <ion-col col-4>\n            <strong>Share</strong>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-title>\n    <!--<ion-buttons end>\n      <button ion-button tappable (click)="presentNotifications($event)">\n        <ion-icon name="notifications"></ion-icon>\n      </button>\n      <button ion-button tappable (click)="goToAccount()">\n        <ion-icon name="cog"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="animated fadeIn common-bg">\n  <ion-list>\n    <ion-item-group class="group">\n       <ion-item-divider color="dark">Share through social media</ion-item-divider>\n       <ion-item>\n          <button\n             class="button"\n             ion-button\n             icon-right\n             block\n             padding-vertical\n             color="facebook"\n             (click)="shareViaFacebook()">\n                Share this via Facebook\n                <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>\n          </button>\n       </ion-item>\n\n\n       <ion-item>\n          <button\n             class="button"\n             ion-button\n             icon-right\n             block\n             padding-vertical\n             color="instagram"\n             (click)="shareViaInstagram()">\n                Share this via Instagram\n                <ion-icon ios="logo-instagram" md="logo-instagram"></ion-icon>\n          </button>\n       </ion-item>\n\n\n       <ion-item>\n          <button\n             class="button"\n             ion-button\n             icon-right\n             block\n             padding-vertical\n             color="twitter"\n             (click)="shareViaTwitter()">\n                Share this via Twitter\n                <ion-icon ios="logo-twitter" md="logo-twitter"></ion-icon>\n          </button>\n       </ion-item>\n    </ion-item-group>\n\n\n\n    <ion-item-group class="group">\n       <ion-item-divider color="dark">Share via e-mail</ion-item-divider>\n       <ion-item>\n          <ion-label block>To: </ion-label>\n          <ion-input\n             block\n             type="text"\n             placeholder="E-mail address..."\n             [(ngModel)]="sendTo"></ion-input>\n       </ion-item>\n\n\n\n       <ion-item>\n          <button\n             class="button"\n             ion-button\n             icon-right\n             block\n             padding-vertical\n             color="email"\n             (click)="shareViaEmail()">\n                Share this via Email\n                <ion-icon ios="ios-mail" md="md-mail"></ion-icon>\n          </button>\n       </ion-item>\n    </ion-item-group>\n\n </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\share\share.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__["a" /* SocialSharing */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Platform */]])
+    ], SharePage);
+    return SharePage;
+}());
+
+//# sourceMappingURL=share.js.map
+
+/***/ }),
+
+/***/ 555:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SupportPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_call_number__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__ = __webpack_require__(170);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+/**
+ * Generated class for the SupportPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var SupportPage = (function () {
+    function SupportPage(navCtrl, navParams, callNumber, socialSharing, platform) {
+        this.navCtrl = navCtrl;
+        this.navParams = navParams;
+        this.callNumber = callNumber;
+        this.socialSharing = socialSharing;
+        this.platform = platform;
+        this.sendTo = '';
+        this.subject = '';
+        this.message = '';
+    }
+    SupportPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad SupportPage');
+    };
+    SupportPage.prototype.sendMail = function () {
+        var _this = this;
+        this.platform.ready()
+            .then(function () {
+            _this.socialSharing.canShareViaEmail()
+                .then(function () {
+                _this.socialSharing.shareViaEmail(_this.message, _this.subject, _this.sendTo)
+                    .then(function (data) {
+                    console.log('Shared via Email');
+                })
+                    .catch(function (err) {
+                    console.log('Not able to be shared via Email');
+                });
+            })
+                .catch(function (err) {
+                console.log('Sharing via Email NOT enabled');
+            });
+        });
+    };
+    SupportPage.prototype.makeCall = function () {
+        this.callNumber.callNumber("18001010101", true)
+            .then(function (res) { return console.log('Launched dialer!', res); })
+            .catch(function (err) { return console.log('Error launching dialer', err); });
+    };
+    SupportPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-support',template:/*ion-inline-start:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\support\support.html"*/'<!-- -->\n<ion-header>\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <ion-grid>\n        <ion-row>\n          <ion-col col-2>\n            <div class="logoHeader"></div>\n          </ion-col>\n          <ion-col col-4>\n            <strong>Support</strong>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-title>\n    <!--<ion-buttons end>\n      <button ion-button tappable (click)="presentNotifications($event)">\n        <ion-icon name="notifications"></ion-icon>\n      </button>\n      <button ion-button tappable (click)="goToAccount()">\n        <ion-icon name="cog"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="animated fadeIn common-bg">\n  <!--description-->\n  <div class="border-bottom" padding>\n    <span ion-text color="secondary" class="bold headingSection2">Support</span>\n  </div>\n  <div padding class="light-bg">\n    <button ion-button icon-left full color="email" menuClose (click)="sendMail()">\n      <ion-icon name="mail"></ion-icon>\n      Email\n    </button>\n    <button class="marginT-16px" ion-button icon-left full color="instagram" menuClose (click)="makeCall()">\n      <ion-icon name="call"></ion-icon>\n      Call\n    </button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\support\support.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_call_number__["a" /* CallNumber */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__["a" /* SocialSharing */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Platform */]])
+    ], SupportPage);
+    return SupportPage;
+}());
+
+//# sourceMappingURL=support.js.map
+
+/***/ }),
+
+/***/ 556:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TripsPage; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(25);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_trip_service__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_firebase__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_firebase__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+/**
+ * Generated class for the TripsPage page.
+ *
+ * See https://ionicframework.com/docs/components/#navigation for more info on
+ * Ionic pages and navigation.
+ */
+var TripsPage = (function () {
+    function TripsPage(nav, authService, navParams, alertCtrl, toastCtrl, loadingCtrl, platform, tripService, translate) {
+        var _this = this;
+        this.nav = nav;
+        this.authService = authService;
+        this.navParams = navParams;
+        this.alertCtrl = alertCtrl;
+        this.toastCtrl = toastCtrl;
+        this.loadingCtrl = loadingCtrl;
+        this.platform = platform;
+        this.tripService = tripService;
+        this.translate = translate;
+        this.tripCount = 0;
+        this.totalSpent = 0;
+        this.tabs = 'profile';
+        var userx = navParams.get('user');
+        this.authService.getUser(userx.uid).take(1).subscribe(function (snapshot) {
+            snapshot.uid = snapshot.$key;
+            _this.user = snapshot;
+            _this.user.isEmailVerified = __WEBPACK_IMPORTED_MODULE_5_firebase__["auth"]().currentUser.emailVerified;
+            console.log(_this.user);
+            _this.getTrips();
+        });
+    }
+    TripsPage.prototype.ionViewDidLoad = function () {
+        console.log('ionViewDidLoad TripsPage');
+    };
+    TripsPage.prototype.getTrips = function () {
+        var _this = this;
+        var loading = this.loadingCtrl.create({ content: 'Please wait...' });
+        loading.present();
+        this.tripService.getTrips().take(1).subscribe(function (snapshot) {
+            _this.trips = snapshot.reverse();
+            loading.dismiss();
+        });
+    };
+    TripsPage = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'page-trips',template:/*ion-inline-start:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\trips\trips.html"*/'<!-- -->\n<ion-header>\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <ion-grid>\n        <ion-row>\n          <ion-col col-2>\n            <div class="logoHeader"></div>\n          </ion-col>\n          <ion-col col-4>\n            <strong>Recent Trips</strong>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-title>\n    <!--<ion-buttons end>\n      <button ion-button tappable (click)="presentNotifications($event)">\n        <ion-icon name="notifications"></ion-icon>\n      </button>\n      <button ion-button tappable (click)="goToAccount()">\n        <ion-icon name="cog"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <!-- HISTORY Section -->\n  <div padding>\n    <ion-card *ngFor="let trip of trips">\n      <ion-card-content>\n        <p>{{ trip.$key }}</p>\n        <ion-row>\n          <ion-col>\n            <b style="text-align:center">{{\'FROM\' | translate}}</b>\n            <p>{{ trip.origin.vicinity }}\n              <br/>\n              <ion-note>{{ trip.pickedUpAt | amDateFormat: \'YYYY-MM-DD HH:mm\'}}</ion-note>\n            </p>\n          </ion-col>\n          <ion-col>\n            <b style="text-align:center">{{\'TO\' | translate}}</b>\n            <p>{{ trip.destination.vicinity }}\n              <br/>\n              <ion-note>{{ trip.droppedOffAt | amDateFormat: \'YYYY-MM-DD HH:mm\'}}</ion-note>\n            </p>\n          </ion-col>\n        </ion-row>\n        <p>{{\'PAYMENT_MODE\' | translate}}: {{ trip.paymentMethod }}</p>\n        <p>{{\'FEE\' | translate}}: {{trip.currency}} {{trip.fee}} </p>\n          \n      </ion-card-content>\n    </ion-card>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\trips\trips.html"*/,
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* LoadingController */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Platform */], __WEBPACK_IMPORTED_MODULE_3__services_trip_service__["a" /* TripService */],
+            __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */]])
+    ], TripsPage);
+    return TripsPage;
+}());
+
+//# sourceMappingURL=trips.js.map
+
+/***/ }),
+
+/***/ 557:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PaymentPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__updatecard_updatecard__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__updatecard_updatecard__ = __webpack_require__(357);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_auth_service__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_trip_service__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ngx_translate_core__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__providers_user_user__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -4427,297 +4817,6 @@ var PaymentPage = (function () {
 
 /***/ }),
 
-/***/ 555:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SharePage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__ = __webpack_require__(170);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-/**
- * Generated class for the SharePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var SharePage = (function () {
-    function SharePage(navCtrl, navParams, socialSharing, platform) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.socialSharing = socialSharing;
-        this.platform = platform;
-        this.subject = 'Message from Social Sharing App';
-        this.message = 'Take your app development skills to the next level with Mastering Ionic - the definitive guide';
-        this.image = 'http://masteringionic2.com/perch/resources/mastering-ionic-2-cover-1-w320.png';
-        this.uri = 'http://masteringionic2.com/products/product-detail/s/mastering-ionic-2-e-book';
-    }
-    SharePage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad SharePage');
-    };
-    SharePage.prototype.shareViaEmail = function () {
-        var _this = this;
-        this.platform.ready()
-            .then(function () {
-            _this.socialSharing.canShareViaEmail()
-                .then(function () {
-                _this.socialSharing.shareViaEmail(_this.message, _this.subject, _this.sendTo)
-                    .then(function (data) {
-                    console.log('Shared via Email');
-                })
-                    .catch(function (err) {
-                    console.log('Not able to be shared via Email');
-                });
-            })
-                .catch(function (err) {
-                console.log('Sharing via Email NOT enabled');
-            });
-        });
-    };
-    SharePage.prototype.shareViaFacebook = function () {
-        var _this = this;
-        this.platform.ready()
-            .then(function () {
-            _this.socialSharing.canShareVia('com.apple.social.facebook', _this.message, _this.image, _this.uri)
-                .then(function (data) {
-                _this.socialSharing.shareViaFacebook(_this.message, _this.image, _this.uri)
-                    .then(function (data) {
-                    console.log('Shared via Facebook');
-                })
-                    .catch(function (err) {
-                    console.log('Was not shared via Facebook');
-                });
-            })
-                .catch(function (err) {
-                console.log('Not able to be shared via Facebook');
-            });
-        });
-    };
-    SharePage.prototype.shareViaInstagram = function () {
-        var _this = this;
-        this.platform.ready()
-            .then(function () {
-            _this.socialSharing.shareViaInstagram(_this.message, _this.image)
-                .then(function (data) {
-                console.log('Shared via shareViaInstagram');
-            })
-                .catch(function (err) {
-                console.log('Was not shared via Instagram');
-            });
-        });
-    };
-    SharePage.prototype.shareViaTwitter = function () {
-        var _this = this;
-        this.platform.ready()
-            .then(function () {
-            _this.socialSharing.canShareVia('com.apple.social.twitter', _this.message, _this.image, _this.uri)
-                .then(function (data) {
-                _this.socialSharing.shareViaTwitter(_this.message, _this.image, _this.uri)
-                    .then(function (data) {
-                    console.log('Shared via Twitter');
-                })
-                    .catch(function (err) {
-                    console.log('Was not shared via Twitter');
-                });
-            });
-        })
-            .catch(function (err) {
-            console.log('Not able to be shared via Twitter');
-        });
-    };
-    SharePage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-share',template:/*ion-inline-start:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\share\share.html"*/'<!-- -->\n<ion-header>\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <ion-grid>\n        <ion-row>\n          <ion-col col-2>\n            <div class="logoHeader"></div>\n          </ion-col>\n          <ion-col col-4>\n            <strong>Share</strong>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-title>\n    <!--<ion-buttons end>\n      <button ion-button tappable (click)="presentNotifications($event)">\n        <ion-icon name="notifications"></ion-icon>\n      </button>\n      <button ion-button tappable (click)="goToAccount()">\n        <ion-icon name="cog"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="animated fadeIn common-bg">\n  <ion-list>\n    <ion-item-group class="group">\n       <ion-item-divider color="dark">Share through social media</ion-item-divider>\n       <ion-item>\n          <button\n             class="button"\n             ion-button\n             icon-right\n             block\n             padding-vertical\n             color="facebook"\n             (click)="shareViaFacebook()">\n                Share this via Facebook\n                <ion-icon ios="logo-facebook" md="logo-facebook"></ion-icon>\n          </button>\n       </ion-item>\n\n\n       <ion-item>\n          <button\n             class="button"\n             ion-button\n             icon-right\n             block\n             padding-vertical\n             color="instagram"\n             (click)="shareViaInstagram()">\n                Share this via Instagram\n                <ion-icon ios="logo-instagram" md="logo-instagram"></ion-icon>\n          </button>\n       </ion-item>\n\n\n       <ion-item>\n          <button\n             class="button"\n             ion-button\n             icon-right\n             block\n             padding-vertical\n             color="twitter"\n             (click)="shareViaTwitter()">\n                Share this via Twitter\n                <ion-icon ios="logo-twitter" md="logo-twitter"></ion-icon>\n          </button>\n       </ion-item>\n    </ion-item-group>\n\n\n\n    <ion-item-group class="group">\n       <ion-item-divider color="dark">Share via e-mail</ion-item-divider>\n       <ion-item>\n          <ion-label block>To: </ion-label>\n          <ion-input\n             block\n             type="text"\n             placeholder="E-mail address..."\n             [(ngModel)]="sendTo"></ion-input>\n       </ion-item>\n\n\n\n       <ion-item>\n          <button\n             class="button"\n             ion-button\n             icon-right\n             block\n             padding-vertical\n             color="email"\n             (click)="shareViaEmail()">\n                Share this via Email\n                <ion-icon ios="ios-mail" md="md-mail"></ion-icon>\n          </button>\n       </ion-item>\n    </ion-item-group>\n\n </ion-list>\n</ion-content>\n'/*ion-inline-end:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\share\share.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_social_sharing__["a" /* SocialSharing */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Platform */]])
-    ], SharePage);
-    return SharePage;
-}());
-
-//# sourceMappingURL=share.js.map
-
-/***/ }),
-
-/***/ 556:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SupportPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_call_number__ = __webpack_require__(356);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__ = __webpack_require__(170);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-/**
- * Generated class for the SupportPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var SupportPage = (function () {
-    function SupportPage(navCtrl, navParams, callNumber, socialSharing, platform) {
-        this.navCtrl = navCtrl;
-        this.navParams = navParams;
-        this.callNumber = callNumber;
-        this.socialSharing = socialSharing;
-        this.platform = platform;
-        this.sendTo = '';
-        this.subject = '';
-        this.message = '';
-    }
-    SupportPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad SupportPage');
-    };
-    SupportPage.prototype.sendMail = function () {
-        var _this = this;
-        this.platform.ready()
-            .then(function () {
-            _this.socialSharing.canShareViaEmail()
-                .then(function () {
-                _this.socialSharing.shareViaEmail(_this.message, _this.subject, _this.sendTo)
-                    .then(function (data) {
-                    console.log('Shared via Email');
-                })
-                    .catch(function (err) {
-                    console.log('Not able to be shared via Email');
-                });
-            })
-                .catch(function (err) {
-                console.log('Sharing via Email NOT enabled');
-            });
-        });
-    };
-    SupportPage.prototype.makeCall = function () {
-        this.callNumber.callNumber("18001010101", true)
-            .then(function (res) { return console.log('Launched dialer!', res); })
-            .catch(function (err) { return console.log('Error launching dialer', err); });
-    };
-    SupportPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-support',template:/*ion-inline-start:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\support\support.html"*/'<!-- -->\n<ion-header>\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <ion-grid>\n        <ion-row>\n          <ion-col col-2>\n            <div class="logoHeader"></div>\n          </ion-col>\n          <ion-col col-4>\n            <strong>Support</strong>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-title>\n    <!--<ion-buttons end>\n      <button ion-button tappable (click)="presentNotifications($event)">\n        <ion-icon name="notifications"></ion-icon>\n      </button>\n      <button ion-button tappable (click)="goToAccount()">\n        <ion-icon name="cog"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="animated fadeIn common-bg">\n  <!--description-->\n  <div class="border-bottom" padding>\n    <span ion-text color="secondary" class="bold headingSection2">Support</span>\n  </div>\n  <div padding class="light-bg">\n    <button ion-button icon-left full color="email" menuClose (click)="sendMail()">\n      <ion-icon name="mail"></ion-icon>\n      Email\n    </button>\n    <button class="marginT-16px" ion-button icon-left full color="instagram" menuClose (click)="makeCall()">\n      <ion-icon name="call"></ion-icon>\n      Call\n    </button>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\support\support.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_call_number__["a" /* CallNumber */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_social_sharing__["a" /* SocialSharing */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Platform */]])
-    ], SupportPage);
-    return SupportPage;
-}());
-
-//# sourceMappingURL=support.js.map
-
-/***/ }),
-
-/***/ 557:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TripsPage; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_trip_service__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_firebase__ = __webpack_require__(357);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_firebase__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__ = __webpack_require__(41);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_rxjs_add_operator_map__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-
-/**
- * Generated class for the TripsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-var TripsPage = (function () {
-    function TripsPage(nav, authService, navParams, alertCtrl, toastCtrl, loadingCtrl, platform, tripService, translate) {
-        var _this = this;
-        this.nav = nav;
-        this.authService = authService;
-        this.navParams = navParams;
-        this.alertCtrl = alertCtrl;
-        this.toastCtrl = toastCtrl;
-        this.loadingCtrl = loadingCtrl;
-        this.platform = platform;
-        this.tripService = tripService;
-        this.translate = translate;
-        this.tripCount = 0;
-        this.totalSpent = 0;
-        this.tabs = 'profile';
-        var userx = navParams.get('user');
-        this.authService.getUser(userx.uid).take(1).subscribe(function (snapshot) {
-            snapshot.uid = snapshot.$key;
-            _this.user = snapshot;
-            _this.user.isEmailVerified = __WEBPACK_IMPORTED_MODULE_5_firebase__["auth"]().currentUser.emailVerified;
-            console.log(_this.user);
-            _this.getTrips();
-        });
-    }
-    TripsPage.prototype.ionViewDidLoad = function () {
-        console.log('ionViewDidLoad TripsPage');
-    };
-    TripsPage.prototype.getTrips = function () {
-        var _this = this;
-        var loading = this.loadingCtrl.create({ content: 'Please wait...' });
-        loading.present();
-        this.tripService.getTrips().take(1).subscribe(function (snapshot) {
-            _this.trips = snapshot.reverse();
-            loading.dismiss();
-        });
-    };
-    TripsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-            selector: 'page-trips',template:/*ion-inline-start:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\trips\trips.html"*/'<!-- -->\n<ion-header>\n  <ion-navbar color="primary">\n    <button ion-button menuToggle>\n      <ion-icon name="menu"></ion-icon>\n    </button>\n    <ion-title>\n      <ion-grid>\n        <ion-row>\n          <ion-col col-2>\n            <div class="logoHeader"></div>\n          </ion-col>\n          <ion-col col-4>\n            <strong>Recent Trips</strong>\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-title>\n    <!--<ion-buttons end>\n      <button ion-button tappable (click)="presentNotifications($event)">\n        <ion-icon name="notifications"></ion-icon>\n      </button>\n      <button ion-button tappable (click)="goToAccount()">\n        <ion-icon name="cog"></ion-icon>\n      </button>\n    </ion-buttons> -->\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding class="animated fadeIn common-bg">\n\n  <!-- HISTORY Section -->\n  <div padding>\n    <ion-card *ngFor="let trip of trips">\n      <ion-card-content>\n        <p>{{ trip.$key }}</p>\n        <ion-row>\n          <ion-col>\n            <b style="text-align:center">{{\'FROM\' | translate}}</b>\n            <p>{{ trip.origin.vicinity }}\n              <br/>\n              <ion-note>{{ trip.pickedUpAt | amDateFormat: \'YYYY-MM-DD HH:mm\'}}</ion-note>\n            </p>\n          </ion-col>\n          <ion-col>\n            <b style="text-align:center">{{\'TO\' | translate}}</b>\n            <p>{{ trip.destination.vicinity }}\n              <br/>\n              <ion-note>{{ trip.droppedOffAt | amDateFormat: \'YYYY-MM-DD HH:mm\'}}</ion-note>\n            </p>\n          </ion-col>\n        </ion-row>\n        <p>{{\'PAYMENT_MODE\' | translate}}: {{ trip.paymentMethod }}</p>\n        <p>{{\'FEE\' | translate}}: {{trip.currency}} {{trip.fee}} </p>\n          \n      </ion-card-content>\n    </ion-card>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"C:\Users\sb_08\Desktop\Waqar Project\snaprepair-master\src\pages\trips\trips.html"*/,
-        }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["r" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["s" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["b" /* AlertController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["v" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["p" /* LoadingController */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["u" /* Platform */], __WEBPACK_IMPORTED_MODULE_3__services_trip_service__["a" /* TripService */],
-            __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__["c" /* TranslateService */]])
-    ], TripsPage);
-    return TripsPage;
-}());
-
-//# sourceMappingURL=trips.js.map
-
-/***/ }),
-
 /***/ 558:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4747,13 +4846,13 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_splash_screen__ = __webpack_require__(399);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__angular_http__ = __webpack_require__(410);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_native_geolocation__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(270);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_storage__ = __webpack_require__(264);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_local_notifications__ = __webpack_require__(31);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__ionic_native_background_mode__ = __webpack_require__(400);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ionic_image_loader__ = __webpack_require__(886);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_angularfire2__ = __webpack_require__(888);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_angularfire2_database__ = __webpack_require__(102);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_angularfire2_auth__ = __webpack_require__(269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_angularfire2_auth__ = __webpack_require__(263);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_angular2_moment__ = __webpack_require__(889);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_angular2_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__services_driver_service__ = __webpack_require__(196);
@@ -4779,27 +4878,27 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_36__pages_tracking_tracking__ = __webpack_require__(118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_37__pages_map_map__ = __webpack_require__(549);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_38__pages_user_user__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pages_payment_payment__ = __webpack_require__(554);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_trips_trips__ = __webpack_require__(557);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pages_support_support__ = __webpack_require__(556);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pages_share_share__ = __webpack_require__(555);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__pages_commission_commission__ = __webpack_require__(553);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__pages_about_about__ = __webpack_require__(552);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_39__pages_payment_payment__ = __webpack_require__(557);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_40__pages_trips_trips__ = __webpack_require__(556);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_41__pages_support_support__ = __webpack_require__(555);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_42__pages_share_share__ = __webpack_require__(554);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_43__pages_commission_commission__ = __webpack_require__(552);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_44__pages_about_about__ = __webpack_require__(553);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_45__pages_welcome_welcome__ = __webpack_require__(409);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_46__pages_confirmation_confirmation__ = __webpack_require__(895);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_47__pages_modal_modal__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_48__pages_modal_user_modal_user__ = __webpack_require__(405);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__ionic_native_call_number__ = __webpack_require__(356);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_49__ionic_native_call_number__ = __webpack_require__(355);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_50__ionic_native_social_sharing__ = __webpack_require__(170);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_51_ionic_img_viewer__ = __webpack_require__(896);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_52__ionic_native_image_picker__ = __webpack_require__(114);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_53__ionic_native_crop__ = __webpack_require__(115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_54__ionic_native_camera__ = __webpack_require__(408);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__angular_common_http__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_55__angular_common_http__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_56__ngx_translate_core__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_57__ngx_translate_http_loader__ = __webpack_require__(903);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_58__providers_user_user__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__pages_updatecard_updatecard__ = __webpack_require__(355);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_59__pages_updatecard_updatecard__ = __webpack_require__(357);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -4942,15 +5041,15 @@ var AppModule = (function () {
                     mode: 'md'
                 }, {
                     links: [
-                        { loadChildren: '../pages/about/about.module#AboutPageModule', name: 'AboutPage', segment: 'about', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/commission/commission.module#CommissionPageModule', name: 'CommissionPage', segment: 'commission', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/about/about.module#AboutPageModule', name: 'AboutPage', segment: 'about', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/modal-rating/modal-rating.module#ModalRatingPageModule', name: 'ModalRatingPage', segment: 'modal-rating', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modal-final-fare/modal-final-fare.module#ModalFinalFarePageModule', name: 'ModalFinalFarePage', segment: 'modal-final-fare', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/modal-notification/modal-notification.module#ModalNotificationPageModule', name: 'ModalNotificationPage', segment: 'modal-notification', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/modal-rating/modal-rating.module#ModalRatingPageModule', name: 'ModalRatingPage', segment: 'modal-rating', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/payment/payment.module#PaymentPageModule', name: 'PaymentPage', segment: 'payment', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/share/share.module#SharePageModule', name: 'SharePage', segment: 'share', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/support/support.module#SupportPageModule', name: 'SupportPage', segment: 'support', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/trips/trips.module#TripsPageModule', name: 'TripsPage', segment: 'trips', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/trips/trips.module#TripsPageModule', name: 'TripsPage', segment: 'trips', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/payment/payment.module#PaymentPageModule', name: 'PaymentPage', segment: 'payment', priority: 'low', defaultHistory: [] }
                     ]
                 })
             ],
@@ -5015,7 +5114,7 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 597:
+/***/ 592:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5202,9 +5301,9 @@ var ModalPage = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Offers; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_common_http__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -5308,6 +5407,28 @@ var Offers = (function () {
             });
         });
     };
+    Offers.prototype.charge_accepted_Offer = function (offerID, token, email, price, isCancelled) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.get(_this.apiUrl + '/offer.php?action=charge_accepted_Offer&offerID=' + offerID + '&token=' + token + '&email=' + email + '&price=' + price + '&isCancelled=' + isCancelled)
+                .subscribe(function (res) {
+                resolve(res);
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
+    Offers.prototype.cancel_Request = function (offerID, isCancelled) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            _this.http.get(_this.apiUrl + '/offer.php?action=cancel_Request&offerID=' + offerID + '&isCancelled=' + isCancelled)
+                .subscribe(function (res) {
+                resolve(res);
+            }, function (err) {
+                reject(err);
+            });
+        });
+    };
     Offers.prototype.get_Request_Images = function (reqID) {
         var _this = this;
         return new Promise(function (resolve, reject) {
@@ -5354,7 +5475,7 @@ var Offers = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__(410);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__constants__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__ = __webpack_require__(42);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;

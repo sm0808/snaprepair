@@ -56753,6 +56753,10 @@ page-trip-detail .booking-form .form-bottom .pull-right,
 }
 
 page-admin-accepted-offers .badge_Margin {
+  margin-top: 2px;
+}
+
+page-admin-accepted-offers .badge_Select {
   margin-top: -3px;
 }
 

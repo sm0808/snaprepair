@@ -94,6 +94,28 @@ export class Offers {
     });
   }
 
+  charge_accepted_Offer(offerID, token, email, price, isCancelled) {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.apiUrl+'/offer.php?action=charge_accepted_Offer&offerID='+offerID+'&token='+token+'&email='+email+'&price='+price+'&isCancelled='+isCancelled)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
+  cancel_Request(offerID, isCancelled) {
+    return new Promise((resolve, reject) => {
+      this.http.get(this.apiUrl+'/offer.php?action=cancel_Request&offerID='+offerID+'&isCancelled='+isCancelled)
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
+
   get_Request_Images(reqID) {
     return new Promise((resolve, reject) => {
       this.http.get(this.apiUrl+'/request.php?action=get_Request_Images&reqID='+reqID)

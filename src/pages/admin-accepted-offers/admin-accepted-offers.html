@@ -59,15 +59,23 @@
                       View Details
                     </button>
                 </ion-col>
-                <ion-col text-center align-self-center col-6 class="badge_Margin">
-                    <ion-select [(ngModel)]="offer.accept_status" class="selectStyle" (ionChange)="updateAcceptStatus(offer.offerId, $event)">
+                <ion-col text-center align-self-center col-6>
+                    <ion-select [(ngModel)]="offer.accept_status" *ngIf="offer.isComplete != '1' &&  offer.isCancelled != '1'" class="selectStyle badge_Select" (ionChange)="updateAcceptStatus(offer.offerId, $event)">
                         <ion-option value="Processing">Processing</ion-option>
                         <ion-option value="In Transit">In Transit</ion-option>
                         <ion-option value="Delivered">Delivered</ion-option>
                     </ion-select>
 
+                    <ion-badge color="facebook" *ngIf="offer.accept_status == 'Processing' && offer.isCancelled == '1'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>
+                    <ion-badge color="secondary" *ngIf="offer.accept_status == 'In Transit' && offer.isCancelled == '1'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>
+                    <ion-badge color="primary" *ngIf="offer.accept_status == 'Delivered' && offer.isComplete == '1' &&  offer.isCancelled != '1'" class="badge_Margin">{{ offer.accept_status }}</ion-badge>
+                    <ion-badge color="primary" *ngIf="offer.isComplete == '1' &&  offer.isCancelled != '1'" class="badge_Margin">Paid</ion-badge>
+                    <ion-badge color="danger" *ngIf="offer.isCancelled == '1'" class="badge_Margin">Request Cancelled</ion-badge>
                     <!-- <ion-badge [hidden]="offer.status != 1" color="secondary">Offer Accepted</ion-badge>
                     <ion-badge [hidden]="offer.status != 0" color="danger">Offer Not Accepted</ion-badge> -->
+                </ion-col>
+                <ion-col col-6 text-center>
+
                 </ion-col>
             </ion-row>
         </ion-card>
