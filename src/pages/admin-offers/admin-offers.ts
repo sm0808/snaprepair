@@ -21,7 +21,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AdminOffersPage {
 
-  public offers            : any;
+  public offers            : any = [];
   public user              : any;
   public USER_IMG_URL      : any = USER_IMG_URL;
   public loading           : any;

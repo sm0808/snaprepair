@@ -23,6 +23,10 @@
 
 <ion-content class="cards-bg social-cards">
 
+    <ion-card padding text-center *ngIf="requests.length == 0">
+        <ion-note style="font-size: 1.5rem;">No Recent Request by Any User Yet</ion-note>
+    </ion-card>
+
     <ion-card *ngFor="let i = index; let request of requests" id="card-{{request.requestId}}">
 
         <ion-item>

@@ -147,8 +147,8 @@ export class MyApp {
     else {
       console.log("is Not Admin");
       this.appMenuItems = [
-        { title: 'Make Requests', component: UserMakeRequestPage, icon: 'logo-buffer'},
         { title: 'Recent Requests', component: UserRequestsPage, icon: 'ios-list-outline'},
+        { title: 'Make Requests', component: UserMakeRequestPage, icon: 'logo-buffer'},
         { title: 'Accepted Offers', component: UserOffersPage, icon: 'ios-pricetag-outline'},
         // { title: 'Accepted Offers', component: AdminAcceptedOffersPage, icon: 'ios-checkmark-circle-outline'},
         // { title: 'Mannage Zips', component: ZipsPage, icon: 'ios-navigate-outline'},

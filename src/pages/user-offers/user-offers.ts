@@ -24,7 +24,7 @@ declare var StripeCheckout: any;
 })
 export class UserOffersPage {
 
-  public offers            : any;
+  public offers            : any = [];
   public user              : any;
   public USER_IMG_URL      : any = USER_IMG_URL;
   public loading           : any;
@@ -37,6 +37,8 @@ export class UserOffersPage {
     public toastCtrl: ToastController, public navParams: NavParams,
     public localNotifications: LocalNotifications, public modalCtrl: ModalController,
     public offerService: Offers) {
+
+      console.log("StripeCheckout: ",StripeCheckout);
 
       this.user = JSON.parse(localStorage.getItem('userData'));
       this.showLoading('Getting Recent Offers');
@@ -184,7 +186,8 @@ export class UserOffersPage {
 
         var handler = StripeCheckout.configure({
           key: 'pk_test_lc3DMraJHlJtQLWNNvnXjPvA',
-          image: './assets/img/icon/logo.png',
+          // image: '../assets/img/icon/logo.png',
+          image: 'https://snaprepair1.com/SnapRepair_App/images/logo.png',
           locale: 'auto',
           email:  offer['email'],
           opened: function() {
@@ -197,14 +200,14 @@ export class UserOffersPage {
             self.stripePayment_To_Server(offerID, token.id, offer['email'], price, isCancelled);
           },
         });
-    
+
         // Open Checkout with further options:
         handler.open({
           name: 'SnapRepair',
           description: desc,
           amount: price + '00'
         });
-        
+
         // Close Checkout on page navigation:
         window.addEventListener('popstate', function() {
           handler.close();
@@ -212,14 +215,14 @@ export class UserOffersPage {
 
         break;
       }
-    } 
+    }
   }
 
   stripePayment_To_Server(offerID, token, email, price, isCancelled) {
     this.showLoading('Confirming Payment');
     this.offerService.charge_accepted_Offer(offerID, token, email, price, isCancelled).then((result) => {
       console.log("result: ",result);
-      
+
       if(result) {
         for (let i = 0; i < this.offers.length; i++) {
           if (offerID == this.offers[i]['offerId']) {
@@ -234,14 +237,14 @@ export class UserOffersPage {
     }, (err) => {
       this.hideLoading();
       console.log(err);
-    });    
+    });
   }
 
   cancel_Request(offerID, isCancelled) {
     this.showLoading('Cancelling Request');
     this.offerService.cancel_Request(offerID, isCancelled).then((result) => {
       console.log("result: ",result);
-      
+
       if(result) {
         for (let i = 0; i < this.offers.length; i++) {
           if (offerID == this.offers[i]['offerId']) {
@@ -255,7 +258,7 @@ export class UserOffersPage {
     }, (err) => {
       this.hideLoading();
       console.log(err);
-    });    
+    });
   }
 
   // Push Notification

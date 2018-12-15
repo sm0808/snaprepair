@@ -29,7 +29,7 @@ declare var $: any;
 export class HomePage {
 
   // Intialize all Variables
-  public requests          : any;
+  public requests          : any = [];
   public user              : any;
   public USER_IMG_URL      : any = USER_IMG_URL;
   public loading           : any;

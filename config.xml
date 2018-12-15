@@ -124,5 +124,6 @@
     <allow-navigation href="http://192.168.42.66:8100" />
     <allow-navigation href="http://192.168.43.159:8101" />
     <allow-navigation href="http://192.168.10.8:8101" />
+    <allow-navigation href="http://192.168.10.5:8101" />
     <engine name="android" spec="7.1.4" />
 </widget>

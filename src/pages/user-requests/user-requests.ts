@@ -3,6 +3,7 @@ import { NavController, Platform, AlertController, LoadingController, ToastContr
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocalNotifications } from '@ionic-native/local-notifications';
 import { ModalUserPage } from '../modal-user/modal-user';
+import { UserMakeRequestPage } from '../user-make-request/user-make-request';
 import { API_URL, IMG_URL, USER_IMG_URL } from "../../services/constants";
 
 import 'rxjs/Rx'
@@ -34,7 +35,7 @@ declare var $: any;
 export class UserRequestsPage {
 
   // Intialize all Variables
-  public requests          : any;
+  public requests          : any = [];
   public user              : any;
   public USER_IMG_URL      : any = USER_IMG_URL;
   public loading           : any;
@@ -74,6 +75,10 @@ export class UserRequestsPage {
 
   ionViewWillLeave() {
 
+  }
+
+  openMakeRequestPage() {
+    this.nav.setRoot(UserMakeRequestPage);
   }
 
   deleteRequest(reqID) {
@@ -157,7 +162,7 @@ export class UserRequestsPage {
         console.log(err);
       });
 
-      
+
   }
 
   // Show note popup when click to 'Submit Offer'

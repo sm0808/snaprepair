@@ -41,7 +41,7 @@ export class UserMakeRequestPage {
               public localNotifications: LocalNotifications) {
 
                 this.showLoading('Getting Data');
-                // Get Data 
+                // Get Data
                 this.requestService.get_user_make_req_data().then((result) => {
                   console.log('result: ',result);
                   this.hideLoading();
@@ -53,15 +53,12 @@ export class UserMakeRequestPage {
                 });
   }
 
-  // private transfer: Transfer, 
-  // private filePath: FilePath,
-   
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserMakeRequestPage');
   }
 
   openImagePicker() {
-    if(this.photos.length >= 5) 
+    if(this.photos.length >= 5)
       this.alertCtrl.create({ subTitle:'5 images per Request are Allowed!', buttons: ['ok']}).present();
     else {
       let count = 5 - this.photos.length;
@@ -75,26 +72,25 @@ export class UserMakeRequestPage {
         });
       }, (err) => { console.log(err) });
     }
-    
   }
 
   takePicture_Simple() {
-    if(this.photos.length >= 5) 
+    if(this.photos.length >= 5)
       this.alertCtrl.create({ subTitle:'5 images per Request are Allowed!', buttons: ['ok']}).present();
     else {
       let options = {
         quality: 50,
         correctOrientation: true
       };
-  
+
       this.camera.getPicture(options)
       .then((data) => {
         this.cropService
-        .crop(data, {quality: 70})
+        .crop(data, {quality: 65})
         .then((newImage) => {
-          
+
           this.pushToImages(newImage);
-          
+
         }, error => console.error("Error cropping image", error));
       }, function(error) {
         console.log(error);
@@ -105,7 +101,7 @@ export class UserMakeRequestPage {
   reduceImages(selected_pictures: any) : any {
     return selected_pictures.reduce((promise:any, item:any) => {
       return promise.then((result) => {
-        return this.cropService.crop(item, {quality: 90})
+        return this.cropService.crop(item, {quality: 75})
         .then((cropped_image) => {
           console.log('all images cropped!!', cropped_image);
           this.pushToImages(cropped_image);
@@ -140,7 +136,7 @@ export class UserMakeRequestPage {
           // this.photosBase64.push(res);
           this.photosBase64.splice(0, 0, res);
           console.log("this.photosBase64 pathToBase64: ",this.photosBase64);
-          
+
           // console.log("this.photosBase64: ",this.photosBase64);
           // this.photos.splice(0, 0, res);
           // this.set_slidesPerView();
@@ -183,7 +179,7 @@ export class UserMakeRequestPage {
       console.log("this.photosBase64 sendRequest: ",this.photosBase64);
       console.log("this.request_m: ",this.request_m);
 
-      // Send Request 
+      // Send Request
       this.requestService.sendRequest(this.request_m).then((result) => {
         console.log('result: ',result);
         this.hideLoading();
@@ -199,7 +195,7 @@ export class UserMakeRequestPage {
 
     }
   }
-  
+
 
   showAlert(title, mesasge) {
     let alert = this.alertCtrl.create({

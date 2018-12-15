@@ -30,6 +30,10 @@
 
 <ion-content>
 
+    <ion-card padding text-center *ngIf="offers.length == 0">
+        <ion-note style="font-size: 1.5rem;">No Accepted Offers Yet</ion-note>
+    </ion-card>
+
     <div *ngFor="let offer of offers">
         <ion-card *ngIf="offer.status == 1" id="card-{{offer.offerId}}">
             <ion-item>
