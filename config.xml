@@ -3,7 +3,7 @@
     <name>SnapRepair</name>
     <description>SnapRepair App</description>
     <author email="sb_0808@yahoo.com" href="http://invictuszone.com/">Shoaib</author>
-    <content original-src="index.html" src="http://192.168.43.159:8101" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-navigation href="http://ionic.local/*" />
     <allow-intent href="http://*/*" />

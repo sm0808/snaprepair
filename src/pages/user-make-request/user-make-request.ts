@@ -9,7 +9,7 @@ import { File } from '@ionic-native/file';
 
 import { UserRequestsPage } from '../user-requests/user-requests';
 import { Requests } from "../../services/requests";
-var cordova: any;
+declare var cordova: any;
 /**
  * Generated class for the UserMakeRequestPage page.
  *
@@ -83,14 +83,14 @@ export class UserMakeRequestPage {
       this.alertCtrl.create({ subTitle:'5 images per Request are Allowed!', buttons: ['ok']}).present();
     else {
       let options = {
-        quality: 100,
+        quality: 50,
         correctOrientation: true
       };
   
       this.camera.getPicture(options)
       .then((data) => {
         this.cropService
-        .crop(data, {quality: 90})
+        .crop(data, {quality: 70})
         .then((newImage) => {
           
           this.pushToImages(newImage);
@@ -117,26 +117,40 @@ export class UserMakeRequestPage {
   pushToImages(path) {
     // this.photos.push(path);
     this.photos.splice(0, 0, path);
-    this.set_slidesPerView();
     this.pathToBase64(path);
+    this.set_slidesPerView();
   }
 
   pathToBase64(res) {
       let path : string = res.toString();
+      console.log("path pathToBase64: ",path);
       try {
         let n = path.lastIndexOf("/");
+        console.log("n : ",n);
         let x = path.lastIndexOf("g");
+        console.log("x : ",x);
         let nameFile = path.substring(n+1, x+1);
+        console.log("nameFile : ",nameFile);
         let directory = path.substring(0, n);
-        this.file.readAsDataURL(directory.toString(), nameFile).then((res) => {
+        console.log("directory : ",directory);
+        console.log("this.file : ",this.file);
+        console.log("cordova.file.externalCacheDirectory : ",cordova.file.externalCacheDirectory);
+        this.file.readAsDataURL(cordova.file.externalCacheDirectory, nameFile).then((res) => {
+          // this.file.readAsDataURL(directory.toString(), nameFile).then((res) => {
           // this.photosBase64.push(res);
-          this.photosBase64.splice(0, 0, path);
+          this.photosBase64.splice(0, 0, res);
+          console.log("this.photosBase64 pathToBase64: ",this.photosBase64);
+          
           // console.log("this.photosBase64: ",this.photosBase64);
           // this.photos.splice(0, 0, res);
           // this.set_slidesPerView();
-        }).catch(err => alert('error pathToBase64 ' + JSON.stringify(err)));
+        }).catch(err => {
+          alert('error pathToBase64 ' + JSON.stringify(err));
+          console.log('error pathToBase64 ', JSON.stringify(err));
+        });
       } catch(error) {
          alert(error);
+         console.log("error pathToBase64: ",error);
       }
   }
 
@@ -166,7 +180,7 @@ export class UserMakeRequestPage {
       this.request_m['userId'] = user['userId'];
       this.request_m['img']    = this.photosBase64;
 
-      console.log("this.photosBase64 Main: ",this.photosBase64);
+      console.log("this.photosBase64 sendRequest: ",this.photosBase64);
       console.log("this.request_m: ",this.request_m);
 
       // Send Request 
