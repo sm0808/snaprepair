@@ -64,6 +64,7 @@ import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Crop } from '@ionic-native/crop';
 import { Camera } from '@ionic-native/camera';
+import { ImageResizer } from '@ionic-native/image-resizer';
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -191,6 +192,7 @@ export const firebaseConfig = {
     ImagePicker,
 		Crop,
     Camera,
+    ImageResizer, 
     { provide: ErrorHandler, useClass: IonicErrorHandler},
     UserProvider
   ]

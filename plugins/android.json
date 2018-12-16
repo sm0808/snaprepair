@@ -53,6 +53,9 @@
     },
     "cordova-plugin-telerik-imagepicker": {
       "PACKAGE_NAME": "com.snaprepair1.app1"
+    },
+    "info.protonet.imageresizer": {
+      "PACKAGE_NAME": "com.snaprepair1.app1"
     }
   },
   "dependent_plugins": {

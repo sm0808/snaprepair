@@ -4,6 +4,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
 import { ImagePicker } from '@ionic-native/image-picker';
 import { Crop } from '@ionic-native/crop';
 import { Camera } from '@ionic-native/camera';
+import { ImageResizer, ImageResizerOptions } from '@ionic-native/image-resizer';
 
 import { File } from '@ionic-native/file';
 
@@ -38,7 +39,7 @@ export class UserMakeRequestPage {
               private file: File, public toastCtrl: ToastController,
               public platform: Platform, public loadingCtrl: LoadingController,
               public alertCtrl: AlertController, public requestService: Requests,
-              public localNotifications: LocalNotifications) {
+              public localNotifications: LocalNotifications, private imageResizer: ImageResizer) {
 
                 this.showLoading('Getting Data');
                 // Get Data
@@ -79,19 +80,25 @@ export class UserMakeRequestPage {
       this.alertCtrl.create({ subTitle:'5 images per Request are Allowed!', buttons: ['ok']}).present();
     else {
       let options = {
-        quality: 50,
+        quality: 100,
         correctOrientation: true
       };
 
       this.camera.getPicture(options)
       .then((data) => {
-        this.cropService
-        .crop(data, {quality: 65})
-        .then((newImage) => {
+        // this.cropService
+        // .crop(data, {quality: 30})
+        // .then((newImage) => {
 
-          this.pushToImages(newImage);
+        //   this.pushToImages(newImage);
 
-        }, error => console.error("Error cropping image", error));
+        // }, error => console.error("Error cropping image", error));
+        let array = [];
+        array.push(data);
+
+        this.reduceImages(array).then(() => {
+          console.log('all images cropped!! CROP ENDED');
+        });
       }, function(error) {
         console.log(error);
       });
@@ -101,13 +108,32 @@ export class UserMakeRequestPage {
   reduceImages(selected_pictures: any) : any {
     return selected_pictures.reduce((promise:any, item:any) => {
       return promise.then((result) => {
-        return this.cropService.crop(item, {quality: 75})
+        return this.cropService.crop(item, {quality: 100})
         .then((cropped_image) => {
           console.log('all images cropped!!', cropped_image);
-          this.pushToImages(cropped_image);
+          this.resizeImage(cropped_image);
+          // this.pushToImages(cropped_image);
         });
       });
     }, Promise.resolve());
+  }
+
+  resizeImage(path) {
+    let options = {
+      uri: path,
+      folderName: cordova.file.externalCacheDirectory,
+      quality: 100,
+      width: 520,
+      height: 680
+     } as ImageResizerOptions;
+     
+     this.imageResizer
+       .resize(options)
+       .then((filePath: string) => {
+         console.log('FilePath', filePath);
+         this.pushToImages(filePath);
+        })
+       .catch(e => console.log(e));
   }
 
   pushToImages(path) {
@@ -130,7 +156,7 @@ export class UserMakeRequestPage {
         let directory = path.substring(0, n);
         console.log("directory : ",directory);
         console.log("this.file : ",this.file);
-        console.log("cordova.file.externalCacheDirectory : ",cordova.file.externalCacheDirectory);
+        // console.log("cordova.file.externalCacheDirectory : ",cordova.file.externalCacheDirectory);
         this.file.readAsDataURL(cordova.file.externalCacheDirectory, nameFile).then((res) => {
           // this.file.readAsDataURL(directory.toString(), nameFile).then((res) => {
           // this.photosBase64.push(res);

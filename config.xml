@@ -125,5 +125,6 @@
     <allow-navigation href="http://192.168.43.159:8101" />
     <allow-navigation href="http://192.168.10.8:8101" />
     <allow-navigation href="http://192.168.10.5:8101" />
+    <plugin name="info.protonet.imageresizer" spec="0.1.1" />
     <engine name="android" spec="7.1.4" />
 </widget>

@@ -56708,6 +56708,10 @@ ion-card img {
   max-height: 40vh;
 }
 
+ion-badge {
+  font-size: 16px;
+}
+
 page-trip-detail ul.highlight,
 .trip-detail ul.highlight {
   padding-left: 0;
