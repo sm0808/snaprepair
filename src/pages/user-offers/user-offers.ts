@@ -158,11 +158,13 @@ export class UserOffersPage {
           handler: () => {
             console.log('Accept clicked offerID: ', offerID);
             if(inTransit) {
-              price = (price * 20) / 100;  // 20% Charge for Cancellation
+              price = (price * 60) / 100;  // 60% Charge for Cancellation
               this.Payment(offerID, '1', price, 'Cancellation Charges of Request In Transit Stage');
             }
             else {
-              this.cancel_Request(offerID, '1');
+              price = (price * 20) / 100;  // 20% Charge for Cancellation
+              this.Payment(offerID, '1', price, 'Cancellation Charges of Request In Processing Stage');
+              // this.cancel_Request(offerID, '1');
             }
             // this.updateRequest_Offer_Status(offerID, '1', requestId)
           }
