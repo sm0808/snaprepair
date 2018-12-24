@@ -130,10 +130,10 @@ export class UserOffersPage {
     let message   = '';
     let inTransit = false;
     if(accept_status == 'Processing') {
-      message = 'Are you sure you want to cancel this request?';
+      message = 'Cancelling the request at \'Processing\' stage will cost you 20% of the offered price. <br> Are you sure you want to cancel this request?';
     }
     else {
-      message   = 'Cancelling the request at \'In Transit\' stage will cost you 20% of the offered price. <br> Are you sure you want to cancel this request?';
+      message   = 'Cancelling the request at \'In Transit\' stage will cost you 60% of the offered price. <br> Are you sure you want to cancel this request?';
       inTransit = true;
     }
     this.presentConfirm(offerID, message, inTransit, price);
